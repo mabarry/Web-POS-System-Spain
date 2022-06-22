@@ -7,7 +7,7 @@
     <!--Google Translate API stuff-->
     <script type="text/javascript">
         function googleTranslateElementInit() {
-          new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+          new google.translate.TranslateElement({pageLanguage: 'en'}, 'language_switch');
         }
     </script>
         
@@ -23,36 +23,7 @@
     <title>Point of Sales</title>
   </head>
   <body>
-    <style>
-
-        /* .myHeader {
-            background-color: bisque;
-            height: auto;
-        }
-
-        .addToCart {
-            background-color: azure;
-            margin-left: 35%;
-        }
-
-        .itemInfoField {
-
-        }
-
-        .searchBar {
-
-        }
-
-        .quantityField {
-
-        }
-
-        .addToCartButton {
-
-        } */
-
-    </style>
-
+    
     <div class="grid-container">
         <header role="banner">
             <h1>Point of Sales</h1>
@@ -66,7 +37,8 @@
 
         <div class="accessibility" id="accessibilityButton">
             <p>
-                <button type="button" class="btn btn-primary" onclick="accessibleMode()">Accessible Mode</button>
+                <button type="button" class="btn btn-default" onclick="accessibleMode()">Accessible Mode</button>
+                <div class="translate" id="language_switch"></div>
             </p>
         </div>
 
@@ -106,33 +78,27 @@
 
 
         <!-- Display table for the current order and all its sale lines -->
-        <div class="orderTable" style="overflow-y:scroll; height: 90%; width: 100%;">
+        <div class="orderTable" style="overflow-y:scroll; height: 70%; width: 100%;">
             <table class="orders" id="orders">
                 <script src="scripts.js"></script>
                 <tr>
                     <th>Item Name and ID</th>
-                    <th>Line Price</th>
+                    <th>Line Price&nbsp;&nbsp;</th>
                     <th>Quantity</th>
                     <th>Remove</th>
                 </tr>
 
                 <!-- Each <tr> group below is one line sale -->
                 <tr>
-                    <td>Example Food 1</td>
-                    <td>Example Price 1</td>
-                    <td>Example Quantity 1</td>
+                    <td>exampleFood (1)</td>
+                    <td>$18.99</td>
+                    <td>3</td>
                     <td><button type="button" class="btn btn-outline-danger" onclick="deleteRow(this)">X</button></td>
                 </tr>
                 <tr>
-                    <td>Example Food 2</td>
-                    <td>Example Price 2</td>
-                    <td>Example Quantity 2</td>
-                    <td><button type="button" class="btn btn-outline-danger" onclick="deleteRow(this)">X</button></td>
-                </tr>
-                <tr>
-                    <td>Example Food 3</td>
-                    <td>Example Price 3</td>
-                    <td>Example Quantity 3</td>
+                    <td>exampleFood (2)</td>
+                    <td>$4.99</td>
+                    <td>1</td>
                     <td><button type="button" class="btn btn-outline-danger" onclick="deleteRow(this)">X</button></td>
                 </tr>
             </table>
@@ -140,7 +106,7 @@
 
         
         <!-- Display table for cheatsheet containing all info for the items in inventory -->
-        <div class="cheatsheet" style="overflow-y:scroll; height: 80%; width: 100%;">
+        <div class="cheatsheet" style="overflow-y:scroll; height: 60%; width: 100%;">
             <div class="table-wrapper-scroll">
                 <table class="table table-striped table-bordered table-condensed table-responsive">
                     <thead>
@@ -220,23 +186,33 @@
                 </table>
             </div>
         </div>
-
-        <div class="report" id="reportButtons">
-            <p>
-                <button type="button" id="saleButton" class="btn btn-outline-info">Sale Report</button><br>
-                <script src="scripts.js"></script>
-                <button type="button" id="excessButton" class="btn btn-outline-info">Excess Report</button><br>
-                <script src="scripts.js"></script>
-                <button type="button" id="restockButton" class="btn btn-outline-info">Restock Report</button><br>
-                <script src="scripts.js"></script>
-            </p>
+        
+        <div class="report-container">
+            <div class="sales" id="salesButton">
+                <p>
+                    <a class="btn btn-default btn-lg btn-block" href="#" role="button" target="_blank">Sales Report</a><br>
+                    <script src="scripts.js"></script>
+                </p>    
+            </div>
+            <div class="excess" id="excessButton">
+                <p>
+                    <a class="btn btn-default btn-lg btn-block" href="#" role="button" target="_blank">Excess Report</a><br>
+                    <script src="scripts.js"></script>
+                </p>    
+            </div>
+            <div class="restock" id="restockButton">
+                <p>
+                    <a class="btn btn-default btn-lg btn-block" href="#" role="button" target="_blank">Restock Report</a><br>
+                    <script src="scripts.js"></script>
+                </p>    
+            </div>
+                
         </div>
 
-        <div class="completeOrder" id="completeOrder">
-            <button type="button" id="completeOrderButton" class="btn btn-outline-info" onclick="completeOrder()">Complete Order</button><br>
+        <div class="compOrder" id="completeOrder">
+            <button type="button" id="completeOrderButton" class="btn btn-default" onclick="completeOrder()">Complete Order</button><br>
+            <script src="scripts.js"></script>
         </div>
-
-        <div class="translate" id="google_translate_element"></div>
 
     </div>
 
