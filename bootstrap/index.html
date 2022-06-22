@@ -4,7 +4,17 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Google Translate API stuff-->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+        }
+    </script>
+        
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
 
+    </script>
+        
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="style.css" id="style"></link>
     <link rel="stylesheet" type="text/css" href="additionalStyles.css" id="moreStyles"></link>
@@ -54,22 +64,22 @@
             <button type="button" class="btn btn-outline-info">Switch Profiles</button>
         </div>
 
-        <!--div class="accessibility" id="accessibilityButton">
+        <div class="accessibility" id="accessibilityButton">
             <p>
-                <button type="button" class="btn btn-outline-info" onclick="accessibleMode()">Accessible Mode</button>
+                <button type="button" class="btn btn-primary" onclick="accessibleMode()">Accessible Mode</button>
             </p>
-        </div-->
+        </div>
 
         <div class="new-item-container" id="head">
             <div class="itemInfo" id="itemInfoField">
-                <p>Item Information (Name, Price, Stock, ...)</p>
+                <p>Item Information (Example Food, Price, Stock, ...)</p>
             </div>
 
             <div class="searchBar" id="searchBar">
                 <p>
                     <form>
                         <label for="foodID">Food ID:</label><br>
-                        <input type="text" id="foodID" name="foodID" onsearch="searchFunction('foodID', 'foodQuantity')"><br>
+                        <input type="text" id="foodID" name="foodID" onsearch="searchFunction(foodID, foodQuantity)"><br>
                     </form>
                 </p>
             </div>
@@ -78,21 +88,24 @@
                 <p>
                     <form>
                         <label for="foodQuantity">Quantity of Food</label><br>
-                        <input type="text" id="foodQuantity" name="foodQuantity" onsearch="searchFunction('foodQuantity', 'cartButton')"><br>
+                        <input type="text" id="foodQuantity" name="foodQuantity" onsearch="searchFunction(foodQuantity, cartButton)"><br>
                     </form>
                 </p>
             </div>
 
             <div class="addToCart" id="addToCartButton">
-                <p>
-                    <button type="button" id="cartButton" class="btn btn-outline-info" onclick="addRow()">Add to Cart</button>
-                    <script src="scripts.js"></script>
-                </p>
+                <div class="d-grid gap-2 d-md-block">
+                    <p>
+                        <button type="button" id="cartButton" class="btn btn-default btn-lg" onclick="addRow()">Add to Cart</button>
+                        <script src="scripts.js"></script>
+                    </p>
+                </div>
             </div>
+            
         </div>
 
 
-
+        <!-- Display table for the current order and all its sale lines -->
         <div class="orderTable" style="overflow-y:scroll; height: 90%; width: 100%;">
             <table class="orders" id="orders">
                 <script src="scripts.js"></script>
@@ -102,6 +115,8 @@
                     <th>Quantity</th>
                     <th>Remove</th>
                 </tr>
+
+                <!-- Each <tr> group below is one line sale -->
                 <tr>
                     <td>Example Food 1</td>
                     <td>Example Price 1</td>
@@ -124,7 +139,7 @@
         </div>
 
         
-
+        <!-- Display table for cheatsheet containing all info for the items in inventory -->
         <div class="cheatsheet" style="overflow-y:scroll; height: 80%; width: 100%;">
             <div class="table-wrapper-scroll">
                 <table class="table table-striped table-bordered table-condensed table-responsive">
@@ -205,6 +220,24 @@
                 </table>
             </div>
         </div>
+
+        <div class="report" id="reportButtons">
+            <p>
+                <button type="button" id="saleButton" class="btn btn-outline-info">Sale Report</button><br>
+                <script src="scripts.js"></script>
+                <button type="button" id="excessButton" class="btn btn-outline-info">Excess Report</button><br>
+                <script src="scripts.js"></script>
+                <button type="button" id="restockButton" class="btn btn-outline-info">Restock Report</button><br>
+                <script src="scripts.js"></script>
+            </p>
+        </div>
+
+        <div class="completeOrder" id="completeOrder">
+            <button type="button" id="completeOrderButton" class="btn btn-outline-info" onclick="completeOrder()">Complete Order</button><br>
+        </div>
+
+        <div class="translate" id="google_translate_element"></div>
+
     </div>
 
     <!-- <div class="container-sm">
