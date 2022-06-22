@@ -1,0 +1,134 @@
+header {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    margin-left: 25%;
+    margin-right: 25%;
+    border-radius: 20px;
+    background-color: darkgoldenrod;
+    text-align: center;
+}
+
+body {
+
+}
+
+.grid-container {
+    display: grid;
+    /* grid-auto-rows: 80px; */
+    grid-template-areas: 
+    '. header header header header switch'
+    '. order order . item .'
+    '. order order . item .'
+    '. order order . item .'
+    '. order order . item .'
+    '. order order . . .'
+    '. order order sheet sheet report'
+    '. order order sheet sheet report'
+    '. order order sheet sheet report';
+    grid-gap: 1em;
+}
+
+.new-item-container {
+    /* display: grid;
+    grid-auto-rows: 80px;
+    grid-template-areas: 
+    '. order order . item .'
+    '. order order . item .'
+    '. order order . item .'
+    '. order order . item .'
+    '. order order . . .'
+    '. order order sheet sheet report'
+    '. order order sheet sheet report'
+    '. order order sheet sheet report';
+    grid-gap: 1em; */
+    /* min-width: 55em; */
+}
+
+.itemInfo {
+    /* grid-area: 1 / 3 / 2 / 5; */
+    grid-area: item;
+    max-width: 20em;
+    padding-left: 8%;
+    padding-right: 8%;
+    border-radius: 20px;
+    background-color: cornflowerblue;
+    text-align: center;
+}
+
+.searchBar {
+    /* grid-area: 2 / 3 / 3 / 5; */
+    grid-area: item;
+    max-width: 20em;
+    padding-left: 8%;
+    padding-right: 8%;
+    border-radius: 20px;
+    background-color: cornflowerblue;
+    text-align: center;
+}
+/*
+.accessibility {
+    background-color: cornflowerblue;
+    color: black;
+    text-align: center;
+}
+
+.accessibilityOn {
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+*/
+
+.quantity {
+    /* grid-area: 3 / 3 / 4 / 5; */
+    grid-area: item;
+    max-width: 20em;
+    padding-left: 8%;
+    padding-right: 8%;
+    border-radius: 20px;
+    background-color: cornflowerblue;
+    text-align: center;
+}
+
+.addToCart {
+    /* grid-area: 4 / 3 / 5 / 5; */
+    grid-area: item;
+    max-width: 20em;
+    padding-left: 8%;
+    padding-right: 8%;
+    border-radius: 20px;
+    background-color: cornflowerblue;
+    text-align: center;
+}
+
+.orderTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: cornflowerblue;
+    color: white;
+}
+
+.orderTable td, .orderTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.orderTable tr:nth-child(even){background-color: #f2f2f2;}
+
+.orderTable tr:hover {background-color: #ddd;}
+
+.orders {
+    /* grid-area: 1 / 2 / 2 / 2; */
+    grid-area: order;
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.cheetsheet {
+    /* grid-area: 4 / 3 / 5 / 5; */
+    grid-area: sheet;
+}
