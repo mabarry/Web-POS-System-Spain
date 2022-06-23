@@ -37,7 +37,7 @@
 
         <div class="accessibility" id="accessibilityButton">
             <p>
-                <button type="button" class="btn btn-lg btn-default" onclick="accessibleMode()">Accessible Mode</button>
+                <button type="button" class="btn btn-default" onclick="accessibleMode()">Accessible Mode</button>
                 <div class="translate" id="language_switch"></div>
             </p>
         </div>
@@ -50,7 +50,7 @@
             <div class="searchBar" id="searchBar">
                 <p>
                     <form>
-                        <label for="foodID">Food ID:</label>
+                        <label for="foodID">Food ID:</label><br>
                         <input type="text" id="foodID" name="foodID" onsearch="searchFunction(foodID, foodQuantity)"><br>
                     </form>
                 </p>
@@ -59,7 +59,7 @@
             <div class="quantity" id="quantityField">
                 <p>
                     <form>
-                        <label for="foodQuantity">Quantity of Food:</label>
+                        <label for="foodQuantity">Quantity of Food</label><br>
                         <input type="text" id="foodQuantity" name="foodQuantity" onsearch="searchFunction(foodQuantity, cartButton)"><br>
                     </form>
                 </p>
@@ -106,7 +106,7 @@
 
         
         <!-- Display table for cheatsheet containing all info for the items in inventory -->
-        <div class="cheatsheet" style="overflow-y:scroll; height: 50%; width: 100%;">
+        <div class="cheatsheet" style="overflow-y:scroll; height: 60%; width: 100%;">
             <div class="table-wrapper-scroll">
                 <table class="table table-striped table-bordered table-condensed table-responsive">
                     <thead>
