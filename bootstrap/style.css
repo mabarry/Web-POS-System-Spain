@@ -27,7 +27,8 @@ body {
 .grid-container {
     display: grid;
     grid-template-areas: 
-    ' order order compOrder itemInfo itemInfo itemInfo'
+    ' order order orderBtns itemInfo itemInfo itemInfo'
+    ' order order orderBtns itemInfo itemInfo itemInfo'
     ' order order sheet sheet sheet sheet';
     grid-gap: 1em;
     margin-left: 5%;
@@ -133,6 +134,7 @@ body {
     border-style: solid;
     border-color: black;
     border-width: 1px;
+    height: 35%;
 }
 
 .accessibilityOn {
@@ -178,26 +180,33 @@ body {
     min-width: 100%;
 }
 
-.compOrder {
-    grid-area: compOrder;
+.order-btn-container {
+    grid-area: orderBtns;
     display: grid;
-    grid-auto-columns: 100px;
+    grid-template-areas: 
+    ' Complete '
+    ' Cancel ';
     grid-gap: 1em;
-    background-color:lightgreen;
-    border-radius: 20px;
-    border-style: solid;
-    border-color: black;
-    border-width: 1px;
+}
+
+.compOrder {
+    grid-area: 'Complete';
     color: white;
     font-family: Tahoma, sans-serif;
     font-weight: bold;
+    text-align: center;
 }
 
-.report-container {
-    grid-area: report;
-    display: grid;
-    grid-auto-rows: 80px;
-    grid-gap: 1em;
+.cancOrder {
+    grid-area: 'Cancel';
+    color: white;
+    font-family: Tahoma, sans-serif;
+    font-weight: bold;
+    text-align: center;    
+}
+
+#completeOrderButton, #cancelOrderButton {
+    height: 100%;
 }
 
 .sales {
