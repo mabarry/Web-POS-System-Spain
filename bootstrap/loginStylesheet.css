@@ -1,0 +1,38 @@
+body {
+    background:rgb(49, 49, 49) !important;
+}
+
+.jumbotron {
+    position: relative;
+    overflow: hidden;
+}
+
+.jumbotron-background {
+    object-fit: cover;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    background-color: rgb(49,49,49);
+
+}
+
+.jumbotron .container {
+    position: relative;
+    z-index: 2;
+    background: rgba(0,0,0,0.2);
+    padding: 15rem;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 3px;
+    color: white;
+    
+}
+
+img.blur {
+    filter: blur(5px);
+}
+
+.test {
+    height: 50%;
+    width: 70%;
+    background-color: blue;
+}

@@ -24,6 +24,13 @@ body {
     overflow: hidden;
 }
 
+footer {
+    height: 100%;
+    width: 100%;
+    background-color:rgb(49, 49, 49);
+    position:fixed;
+}
+
 .grid-container {
     display: grid;
     grid-template-areas: 
