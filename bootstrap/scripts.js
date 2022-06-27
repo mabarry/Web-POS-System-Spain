@@ -1,32 +1,24 @@
-var accessibility = false;
+var isAccessible = false;
 
 function clearBoxes() {
     document.getElementById("foodID").value = "";
     document.getElementById("foodQuantity").value = "";
 }
-/*
-function searchFunction() {
-    //document.getElementById(x).value = "";
-    document.getElementById("foodID").blur();
-    document.getElementById("foodQuantity").focus();
-}
-*/
 
 function searchFunction(x, y) {
-    //document.getElementById(x).value = "";
     document.getElementById(x).blur();
     document.getElementById(y).focus();
 }
 
 
-function accessibleMode() {
-    if(accessibility) {
-        document.getElementById('accessibilityButton').setAttribute('class', 'accessibility');
-        accessibility = false;
+function accessibleSwitch() {
+    if(isAccessible == false) {
+        document.getElementById("style").href = "style_accessible.css";
+        isAccessible = true;
     }
     else {
-        document.getElementById('accessibilityButton').setAttribute('class', 'accessibilityOn');
-        accessibility = true;
+        document.getElementById("style").href = "style.css";
+        isAccessible = false;
     }
 }
 
