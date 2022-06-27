@@ -19,9 +19,9 @@ body {
 .jumbotron .container {
     position: relative;
     z-index: 2;
-    background: rgba(0,0,0,0.2);
-    padding: 15rem;
-    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0,0,0,0.45);
+    padding: 25rem;
+    border: 1px solid rgba(0,0,0,0.2);
     border-radius: 3px;
     color: white;
     
@@ -29,10 +29,4 @@ body {
 
 img.blur {
     filter: blur(5px);
-}
-
-.test {
-    height: 50%;
-    width: 70%;
-    background-color: blue;
 }
