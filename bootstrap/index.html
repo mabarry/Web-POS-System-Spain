@@ -22,25 +22,60 @@
 
     <title>Point of Sales</title>
   </head>
-  <body>
-    
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a href="#" class="navbar-brand ps-5">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link m-2 menu-item h4" href="#">Customer Sale</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link m-2 menu-item h4" href="#">Vendor Order</a>
+            </li>
+            <li class="nav-item active ">
+                <a class="nav-link m-2 menu-item h4" href="#">Add/Edit Item</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link m-2 h4 dropdown-toggle" href="#" id="navbarDropDownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Reports
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropDownMenuLink">
+                    <a class="dropdown-item" href="#">Sales</a>
+                    <a class="dropdown-item" href="#">Excess</a>
+                    <a class="dropdown-item" href="#">Restock</a>
+                  </div>
+            </li>            
+        </ul>
+    </div>
+
+    <div class="navbar-collapse collapse w-0 pe-5 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <div class="accessibility" id="accessibilityButton">
+                    <p>
+                        <button type="button" class="btn btn-default pb-1" onclick="accessibleMode()">Accessible Mode</button>
+                        <div class="translate pb-1" id="language_switch"></div>
+                    </p>
+                </div>
+            </li>
+            <li class="nav-item active">
+                <div class="text-center ps-5 pe-5">
+                    <img src="profile.png" class="pb-1">
+                    <button type="button" class="btn btn-outline-info">Logout</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+    <body>
+
     <div class="grid-container">
-        <header role="banner">
-            <h1>Point of Sales</h1>
-        </header>
-
-
-        <div class="switch">
-            <img src="profile.png">
-            <button type="button" class="btn btn-outline-info">Switch Profiles</button>
-        </div>
-
-        <div class="accessibility" id="accessibilityButton">
-            <p>
-                <button type="button" class="btn btn-default" onclick="accessibleMode()">Accessible Mode</button>
-                <div class="translate" id="language_switch"></div>
-            </p>
-        </div>
 
         <div class="new-item-container" id="head">
             <div class="itemInfo" id="itemInfoField">
@@ -48,27 +83,26 @@
             </div>
 
             <div class="searchBar" id="searchBar">
-                <p>
-                    <form>
-                        <label for="foodID">Food ID:</label><br>
-                        <input type="text" id="foodID" name="foodID" onsearch="searchFunction(foodID, foodQuantity)"><br>
-                    </form>
-                </p>
+                <div class="input-group">
+                    <input type="text" class="form-control rounded" placeholder="Enter Food ID" aria-label="Search"
+                    aria-describedby="search-addon">
+                    <button type="button" class="btn btn-primary">Enter</button>
+                </div>
             </div>
+            
 
             <div class="quantity" id="quantityField">
-                <p>
-                    <form>
-                        <label for="foodQuantity">Quantity of Food</label><br>
-                        <input type="text" id="foodQuantity" name="foodQuantity" onsearch="searchFunction(foodQuantity, cartButton)"><br>
-                    </form>
-                </p>
+                <div class="input-group">
+                    <input type="text" class="form-control rounded" placeholder="Enter Quantity" aria-label="Search"
+                    aria-describedby="search-addon">
+                    <button type="button" class="btn btn-primary">Enter</button>
+                </div>
             </div>
 
             <div class="addToCart" id="addToCartButton">
                 <div class="d-grid gap-2 d-md-block">
                     <p>
-                        <button type="button" id="cartButton" class="btn btn-default btn-lg" onclick="addRow()">Add to Cart</button>
+                        <button type="button" id="cartButton" class="btn btn-primary btn-lg" onclick="addRow()">Add to Cart</button>
                         <script src="scripts.js"></script>
                     </p>
                 </div>
@@ -187,7 +221,7 @@
             </div>
         </div>
         
-        <div class="report-container">
+        <!-- <div class="report-container">
             <div class="sales" id="salesButton">
                 <p>
                     <a class="btn btn-default btn-lg btn-block" href="#" role="button" target="_blank">Sales Report</a><br>
@@ -207,10 +241,15 @@
                 </p>    
             </div>
                 
-        </div>
+        </div> -->
 
         <div class="compOrder" id="completeOrder">
-            <button type="button" id="completeOrderButton" class="btn btn-default" onclick="completeOrder()">Complete Order</button><br>
+            <button type="button" id="completeOrderButton" class="btn btn-success btn-lg" onclick="completeOrder()">Complete Order</button><br>
+            <script src="scripts.js"></script>
+        </div>
+
+        <div class="cancOrder" id="cancelOrder">
+            <button type="button" id="cancelOrderButton" class="btn btn-danger btn-lg" onclick="cancelOrder()">Cancel Order</button><br>
             <script src="scripts.js"></script>
         </div>
 
