@@ -36,7 +36,8 @@ footer {
     grid-template-areas: 
     ' order order orderBtns itemInfo itemInfo itemInfo'
     ' order order orderBtns itemInfo itemInfo itemInfo'
-    ' order order sheet sheet sheet sheet';
+    ' order order sheet sheet sheet sheet'
+    ' chkOut chkOut sheet sheet sheet sheet';
     grid-gap: 1em;
     margin-left: 5%;
     margin-right: 5%;
@@ -96,6 +97,8 @@ footer {
 
 .orderTable {
     grid-area: order;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
 }
 
 .orderTable th {
@@ -125,9 +128,30 @@ footer {
     font-weight: bold;
 }
 
+.checkout {
+    grid-area: chkOut;
+    display: grid;
+    grid-template-areas: 
+    ' total '
+    ' payment ';
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+}
+
+.orderTotal {
+    grid-area: total;
+    /* position: fixed;  */
+}
+
+.paymentType {
+    grid-area: payment;
+}
+
 .cheatsheet {
     grid-area: sheet;
     height: 20px;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
 }
 
 .accessibility {
