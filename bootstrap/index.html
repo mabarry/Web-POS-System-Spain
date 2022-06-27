@@ -117,7 +117,8 @@
                 <table class="orders" id="orders">
                     <script src="scripts.js"></script>
                     <tr>
-                        <th>Item Name and ID</th>
+                        <th>Item Name</th>
+                        <th>Item ID</th>
                         <th>Line Price&nbsp;&nbsp;</th>
                         <th>Quantity</th>
                         <th>Remove</th>
@@ -125,13 +126,15 @@
 
                     <!-- Each <tr> group below is one line sale -->
                     <tr>
-                        <td>exampleFood (1)</td>
+                        <td>exampleFood</td>
+                        <td>(1)</td>
                         <td>$18.99</td>
                         <td>3</td>
                         <td><button type="button" class="btn btn-outline-danger" onclick="deleteRow(this)">X</button></td>
                     </tr>
                     <tr>
-                        <td>exampleFood (2)</td>
+                        <td>exampleFood</td>
+                        <td>(2)</td>
                         <td>$4.99</td>
                         <td>1</td>
                         <td><button type="button" class="btn btn-outline-danger" onclick="deleteRow(this)">X</button></td>
@@ -144,85 +147,103 @@
             </div> -->
             
             <!-- Display table for cheatsheet containing all info for the items in inventory -->
-            <div class="cheatsheet" style="overflow-y:scroll; height: 95%; width: 100%;">
-                <div class="table-wrapper-scroll">
-                    <table class="table table-striped table-bordered table-condensed table-responsive">
-                        <thead>
-                            <tr style="background-color: cornflowerblue; color: white;">
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Unit Price</th>
-                                <th>Quantity in Inventory</th>
-                                <th>Storage Location</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Example ID</td>
-                                <td>Example Food</td>
-                                <td>$$$</td>
-                                <td>Example kg</td>
-                                <td>Where</td>
-                            </tr>
-                            <tr>
-                                <td>Example ID</td>
-                                <td>Example Food</td>
-                                <td>$$$</td>
-                                <td>Example kg</td>
-                                <td>Where</td>
-                            </tr>
-                            <tr>
-                                <td>Example ID</td>
-                                <td>Example Food</td>
-                                <td>$$$</td>
-                                <td>Example kg</td>
-                                <td>Where</td>
-                            </tr>
-                            <tr>
-                                <td>Example ID</td>
-                                <td>Example Food</td>
-                                <td>$$$</td>
-                                <td>Example kg</td>
-                                <td>Where</td>
-                            </tr>
-                            <tr>
-                                <td>Example ID</td>
-                                <td>Example Food</td>
-                                <td>$$$</td>
-                                <td>Example kg</td>
-                                <td>Where</td>
-                            </tr>
-                            <tr>
-                                <td>Example ID</td>
-                                <td>Example Food</td>
-                                <td>$$$</td>
-                                <td>Example kg</td>
-                                <td>Where</td>
-                            </tr>
-                            <tr>
-                                <td>Example ID</td>
-                                <td>Example Food</td>
-                                <td>$$$</td>
-                                <td>Example kg</td>
-                                <td>Where</td>
-                            </tr>
-                            <tr>
-                                <td>Example ID</td>
-                                <td>Example Food</td>
-                                <td>$$$</td>
-                                <td>Example kg</td>
-                                <td>Where</td>
-                            </tr>
-                            <tr>
-                                <td>Example ID</td>
-                                <td>Example Food</td>
-                                <td>$$$</td>
-                                <td>Example kg</td>
-                                <td>Where</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div class="cheatsheet" style="overflow-y:scroll; width: 100%;">
+                <table class="sheet" id="sheet">
+                    <script src="scripts.js"></script>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Unit Price</th>
+                        <th>Quantity in Inventory</th>
+                        <th>Storage Location</th>
+                    </tr>
+
+                    <!-- Each <tr> group below is one item in the food table -->
+                    <tr>
+                        <td>Example ID</td>
+                        <td>Example Food</td>
+                        <td>$$$</td>
+                        <td>Example kg</td>
+                        <td>Where</td>
+                    </tr>
+                    <tr>
+                        <td>Example ID</td>
+                        <td>Example Food</td>
+                        <td>$$$</td>
+                        <td>Example kg</td>
+                        <td>Where</td>
+                    </tr>
+                    <tr>
+                        <td>Example ID</td>
+                        <td>Example Food</td>
+                        <td>$$$</td>
+                        <td>Example kg</td>
+                        <td>Where</td>
+                    </tr>
+                    <tr>
+                        <td>Example ID</td>
+                        <td>Example Food</td>
+                        <td>$$$</td>
+                        <td>Example kg</td>
+                        <td>Where</td>
+                    </tr>
+                    <tr>
+                        <td>Example ID</td>
+                        <td>Example Food</td>
+                        <td>$$$</td>
+                        <td>Example kg</td>
+                        <td>Where</td>
+                    </tr>
+                    <tr>
+                        <td>Example ID</td>
+                        <td>Example Food</td>
+                        <td>$$$</td>
+                        <td>Example kg</td>
+                        <td>Where</td>
+                    </tr>
+                    <tr>
+                        <td>Example ID</td>
+                        <td>Example Food</td>
+                        <td>$$$</td>
+                        <td>Example kg</td>
+                        <td>Where</td>
+                    </tr>
+                    <tr>
+                        <td>Example ID</td>
+                        <td>Example Food</td>
+                        <td>$$$</td>
+                        <td>Example kg</td>
+                        <td>Where</td>
+                    </tr>
+                    <tr>
+                        <td>Example ID</td>
+                        <td>Example Food</td>
+                        <td>$$$</td>
+                        <td>Example kg</td>
+                        <td>Where</td>
+                    </tr>
+                    <tr>
+                        <td>Example ID</td>
+                        <td>Example Food</td>
+                        <td>$$$</td>
+                        <td>Example kg</td>
+                        <td>Where</td>
+                    </tr>
+                    <tr>
+                        <td>Example ID</td>
+                        <td>Example Food</td>
+                        <td>$$$</td>
+                        <td>Example kg</td>
+                        <td>Where</td>
+                    </tr>
+                    <tr>
+                        <td>Example ID</td>
+                        <td>Example Food</td>
+                        <td>$$$</td>
+                        <td>Example kg</td>
+                        <td>Where</td>
+                    </tr>
+                </table>
             </div>
             
             <!-- <div class="report-container">
@@ -265,20 +286,16 @@
                         <h1 class="">Point of Sales</h1>
                 </div>
             </div>
-
         </div>
-
         <div class="container-md overflow-hidden">
             <div class="addToCart">
                 <div class="row itemInfoField justify-content-end align-content-end">
                     <div class="col-md-7 mx-auto ">
                         <div class="p-3 border bg-light">
                             <p>Item Information (Name, Price, Stock, ...)</p>
-
                         </div>
                     </div>
                 </div>
-
                 <div class="row searchBar justify-content-end align-content-end">
                     <div class="col-md-7 mx-auto">
                         <div class="p-3 border bg-light">
@@ -289,7 +306,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="row quantityField justify-content-end align-content-end">
                     <div class="col-md-7 mx-auto">
                         <div class="p-3 border bg-light">
@@ -300,7 +316,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="row addToCartButton justify-content-end align-content-end">
                     <div class="col-md-7 mx-auto">
                         <div class="p-3 border bg-light">
@@ -309,7 +324,6 @@
                     </div>
                 </div>
             </div>
-
         </div> -->
 
         <!-- Optional JavaScript; choose one of the two! -->

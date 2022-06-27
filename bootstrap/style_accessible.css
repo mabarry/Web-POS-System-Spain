@@ -39,6 +39,7 @@ footer {
     ' order order sheet sheet sheet sheet'
     ' chkOut chkOut sheet sheet sheet sheet';
     grid-gap: 1em;
+    height: 750px;
     margin-left: 5%;
     margin-right: 5%;
     padding-left: 10px;
@@ -101,7 +102,14 @@ footer {
     border-radius: 3px;
 }
 
-.orderTable th {
+.cheatsheet {
+    grid-area: sheet;
+    height: 95%; 
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+}
+
+.orderTable th, .cheatsheet th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
@@ -112,7 +120,7 @@ footer {
     
 }
 
-.orderTable td, .orderTable th {
+.orderTable td, .orderTable th, .cheatsheet td, .cheatsheet th {
     border: 1px solid #ddd;
     padding: 8px;
 }
@@ -125,7 +133,15 @@ footer {
     background-color: #3f3f3f;
 }
 
-.orders {
+.cheatsheet tr:nth-child(even){
+    background-color: rgb(40, 42, 53);
+}
+
+.cheatsheet tr:hover {
+    background-color: #3f3f3f;
+}
+
+.orders, .sheet {
     width: 100%;
     border-collapse: collapse;
     font-family: Tahoma, sans-serif;
@@ -153,7 +169,7 @@ footer {
     grid-area: payment;
 }
 
-.cheatsheet {
+/* .cheatsheet {
     grid-area: sheet;
     height: 20px;
     border: 1px solid rgba(0,0,0,0.2);
@@ -169,7 +185,7 @@ th {
 
 td {
     color: white !important;
-}
+} */
 
 .accessibility {
     /* grid-area: accessibility; */
