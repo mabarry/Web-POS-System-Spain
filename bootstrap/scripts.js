@@ -1,11 +1,28 @@
 var isAccessible = false;
 
-// DISCUSS: Have a variable that stores the json object for each DB and have an update function for each DB??
+var foodItems;
+
+initializeDB();
+function initializeDB() {
+    // Get foodItems DB
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.responseType = "json";
+    xmlHttp.open("GET", "http://localhost:3000/foodItems");
+    xmlHttp.onload = function() {
+        foodItems = xmlHttp.response;
+    }
+    xmlHttp.send();
+}
+
+
+
+
 
 function clearBoxes() {
-    document.getElementById("foodID").value = "";
-    document.getElementById("foodQuantity").value = "";
+    document.getElementById("idSearch").value = "";
+    document.getElementById("quantitySearch").value = "";
 }
+
 
 function searchFunction(x) {
     document.getElementById(x).focus();
@@ -38,90 +55,57 @@ function addOrderRow() {
     var custQty = document.getElementById('quantitySearch').value;
     var invQty;
 
-    // Do nto query the database if a field is empty
-    if (id == undefined || custQty == undefined) {
+    // Do not continue if any of the form fields are empty
+    if (id == "" || custQty == "") {
         // TODO: Add feedback
         console.log("A field is empty");
         return;
     }
 
-    // Use a promise to prevent the function from running before all data is recieved
-    var promise = new Promise( function(resolve, reject) {
-        // Query the database to get the food item info
-        var xmlHttp = new XMLHttpRequest();
-        xmlHttp.responseType = "json";
-        xmlHttp.open("GET", "http://localhost:3000/foodItems");
-        xmlHttp.onload = function() {
-            // Status of the request is OK
-            if (xmlHttp.status == 200) {
-                resolve(xmlHttp.response);
-            }
-            // Request status not OK
-            else {
-                reject(Error(xmlHttp.statusText));
-            }
+    // Retreive data from the DB
+    name = foodItems[id - 1].foodname;
+    invQty = foodItems[id - 1].foodquantity;
+    unitPrice = foodItems[id - 1].unitprice;
 
-            // Error with http request
-            xmlHttp.onerror = function() {
-                reject(Error("Data could not be retrieved"))
-            }
-        }
-        xmlHttp.send();
-    });
+    console.log("ID = " + id + "\nName = " + name +"\nQty = " + custQty + "\nUnit Price = " + unitPrice);
 
-    // Wait for the query to complete before working with the data
-    promise.then( 
-        function(data) {
-            name = data[id - 1].foodname;
-            invQty = data[id - 1].foodquantity;
-            unitPrice = data[id - 1].unitprice;
+    // TODO: Update the sale line if its already in the table
+    // See if id is in table
+    // If yes,
+    //     set custQty to tableQty + custQty
+    //
 
-            console.log("ID = " + id + "\nName = " + name +"\nQty = " + custQty + "\nUnit Price = " + unitPrice);
+    // Do not add a row if there is not enough quantity
+    if (custQty > invQty) {
+        // TODO: Add feedback
+        console.log("Not enough food in inventory");
+        return;
+    }
+
+    salePrice = custQty * unitPrice;
+    salePrice = salePrice.toFixed(2);
     
-            // TODO: Update the sale line if its already in the table
-            // See if id is in table
-            // If yes,
-            //     set custQty to tableQty + custQty
-            //
+    // Create the new row in HTML
+    var tr = document.createElement('tr');
 
-            // Do not add a row if there is not enough quantity
-            if (custQty > invQty) {
-                // TODO: Add feedback
-                console.log("Not enough food in inventory");
-                return;
-            }
+    // Create all columns
+    rowText = ' \
+    <td>' + name + '</td> \
+    <td>' + id + '</td> \
+    <td>€&nbsp;' + salePrice + '</td> \
+    <td>' + custQty + '</td> \
+    <td><button type="button" class="btn btn-outline-danger" onclick="deleteRow(this)">X</button></td> \
+    ';
 
-            salePrice = custQty * unitPrice;
-            salePrice = salePrice.toFixed(2);
-            
-            // Create the new row in HTML
-            var tr = document.createElement('tr');
+    // Add all text to the HTML document
+    tr.innerHTML = rowText;
+    var table = document.getElementById("orders")
+    table.appendChild(tr);
 
-            // Create all columns
-            rowText = ' \
-            <td>' + name + '</td> \
-            <td>' + id + '</td> \
-            <td>€&nbsp;' + salePrice + '</td> \
-            <td>' + custQty + '</td> \
-            <td><button type="button" class="btn btn-outline-danger" onclick="deleteRow(this)">X</button></td> \
-            ';
-
-            tr.innerHTML = rowText;
-            var table = document.getElementById("orders")
-            table.appendChild(tr);
-
-            //Clearing text boxes containing food ID and quantity
-            // TODO: Fix clearBoxes()
-            //clearBoxes();
-        },
-
-        function(error) {
-            console.log(error);
-        }
-    );
+    clearBoxes();
 }
 
-// DISCUSS: How do we want to keep track of the 
+
 function completeCustomerOrder() {
     var table = document.getElementById("orders");
 
@@ -219,60 +203,27 @@ function updateInfoBar() {
     );
 }
 
+
 createCheatSheet();
 function createCheatSheet() {
-    // Query the entire foodItems database
-    // Use a promise to prevent the function from running before all data is recieved
-    var promise = new Promise( function(resolve, reject) {
-        // Query the database to get the food item info
-        var xmlHttp = new XMLHttpRequest();
-        xmlHttp.responseType = "json";
-        xmlHttp.open("GET", "http://localhost:3000/foodItems");
-        xmlHttp.onload = function() {
-            // Status of the request is OK
-            if (xmlHttp.status == 200) {
-                resolve(xmlHttp.response);
-            }
-            // Request status not OK
-            else {
-                reject(Error(xmlHttp.statusText));
-            }
+    var table = document.getElementById("cheatsheet");
 
-            // Error with http request
-            xmlHttp.onerror = function() {
-                reject(Error("Data could not be retrieved"))
-            }
-        }
-        xmlHttp.send();
-    });
+    // Add each food item to the cheat sheet
+    for (var i = 0; i < Object.keys(foodItems.shareInfo).length; i++) {
+        console.log(data[i]);
+        
+        var row = table.insertRow();
 
-    // Wait for the query to complete before working with the data
-    promise.then( 
-        function(data) {
-            var table = document.getElementById("cheatsheet");
+        var id = row.insertCell(0);
+        var name = row.insertCell(1);
+        var unitPrice = row.insertCell(2);
+        var qty = row.insertCell(3);
+        var location = row.insertCell(4);
 
-            // Add each food item to the cheat sheet
-            for (var i = 0; i < data.length; i++) {
-                console.log(data[i]);
-                
-                var row = table.insertRow();
-
-                var id = row.insertCell(0);
-                var name = row.insertCell(1);
-                var unitPrice = row.insertCell(2);
-                var qty = row.insertCell(3);
-                var location = row.insertCell(4);
-
-                id.innerHTML = data[i].foodid;
-                name.innerHTML = data[i].foodname;
-                unitPrice.innerHTML = data[i].unitprice;
-                qty.innerHTML = data[i].foodquantity;
-                location.innerHTML = data[i].storagetype;
-            }
-        },
-
-        function(error) {
-            console.log(error);
-        }
-    );
+        id.innerHTML = foodItems[i].foodid;
+        name.innerHTML = foodItems[i].foodname;
+        unitPrice.innerHTML = foodItems[i].unitprice;
+        qty.innerHTML = foodItems[i].foodquantity;
+        location.innerHTML = foodItems[i].storagetype;
+    }
 }
