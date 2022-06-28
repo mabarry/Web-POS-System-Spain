@@ -51,6 +51,27 @@ footer {
     background-color: whitesmoke;
 }
 
+.accessibility {
+    /* grid-area: accessibility; */
+    text-align: center;
+    background-color: rgb(61, 125, 242);
+    color: black;
+    color: white;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    height: 35%;
+}
+
+.accessibilityOn {
+    /* grid-area: accessibility; */
+    text-align: center;
+    background-color: black;
+    color: white;
+    
+}
+
 .btn-lg {
     min-width: 100%;
 }
