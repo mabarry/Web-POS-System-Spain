@@ -1,11 +1,11 @@
 var isAccessible = false;
 
-// DISCUSS: Have a variable that stores the json object for each DB and have an update function for each DB??
 
 function clearBoxes() {
-    document.getElementById("foodID").value = "";
-    document.getElementById("foodQuantity").value = "";
+    document.getElementById("idSearch").value = "";
+    document.getElementById("quantitySearch").value = "";
 }
+
 
 function searchFunction(x) {
     document.getElementById(x).focus();
@@ -35,11 +35,12 @@ function addOrderRow() {
     var unitPrice;
     var salePrice;
     var id = document.getElementById('idSearch').value; 
-    var custQty = document.getElementById('quantitySearch').value;
+    var custQty = parseFloat(document.getElementById('quantitySearch').value);
     var invQty;
 
     // Do nto query the database if a field is empty
-    if (id == undefined || custQty == undefined) {
+    console.log("NAN CHECK:: ID = " + id + "\nCust Qty = " + custQty);
+    if (id == null || custQty == null || isNaN(id) || isNaN(custQty)) {
         // TODO: Add feedback
         console.log("A field is empty");
         return;
@@ -76,8 +77,8 @@ function addOrderRow() {
             invQty = data[id - 1].foodquantity;
             unitPrice = data[id - 1].unitprice;
 
-            console.log("ID = " + id + "\nName = " + name +"\nQty = " + custQty + "\nUnit Price = " + unitPrice);
-    
+            console.log("ID = " + id + "\nName = " + name +"\nCust Qty = " + custQty + "\nUnit Price = " + unitPrice);
+
             // TODO: Update the sale line if its already in the table
             // See if id is in table
             // If yes,
@@ -89,6 +90,11 @@ function addOrderRow() {
                 // TODO: Add feedback
                 console.log("Not enough food in inventory");
                 return;
+            }
+
+            // Round all quantities to 2 decimal places if applicable
+            if (!Number.isInteger(custQty)) {
+                custQty = custQty.toFixed(2);
             }
 
             salePrice = custQty * unitPrice;
@@ -112,7 +118,7 @@ function addOrderRow() {
 
             //Clearing text boxes containing food ID and quantity
             // TODO: Fix clearBoxes()
-            //clearBoxes();
+            clearBoxes();
         },
 
         function(error) {
@@ -121,7 +127,7 @@ function addOrderRow() {
     );
 }
 
-// DISCUSS: How do we want to keep track of the 
+
 function completeCustomerOrder() {
     var table = document.getElementById("orders");
 
@@ -219,7 +225,7 @@ function updateInfoBar() {
     );
 }
 
-createCheatSheet();
+
 function createCheatSheet() {
     // Query the entire foodItems database
     // Use a promise to prevent the function from running before all data is recieved
@@ -249,25 +255,41 @@ function createCheatSheet() {
     // Wait for the query to complete before working with the data
     promise.then( 
         function(data) {
-            var table = document.getElementById("cheatsheet");
+            var id;
+            var name;
+            var unitPrice;
+            var invQty;
+            var storage;
+
+            var table = document.getElementById("sheet");
 
             // Add each food item to the cheat sheet
             for (var i = 0; i < data.length; i++) {
                 console.log(data[i]);
-                
-                var row = table.insertRow();
 
-                var id = row.insertCell(0);
-                var name = row.insertCell(1);
-                var unitPrice = row.insertCell(2);
-                var qty = row.insertCell(3);
-                var location = row.insertCell(4);
+                var tr = document.createElement('tr');
 
-                id.innerHTML = data[i].foodid;
-                name.innerHTML = data[i].foodname;
-                unitPrice.innerHTML = data[i].unitprice;
-                qty.innerHTML = data[i].foodquantity;
-                location.innerHTML = data[i].storagetype;
+                id = data[i].foodid;
+                name = data[i].foodname;
+                unitPrice = data[i].unitprice.toFixed(2);
+                invQty = data[i].foodquantity
+                storage = data[i].storagetype;
+
+                // Round all quantities to 2 decimal places if applicable
+                if (!Number.isInteger(invQty)) {
+                    invQty.toFixed(2);
+                }
+
+                // Create all columns
+                rowText = ' \
+                <td>' + id + '</td> \
+                <td>' + name + '</td> \
+                <td>€&nbsp;' + unitPrice + '</td> \
+                <td>' + invQty + '</td> \
+                <td>' + storage + '</td>';
+
+                tr.innerHTML = rowText;
+                table.appendChild(tr);
             }
         },
 
