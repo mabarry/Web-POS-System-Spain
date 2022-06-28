@@ -122,6 +122,7 @@ footer {
 .prevOrderSheet {
     grid-area: prevOrders;
     height: 95%; 
+    margin-right: -35px;
     border: 1px solid rgba(0,0,0,0.2);
     border-radius: 3px;
 }
