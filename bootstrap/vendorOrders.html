@@ -75,7 +75,114 @@
 
     <body>
         <div class="grid-container">
-            
+            <div class="new-item-container" id="head">
+                <div class="itemInfo" id="itemInfoField">
+                    <p>Vendor Item Information:</p>
+                </div>
+
+                <div class="searchBar" id="searchBar">
+                    <div class="input-group">
+                        <input type="text" id="idSearch" class="form-control rounded" placeholder="Enter Food ID" aria-label="Search"
+                        aria-describedby="search-addon" oninput="updateInfoBar()">
+                        <script src="scripts.js"></script>
+                        <button type="button" id="idButton" class="btn btn-primary" onclick="searchFunction('quantitySearch')">Enter</button>
+                    </div>
+                </div>
+
+                <div class="vendorPrice" id="vendorPrice">
+                    <div class="input-group">
+                        <input type="text" id="idSearch" class="form-control rounded" placeholder="Enter Vendor Price" aria-label="Search"
+                        aria-describedby="search-addon" oninput="updateInfoBar()">
+                        <script src="scripts.js"></script>
+                        <button type="button" id="idButton" class="btn btn-primary" onclick="searchFunction('quantitySearch')">Enter</button>
+                    </div>
+                </div>                
+
+                <div class="quantity" id="quantityField">
+                    <div class="input-group">
+                        <input type="text" id="quantitySearch" class="form-control rounded" placeholder="Enter Quantity" aria-label="Search"
+                        aria-describedby="search-addon">
+                        <button type="button" id="quantityButton" class="btn btn-primary" onclick="searchFunction('cartButton')">Enter</button>
+                    </div>
+                </div>
+
+                <div class="addToCart" id="addToCartButton">
+                    <div class="d-grid gap-2 d-md-block">
+                        <p>
+                            <button type="button" id="cartButton" class="btn btn-primary btn-lg" onclick="addOrderRow(); searchFunction('idSearch');">Add to Cart</button>
+                            <script src="scripts.js"></script>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Display table for the current order and all its sale lines -->
+            <div class="receipt">
+                <div class="orderTable">
+                    <table class="orders" id="orders">
+                        <script src="scripts.js"></script>
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Item ID</th>
+                            <th>Line Price (€)</th>
+                            <th>Quantity</th>
+                            <th>Remove</th>
+                        </tr>
+                        
+                        <!-- This is where each sale row will be added -->
+                    </table>
+                </div>
+
+                <div class="orderTotal">
+                    <div class="input-group">
+                        <div class="price"  id="price">
+                            <p> 0.00 </p>
+                        </div>
+                        <span class="input-group-text"> € </span>
+                    </div>
+                </div>
+
+                <div class="paymentType">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-primary">Cash</button>
+                        <button type="button" class="btn btn-primary">Card</button>
+                      </div>
+                </div>
+            </div>
+
+            <!-- Display table for cheatsheet containing all info for the items in inventory -->
+            <div class="prevOrderSheet" style="overflow-y:scroll; width: 100%;">
+                <table class="sheet" id="sheet">
+                    <script src="scripts.js" onload="createCheatSheet();"></script>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Unit Price</th>
+                        <th>Quantity in Inventory</th>
+                        <th>Storage Location</th>
+                    </tr>
+
+                    <!-- This is where each food item will be added to the cheat sheet -->
+                </table>
+            </div>
+
+            <div class="order-btn-container">
+                <div class="compOrder" id="completeOrder">
+                    <button type="button" id="completeOrderButton" class="btn btn-success btn-lg" onclick="completeCustomerOrder()">Complete Order</button><br>
+                    <script src="scripts.js"></script>
+                </div>
+    
+                <div class="cancOrder" id="cancelOrder">
+                    <button type="button" id="cancelOrderButton" class="btn btn-danger btn-lg" onclick="cancelOrder()">Cancel Order</button><br>
+                    <script src="scripts.js"></script>
+                </div>
+                <div class="updateInv" id="updateInv">
+                    <button type="button" id="updateInvButton" class="btn btn-info btn-lg" onclick="cancelOrder()">Update Inventory</button><br>
+                    <script src="scripts.js"></script>
+                </div>
+            </div>
+
+
         </div>
 
         <!-- Option 1: Bootstrap Bundle with Popper -->
