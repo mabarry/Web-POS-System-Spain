@@ -147,60 +147,15 @@ function addOrderRow() {
 
 function completeCustomerOrder() {
     var table = document.getElementById("orders");
-
-    // TODO: 
+    var customerOrderID;
+    var saleLineID;
+    
     // Get the latest customerOrderID
-    // Get the latest saleLineID
-    //
-    // For each sale line in the table, 
-    //     Add the sale line to the CustomerSaleLine DB
-    //     Update the inventory in FoodItems DB
-    //     Sum up the total order cost
-    //
-    // Get the current date
-    // Get the payment info for the order
-    // Get the employeeID currently logged in
-    //
-    // Add the order to the CustomerOrder DB
-    //
-    // Update the cheatsheet
-
-    // Clear the HTML order table
-    var tableLen = table.rows.length;
-    for (var i = 1; i < tableLen; i++) {
-        table.deleteRow(1);
-    }
-    updateOrderPrice();
-}
-
-
-function cancelOrder() {
-    // Clear the HTML order table
-    // Do not need to interact with DB since changes are only made when an order is completed
-    var table = document.getElementById("orders");
-    var tableLen = table.rows.length;
-    for (var i = 1; i < tableLen; i++) {
-        table.deleteRow(1);
-    }
-    updateOrderPrice();
-}
-
-
-function updateInfoBar() {
-    var name;
-    var unitPrice;
-    var invQty;
-
-    // Get the current foodID
-    var id = document.getElementById('idSearch').value; 
-
-    // Query the foodItems database
-    // Use a promise to prevent the function from running before all data is recieved
     var promise = new Promise( function(resolve, reject) {
         // Query the database to get the food item info
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.responseType = "json";
-        xmlHttp.open("GET", "http://localhost:3000/foodItems");
+        xmlHttp.open("GET", "http://localhost:3000/customerSaleLine");
         xmlHttp.onload = function() {
             // Status of the request is OK
             if (xmlHttp.status == 200) {
@@ -222,26 +177,46 @@ function updateInfoBar() {
     // Wait for the query to complete before working with the data
     promise.then( 
         function(data) {
-            // Do not attempt to read data if ID is invald
-            // TODO: Move this up depending on how database info is stored
-            if (id < 1 || id > data.length) {
-                console.log("Invalid ID input");
-                return;
-            }
-
-            // Get the food info
-            name = data[id - 1].foodname;
-            invQty = data[id - 1].foodquantity;
-            unitPrice = data[id - 1].unitprice;
-            
-            // Format food info into HTML
-            document.getElementById("itemInfoField").innerHTML = name + "<br>Unit Price = " + unitPrice + "&nbsp;&nbsp;&nbsp;&nbsp;Quantity = " + invQty;
+            //Getting next available customerOrderID and saleLineID
+            customerOrderID = (data[-1].customerorderid) + 1;
+            saleLineID = (data[-1].salelineid) + 1;
         },
 
         function(error) {
             console.log(error);
         }
     );
+    // TODO: 
+    // For each sale line in the table, 
+    //     Add the sale line to the CustomerSaleLine DB
+    //     Update the inventory in FoodItems DB
+    //     Sum up the total order cost
+    
+    var customerOrderTotal = float(document.getElementById("price").innerHTML);
+
+    // Get the current date
+    var customerOrderDate = new Date();
+    var day = String(customerOrderDate.getDate()).padStart(2, '0');
+    var month = String(customerOrderDate.getMonth() + 1).padStart(2, '0');
+    var year = today.getFullYear();
+    customerOrderDate = year + '-' + month + '-' + day;
+
+    // Get the payment info for the order
+    var paymentMethod = "cash";
+
+    // Get the employeeID currently logged in
+    var employeeID = "104";
+
+    // Add the order to the CustomerOrder DB
+    //
+    // Update the cheatsheet
+    
+    // Clear the HTML order table
+    var tableLen = table.rows.length;
+    for (var i = 1; i < tableLen; i++) {
+        table.deleteRow(1);
+    }
+    updateOrderPrice();
 }
 
 
