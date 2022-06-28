@@ -100,6 +100,7 @@ function addOrderRow() {
             // Create all columns
             rowText = ' \
             <td>' + name + '</td> \
+            <td>' + id + '</td> \
             <td>€&nbsp;' + salePrice + '</td> \
             <td>' + custQty + '</td> \
             <td><button type="button" class="btn btn-outline-danger" onclick="deleteRow(this)">X</button></td> \
