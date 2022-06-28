@@ -37,7 +37,7 @@ footer {
     ' order order orderBtns itemInfo itemInfo itemInfo'
     ' order order orderBtns itemInfo itemInfo itemInfo'
     ' order order sheet sheet sheet sheet'
-    ' chkOut chkOut sheet sheet sheet sheet';
+    ' order order sheet sheet sheet sheet';
     grid-gap: 1em;
     height: 750px;
     margin-left: 5%;
@@ -96,8 +96,12 @@ footer {
     align-items: center;
 }
 
-.orderTable {
+.receipt {
     grid-area: order;
+}
+
+.orderTable {
+    /* grid-area: order; */
     border: 1px solid rgba(0,0,0,0.2);
     border-radius: 3px;
 }
@@ -150,43 +154,29 @@ footer {
     color: white;
 }
 
-.checkout {
-    grid-area: chkOut;
-    display: grid;
-    grid-template-areas: 
-    ' total '
-    ' payment ';
-    border: 1px solid rgba(0,0,0,0.2);
-    border-radius: 3px;
+.orderTotal {
+    /* grid-area: total; */
+    position: fixed; 
+    width: 400px;
+    margin-top:  1em; 
 }
 
-.orderTotal {
-    grid-area: total;
-    /* position: fixed;  */
+.price {
+    padding-top:8px;
+    padding-right: 10px;
+    width: 360px;
+    height: 40px;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-align: right;
 }
 
 .paymentType {
-    grid-area: payment;
+    /* grid-area: payment; */
+    position: fixed;
+    margin-top:  1em;
+    margin-left: 28%;
 }
-
-/* .cheatsheet {
-    grid-area: sheet;
-    height: 20px;
-    border: 1px solid rgba(0,0,0,0.2);
-    border-radius: 3px;
-    background-color: black;
-    color: white !important;
-}
-
-th {
-    color: white !important;
-    background-color: #1aebff !important;
-}
-
-td {
-    color: white !important;
-} */
-
 .accessibility {
     /* grid-area: accessibility; */
     text-align: center;
