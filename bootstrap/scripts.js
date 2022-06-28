@@ -36,55 +36,77 @@ function addRow() {
     var custQty = document.getElementById('quantityForm').value;
     var invQty;
 
-    var canGo = false;
-
     // Do nto query the database if a field is empty
     if (id == undefined || custQty == undefined) {
-        // Empty field
         // TODO: Add feedback
+        console.log("A field is empty");
         return;
     }
 
-    // Query the database to get the food name, unit price, and quantity in inventory
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.responseType = "json";
-    xmlHttp.open("GET", "http://localhost:3000/foodItems");
-    xmlHttp.onload = function() {
-        name = xmlHttp.response[id - 1].foodname;
-        invQty = xmlHttp.response[id - 1].foodquantity;
-        price = xmlHttp.response[id - 1].unitprice;
-    }
-    xmlHttp.send();
+    // Use a promise to prevent the function from running before all data is recieved
+    var promise = new Promise( function(resolve, reject) {
+        // Query the database to get the food name, unit price, and quantity in inventory
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.responseType = "json";
+        xmlHttp.open("GET", "http://localhost:3000/foodItems");
+        xmlHttp.onload = function() {
+            // Status of the request is OK
+            if (xmlHttp.status == 200) {
+                resolve(xmlHttp.response);
+            }
+            // Request status not OK
+            else {
+                reject(Error(xmlHttp.statusText));
+            }
 
-    setTimeout(() => {  
-        console.log("ID = " + id + "\nName = " + name +"\nQty = " + custQty + "\nPrice = " + price);
-        
-        // Do not add a row if there is not enough quantity
-        if (custQty > invQty) {
-            // Not enough in inventory
-            // TODO: Add feedback
-            return;
+            // Error with http request
+            xmlHttp.onerror = function() {
+                reject(Error("Data could not be retrieved"))
+            }
         }
-        
-        // Create the new row in HTML
-        var tr = document.createElement('tr');
+        xmlHttp.send();
+    });
 
-        // Create all columns
-        rowText = ' \
-        <td>' + name + '</td> \
-        <td>' + price + '</td> \
-        <td>' + custQty + '</td> \
-        <td><button type="button" class="btn btn-outline-danger" onclick="deleteRow(this)">X</button></td> \
-        ';
+    // Wait for the query to complete before working with the data
+    promise.then( 
+        function(data) {
+            name = data[id - 1].foodname;
+            invQty = data[id - 1].foodquantity;
+            price = data[id - 1].unitprice;
 
-        tr.innerHTML = rowText;
-        var table = document.getElementById("orders")
-        table.appendChild(tr);
+            console.log("ID = " + id + "\nName = " + name +"\nQty = " + custQty + "\nPrice = " + price);
+    
+            // Do not add a row if there is not enough quantity
+            if (custQty > invQty) {
+                // TODO: Add feedback
+                console.log("Not enough food in inventory");
+                return;
+            }
+            
+            // Create the new row in HTML
+            var tr = document.createElement('tr');
 
-        //Clearing text boxes containing food ID and quantity
-        // TODO: Fix clearBoxes()
-        //clearBoxes();
-    }, 1000);
+            // Create all columns
+            rowText = ' \
+            <td>' + name + '</td> \
+            <td>' + price + '</td> \
+            <td>' + custQty + '</td> \
+            <td><button type="button" class="btn btn-outline-danger" onclick="deleteRow(this)">X</button></td> \
+            ';
+
+            tr.innerHTML = rowText;
+            var table = document.getElementById("orders")
+            table.appendChild(tr);
+
+            //Clearing text boxes containing food ID and quantity
+            // TODO: Fix clearBoxes()
+            //clearBoxes();
+        },
+
+        function(error) {
+            console.log(error);
+        }
+    );
 }
 
 
