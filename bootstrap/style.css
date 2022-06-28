@@ -21,6 +21,8 @@ body {
     font-family: Tahoma, sans-serif;
     font-weight: bold;
     background-image: url("fruit.jpg"), linear-gradient(rgb(49, 49, 49), darkgray);
+    background-repeat: repeat-x;
+    background-size: cover;
     overflow: hidden;
 }
 
@@ -28,7 +30,7 @@ footer {
     height: 100%;
     width: 100%;
     background-color:rgb(40, 40, 40);
-    position:fixed;
+    position: fixed;
 }
 
 .grid-container {
@@ -39,7 +41,7 @@ footer {
     ' order order sheet sheet sheet sheet'
     ' order order sheet sheet sheet sheet';
     grid-gap: 1em;
-    height: 750px;
+    height: 700px;
     margin-left: 5%;
     margin-right: 5%;
     padding-left: 10px;
@@ -146,7 +148,7 @@ footer {
 
 .orderTotal {
     /* grid-area: total; */
-    position: fixed; 
+    position: absolute; 
     width: 400px;
     margin-top:  1em; 
 }
@@ -163,7 +165,7 @@ footer {
 
 .paymentType {
     /* grid-area: payment; */
-    position: fixed;
+    position: absolute;
     margin-top:  1em;
     margin-left: 28%;
 }
