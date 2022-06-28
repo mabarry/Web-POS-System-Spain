@@ -27,7 +27,6 @@ client.connect();
 client.query('SELECT * FROM fooditems ORDER BY foodid ASC',(err, res)=>{
   if (!err) {
     foodItems = res.rows
-    console.log(res.rows);
   } else {
     console.log("\nERROR:");
     console.log(err.message);
@@ -39,3 +38,4 @@ client.query('SELECT * FROM fooditems ORDER BY foodid ASC',(err, res)=>{
 app.get('/foodItems', function(req, res){
     res.send(foodItems);
 });
+

@@ -84,25 +84,25 @@
 
                 <div class="searchBar" id="searchBar">
                     <div class="input-group">
-                        <input type="text" class="form-control rounded" placeholder="Enter Food ID" aria-label="Search"
+                        <input type="text" id="idSearch" class="form-control rounded" placeholder="Enter Food ID" aria-label="Search"
                         aria-describedby="search-addon">
-                        <button type="button" class="btn btn-primary">Enter</button>
+                        <button type="button" id="idButton" class="btn btn-primary" onclick="searchFunction('quantitySearch')">Enter</button>
                     </div>
                 </div>
                 
 
                 <div class="quantity" id="quantityField">
                     <div class="input-group">
-                        <input type="text" class="form-control rounded" placeholder="Enter Quantity" aria-label="Search"
+                        <input type="text" id="quantitySearch" class="form-control rounded" placeholder="Enter Quantity" aria-label="Search"
                         aria-describedby="search-addon">
-                        <button type="button" class="btn btn-primary">Enter</button>
+                        <button type="button" id="quantityButton" class="btn btn-primary" onclick="searchFunction('cartButton')">Enter</button>
                     </div>
                 </div>
 
                 <div class="addToCart" id="addToCartButton">
                     <div class="d-grid gap-2 d-md-block">
                         <p>
-                            <button type="button" id="cartButton" class="btn btn-primary btn-lg" onclick="addRow()">Add to Cart</button>
+                            <button type="button" id="cartButton" class="btn btn-primary btn-lg" onclick="addRow();searchFunction('idSearch');">Add to Cart</button>
                             <script src="scripts.js"></script>
                         </p>
                     </div>
