@@ -31,7 +31,8 @@ function deleteRow(btn) {
 
 function addRow() {
     var name;
-    var price;
+    var unitPrice;
+    var salePrice;
     var id = document.getElementById('idForm').value; 
     var custQty = document.getElementById('quantityForm').value;
     var invQty;
@@ -45,7 +46,7 @@ function addRow() {
 
     // Use a promise to prevent the function from running before all data is recieved
     var promise = new Promise( function(resolve, reject) {
-        // Query the database to get the food name, unit price, and quantity in inventory
+        // Query the database to get the food item info
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.responseType = "json";
         xmlHttp.open("GET", "http://localhost:3000/foodItems");
@@ -72,16 +73,25 @@ function addRow() {
         function(data) {
             name = data[id - 1].foodname;
             invQty = data[id - 1].foodquantity;
-            price = data[id - 1].unitprice;
+            unitPrice = data[id - 1].unitprice;
 
-            console.log("ID = " + id + "\nName = " + name +"\nQty = " + custQty + "\nPrice = " + price);
+            console.log("ID = " + id + "\nName = " + name +"\nQty = " + custQty + "\nUnit Price = " + unitPrice);
     
+            // TODO: Update the sale line if its already in the table
+            // See if id is in table
+            // If yes,
+            //     set custQty to tableQty + custQty
+            //
+
             // Do not add a row if there is not enough quantity
             if (custQty > invQty) {
                 // TODO: Add feedback
                 console.log("Not enough food in inventory");
                 return;
             }
+
+            salePrice = custQty * unitPrice;
+            salePrice = salePrice.toFixed(2);
             
             // Create the new row in HTML
             var tr = document.createElement('tr');
@@ -89,7 +99,7 @@ function addRow() {
             // Create all columns
             rowText = ' \
             <td>' + name + '</td> \
-            <td>' + price + '</td> \
+            <td>€&nbsp;' + salePrice + '</td> \
             <td>' + custQty + '</td> \
             <td><button type="button" class="btn btn-outline-danger" onclick="deleteRow(this)">X</button></td> \
             ';
