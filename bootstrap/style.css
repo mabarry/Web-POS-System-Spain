@@ -134,7 +134,6 @@ footer {
     font-weight: bold;
     background-color: rgb(61, 125, 242);
     color: white;
-    
 }
 
 .orderTable td, .orderTable th, .cheatsheet td, .cheatsheet th {
@@ -142,13 +141,21 @@ footer {
     padding: 8px;
 }
 
-.orderTable tr:nth-child(even){background-color: #f2f2f2;}
+.orderTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
 
-.orderTable tr:hover {background-color: #ddd;}
+.orderTable tr:hover {
+    background-color: #ddd;
+}
 
-.cheatsheet tr:nth-child(even){background-color: #f2f2f2;}
+.cheatsheet tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
 
-.cheatsheet tr:hover {background-color: #ddd;}
+.cheatsheet tr:hover {
+    background-color: #ddd;
+}
 
 .orders, .sheet {
     width: 100%;
@@ -184,22 +191,12 @@ footer {
     text-align: center;
     background-color: rgb(61, 125, 242);
     color: black;
-    color: white;
     border-radius: 20px;
     border-style: solid;
     border-color: black;
     border-width: 1px;
     height: 35%;
 }
-
-.accessibilityOn {
-    /* grid-area: accessibility; */
-    text-align: center;
-    background-color: black;
-    color: white;
-    
-}
-
 
 .switch {
     /* grid-area: switch; */
@@ -262,4 +259,14 @@ footer {
 
 #completeOrderButton, #cancelOrderButton {
     height: 100%;
+}
+
+.btn-success {
+    background-color: #004D40!important;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #D81B60!important;
+    color: white;
 }

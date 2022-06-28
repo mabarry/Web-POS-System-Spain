@@ -29,8 +29,8 @@ body {
 footer {
     height: 100%;
     width: 100%;
-    background-color:rgb(49, 49, 49);
-    position:fixed;
+    background-color:rgb(40, 40, 40);
+    position: fixed;
 }
 
 .grid-container {
@@ -56,8 +56,8 @@ footer {
     display: grid;
     grid-template-rows: 50px 50px 1fr auto;
     grid-gap: 2em;
-    min-width: 650px;
-    max-width: 650px;
+    min-width: 100%;
+    max-width: 100%;
 }
 
 .itemInfo {
@@ -70,8 +70,7 @@ footer {
     color: black;
     font-family: Tahoma, sans-serif;
     font-weight: bold;
-    border-style: solid;
-    border-color: white;
+    border: 1px solid white;
     border-width: 1px;
     height: 80px;
     min-width: 100%;
@@ -80,45 +79,51 @@ footer {
 
 .searchBar {
     grid-area: 2 / 1 / 3 / 1;
-    padding-left: 30%;
-    padding-right: 30%;
+    padding-left: 20%;
+    padding-right: 20%;
     padding-top: 2.5%;
     align-items: center;
 }
 
 .quantity {
     grid-area: 3 / 1 / 4 / 2;
-    padding-left: 30%;
-    padding-right: 30%;
+    padding-left: 20%;
+    padding-right: 20%;
     padding-top: 1%;
     align-items: center;
 }
 
 .addToCart {
     grid-area: 4 / 1 / 5 / 2;
-    padding-left: 30%;
-    padding-right: 30%;
+    padding-left: 20%;
+    padding-right: 20%;
     align-items: center;
 }
 
 .receipt {
     grid-area: order;
+    min-width: 100%;
+    max-width:100%;
+    height: 100%;
 }
 
 .orderTable {
     /* grid-area: order; */
-    border: 1px solid rgba(0,0,0,0.2);
+    border: 1px solid white;
     border-radius: 3px;
-    width: 600px;
+    min-width: 100%;
+    max-width: 100%;
     height: 620px;
-    overflow-y:scroll;
+    overflow-y: scroll;
 }
 
 .cheatsheet {
     grid-area: sheet;
     height: 95%; 
-    border: 1px solid rgba(0,0,0,0.2);
+    border: 1px solid white;
     border-radius: 3px;
+    width: 100%;
+    overflow-y:scroll;
 }
 
 .orderTable th, .cheatsheet th {
@@ -129,7 +134,6 @@ footer {
     font-weight: bold;
     background-color: #1aebff;
     color: black;
-    
 }
 
 .orderTable td, .orderTable th, .cheatsheet td, .cheatsheet th {
@@ -173,18 +177,20 @@ footer {
 .price {
     padding-top:8px;
     padding-right: 10px;
-    width: 365px;
+    width: 360px;
     height: 40px;
-    border: 1px solid rgba(0,0,0,0.2);
+    border: 1px solid white;
     border-radius: 3px;
     text-align: right;
 }
+
 
 .paymentType {
     position: absolute;
     margin-top:  1em;
     margin-left: 28%;
 }
+
 .accessibility {
     /* grid-area: accessibility; */
     text-align: center;
@@ -271,6 +277,10 @@ footer {
     color: white!important;
 }
 
+.btn-primary {
+    background-color: #1aebff!important;
+    color: black!important;
+}
 .sales {
     background-color:blueviolet;
     padding-top: 1%;
