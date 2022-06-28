@@ -78,13 +78,9 @@ function addOrderRow() {
             invQty = data[id - 1].foodquantity;
             unitPrice = data[id - 1].unitprice;
 
-            console.log("ID = " + id + "\nName = " + name +"\nCust Qty = " + custQty + "\nUnit Price = " + unitPrice);
-
-            // TODO: Update the sale line if its already in the table
-            // See if id is in table
-            // If yes,
-            //     set custQty to tableQty + custQty
-            //
+            salePrice = custQty * unitPrice;
+            salePrice = salePrice.toFixed(2);
+            custQty = custQty.toFixed(2);
 
             // Do not add a row if there is not enough quantity
             if (custQty > invQty) {
@@ -93,15 +89,36 @@ function addOrderRow() {
                 return;
             }
 
-            // Round all quantities to 2 decimal places if applicable
-            if (!Number.isInteger(custQty)) {
-                custQty = custQty.toFixed(2);
+            // Check to see if this food item is alread in the order
+            // If it is, update the old sale line instead of creating a new one
+            var table = document.getElementById("orders")
+            for (var i = 0; i < table.rows.length; i++) {
+                var cols = table.rows.item(i).cells;
+                saleFoodID = cols.item(1).innerHTML;
+
+                if (saleFoodID == id) {
+                    // Update the sale line values
+                    var newSalePrice = (parseFloat(cols.item(2).innerHTML) + parseFloat(salePrice)).toFixed(2);
+                    var newQty = (parseFloat(cols.item(3).innerHTML) + parseFloat(custQty)).toFixed(2);
+
+                    // Do not add more to the sale if there is not enough quantity
+                    if (newQty > invQty) {
+                        // TODO: Add feedback
+                        console.log("Not enough food in inventory");
+                        return;
+                    }
+                    
+                    cols.item(2).innerHTML = newSalePrice
+                    cols.item(3).innerHTML = newQty;
+
+                    //Clearing text boxes containing food ID and quantity
+                    clearBoxes();
+                    updateOrderPrice();
+                    return;
+                }
             }
 
-            salePrice = custQty * unitPrice;
-            salePrice = salePrice.toFixed(2);
-            
-            // Create the new row in HTML
+            // If this is a new food item, create the new row in HTML
             var tr = document.createElement('tr');
 
             // Create all columns
@@ -114,7 +131,6 @@ function addOrderRow() {
             ';
 
             tr.innerHTML = rowText;
-            var table = document.getElementById("orders")
             table.appendChild(tr);
 
             //Clearing text boxes containing food ID and quantity
@@ -219,7 +235,7 @@ function updateInfoBar() {
             unitPrice = data[id - 1].unitprice;
             
             // Format food info into HTML
-            document.getElementById("itemInfoField").innerHTML = name + "\nUnit Price = " + unitPrice + "\nQuantity = " + invQty;
+            document.getElementById("itemInfoField").innerHTML = name + "<br>Unit Price = " + unitPrice + "&nbsp;&nbsp;&nbsp;&nbsp;Quantity = " + invQty;
         },
 
         function(error) {
@@ -275,13 +291,8 @@ function createCheatSheet() {
                 id = data[i].foodid;
                 name = data[i].foodname;
                 unitPrice = data[i].unitprice.toFixed(2);
-                invQty = data[i].foodquantity
+                invQty = data[i].foodquantity.toFixed(2);
                 storage = data[i].storagetype;
-
-                // Round all quantities to 2 decimal places if applicable
-                if (!Number.isInteger(invQty)) {
-                    invQty.toFixed(2);
-                }
 
                 // Create all columns
                 rowText = ' \
