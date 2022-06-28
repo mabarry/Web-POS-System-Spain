@@ -34,8 +34,8 @@ function addOrderRow() {
     var name;
     var unitPrice;
     var salePrice;
-    var id = document.getElementById('idForm').value; 
-    var custQty = document.getElementById('quantityForm').value;
+    var id = document.getElementById('idSearch').value; 
+    var custQty = document.getElementById('quantitySearch').value;
     var invQty;
 
     // Do nto query the database if a field is empty
@@ -166,7 +166,7 @@ function updateInfoBar() {
     var invQty;
 
     // Get the current foodID
-    var id = document.getElementById('idForm').value; 
+    var id = document.getElementById('idSearch').value; 
 
     // Query the foodItems database
     // Use a promise to prevent the function from running before all data is recieved

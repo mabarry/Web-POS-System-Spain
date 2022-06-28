@@ -76,7 +76,7 @@
 
     <body>
         <div class="grid-container">
-
+            <!-- TODO: Make forms numbers only -->
             <div class="new-item-container" id="head">
                 <div class="itemInfo" id="itemInfoField">
                     <p>Item Information (Example Food, Price, Stock, ...)</p>
@@ -85,7 +85,8 @@
                 <div class="searchBar" id="searchBar">
                     <div class="input-group">
                         <input type="text" id="idSearch" class="form-control rounded" placeholder="Enter Food ID" aria-label="Search"
-                        aria-describedby="search-addon">
+                        aria-describedby="search-addon" oninput="updateInfoBar()">
+                        <script src="scripts.js"></script>
                         <button type="button" id="idButton" class="btn btn-primary" onclick="searchFunction('quantitySearch')">Enter</button>
                     </div>
                 </div>
@@ -102,7 +103,7 @@
                 <div class="addToCart" id="addToCartButton">
                     <div class="d-grid gap-2 d-md-block">
                         <p>
-                            <button type="button" id="cartButton" class="btn btn-primary btn-lg" onclick="addRow();searchFunction('idSearch');">Add to Cart</button>
+                            <button type="button" id="cartButton" class="btn btn-primary btn-lg" onclick="addOrderRow(); searchFunction('idSearch');">Add to Cart</button>
                             <script src="scripts.js"></script>
                         </p>
                     </div>
@@ -123,22 +124,8 @@
                             <th>Quantity</th>
                             <th>Remove</th>
                         </tr>
-    
-                        <!-- Each <tr> group below is one line sale -->
-                        <tr>
-                            <td>exampleFood</td>
-                            <td>(1)</td>
-                            <td>$18.99</td>
-                            <td>3</td>
-                            <td><button type="button" class="btn btn-outline-danger" onclick="deleteRow(this)">X</button></td>
-                        </tr>
-                        <tr>
-                            <td>exampleFood</td>
-                            <td>(2)</td>
-                            <td>$4.99</td>
-                            <td>1</td>
-                            <td><button type="button" class="btn btn-outline-danger" onclick="deleteRow(this)">X</button></td>
-                        </tr>
+                        
+                        <!-- This is where each sale row will be added -->
                     </table>
                 </div>
 
@@ -171,91 +158,7 @@
                         <th>Storage Location</th>
                     </tr>
 
-                    <!-- Each <tr> group below is one item in the food table -->
-                    <tr>
-                        <td>Example ID</td>
-                        <td>Example Food</td>
-                        <td>$$$</td>
-                        <td>Example kg</td>
-                        <td>Where</td>
-                    </tr>
-                    <tr>
-                        <td>Example ID</td>
-                        <td>Example Food</td>
-                        <td>$$$</td>
-                        <td>Example kg</td>
-                        <td>Where</td>
-                    </tr>
-                    <tr>
-                        <td>Example ID</td>
-                        <td>Example Food</td>
-                        <td>$$$</td>
-                        <td>Example kg</td>
-                        <td>Where</td>
-                    </tr>
-                    <tr>
-                        <td>Example ID</td>
-                        <td>Example Food</td>
-                        <td>$$$</td>
-                        <td>Example kg</td>
-                        <td>Where</td>
-                    </tr>
-                    <tr>
-                        <td>Example ID</td>
-                        <td>Example Food</td>
-                        <td>$$$</td>
-                        <td>Example kg</td>
-                        <td>Where</td>
-                    </tr>
-                    <tr>
-                        <td>Example ID</td>
-                        <td>Example Food</td>
-                        <td>$$$</td>
-                        <td>Example kg</td>
-                        <td>Where</td>
-                    </tr>
-                    <tr>
-                        <td>Example ID</td>
-                        <td>Example Food</td>
-                        <td>$$$</td>
-                        <td>Example kg</td>
-                        <td>Where</td>
-                    </tr>
-                    <tr>
-                        <td>Example ID</td>
-                        <td>Example Food</td>
-                        <td>$$$</td>
-                        <td>Example kg</td>
-                        <td>Where</td>
-                    </tr>
-                    <tr>
-                        <td>Example ID</td>
-                        <td>Example Food</td>
-                        <td>$$$</td>
-                        <td>Example kg</td>
-                        <td>Where</td>
-                    </tr>
-                    <tr>
-                        <td>Example ID</td>
-                        <td>Example Food</td>
-                        <td>$$$</td>
-                        <td>Example kg</td>
-                        <td>Where</td>
-                    </tr>
-                    <tr>
-                        <td>Example ID</td>
-                        <td>Example Food</td>
-                        <td>$$$</td>
-                        <td>Example kg</td>
-                        <td>Where</td>
-                    </tr>
-                    <tr>
-                        <td>Example ID</td>
-                        <td>Example Food</td>
-                        <td>$$$</td>
-                        <td>Example kg</td>
-                        <td>Where</td>
-                    </tr>
+                    <!-- This is where each food item will be added to the cheat sheet -->
                 </table>
             </div>
             
