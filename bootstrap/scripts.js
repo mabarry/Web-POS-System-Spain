@@ -27,6 +27,7 @@ function accessibleSwitch() {
 function deleteRow(btn) {
     var row = btn.parentNode.parentNode;
     row.parentNode.removeChild(row);
+    updateOrderPrice();
 }
 
 
@@ -107,7 +108,7 @@ function addOrderRow() {
             rowText = ' \
             <td>' + name + '</td> \
             <td>' + id + '</td> \
-            <td>€&nbsp;' + salePrice + '</td> \
+            <td>' + salePrice + '</td> \
             <td>' + custQty + '</td> \
             <td><button type="button" class="btn btn-outline-danger" onclick="deleteRow(this)">X</button></td> \
             ';
@@ -117,8 +118,8 @@ function addOrderRow() {
             table.appendChild(tr);
 
             //Clearing text boxes containing food ID and quantity
-            // TODO: Fix clearBoxes()
             clearBoxes();
+            updateOrderPrice();
         },
 
         function(error) {
@@ -153,6 +154,7 @@ function completeCustomerOrder() {
     for (var i = 1; i < tableLen; i++) {
         table.deleteRow(1);
     }
+    updateOrderPrice();
 }
 
 
@@ -164,6 +166,7 @@ function cancelOrder() {
     for (var i = 1; i < tableLen; i++) {
         table.deleteRow(1);
     }
+    updateOrderPrice();
 }
 
 
@@ -297,4 +300,18 @@ function createCheatSheet() {
             console.log(error);
         }
     );
+}
+
+
+function updateOrderPrice() {
+    var table = document.getElementById("orders");
+
+    var totalCost = "0.00";
+    for (var i = 1; i < table.rows.length; i++) {
+        var cols = table.rows.item(i).cells;
+        totalCost = parseFloat(totalCost) + parseFloat(cols.item(2).innerHTML);
+        totalCost = parseFloat(totalCost).toFixed(2);
+    }
+
+    document.getElementById("price").innerHTML = totalCost;
 }

@@ -44,9 +44,9 @@
                             Reports
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropDownMenuLink">
-                            <li><a class="dropdown-item" href="salesReports.html" target="_blank">Sales</a></li>
-                            <li><a class="dropdown-item" href="excessReports.html" target="_blank">Excess</a></li>
-                            <li><a class="dropdown-item" href="restockReports.html" target="_blank">Restock</a></li>
+                            <li><a class="dropdown-item" href="salesReports.html">Sales</a></li>
+                            <li><a class="dropdown-item" href="excessReports.html">Excess</a></li>
+                            <li><a class="dropdown-item" href="restockReports.html">Restock</a></li>
                         </ul>
                     </li>            
                 </ul>
@@ -74,8 +74,16 @@
     </nav>
 
     <body>
-        <div class="grid-container">
-            
+        <div class="grid-container">   
+            <div class="row">
+                <div class="col-sm-12 col-lg-12 " id="column-body">
+                    <h2>Generate Sales Report</h2>
+                    <br>
+                    <p>Select a starting and ending date: </p>
+                    <input type="date" name="start-date">
+                    <input type="date" name="end-date">
+                </div>
+            </div>
         </div>
 
         <!-- Option 1: Bootstrap Bundle with Popper -->
