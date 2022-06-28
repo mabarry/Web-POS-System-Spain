@@ -113,7 +113,7 @@
 
             <!-- Display table for the current order and all its sale lines -->
             <div class="receipt">
-                <div class="orderTable" style="overflow-y:scroll; height: 90%; width: 100%;">
+                <div class="orderTable">
                     <table class="orders" id="orders">
                         <script src="scripts.js"></script>
                         <tr>
@@ -148,7 +148,7 @@
             <!-- Display table for cheatsheet containing all info for the items in inventory -->
             <div class="cheatsheet" style="overflow-y:scroll; width: 100%;">
                 <table class="sheet" id="sheet">
-                    <script src="scripts.js"></script>
+                    <script src="scripts.js" onload="createCheatSheet();"></script>
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
@@ -186,6 +186,5 @@
     </body>
 
   <footer>
-
   </footer>
 </html>

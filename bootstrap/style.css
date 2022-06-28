@@ -42,6 +42,7 @@ footer {
     ' order order sheet sheet sheet sheet';
     grid-gap: 1em;
     height: 700px;
+    max-height: 700px;
     margin-left: 5%;
     margin-right: 5%;
     padding-left: 10px;
@@ -55,12 +56,12 @@ footer {
     display: grid;
     grid-template-rows: 50px 50px 1fr auto;
     grid-gap: 2em;
+    min-width: 650px;
+    max-width: 650px;
 }
 
 .itemInfo {
     grid-area: 1 / 1 / 2 / 2;
-    /* grid-area: item1; */
-    /* max-width: 20em; */
     padding-top: 2%;
     padding-bottom: 3%;
     border-radius: 20px;
@@ -72,7 +73,8 @@ footer {
     border: 1px solid rgba(0,0,0,0.2);
     border-width: 1px;
     height: 80px;
-    min-width: 400px;
+    min-width: 100%;
+    max-width: 100%;
 }
 
 .searchBar {
@@ -106,6 +108,9 @@ footer {
     /* grid-area: order; */
     border: 1px solid rgba(0,0,0,0.2);
     border-radius: 3px;
+    width: 600px;
+    height: 620px;
+    overflow-y:scroll;
 }
 
 .cheatsheet {
@@ -147,7 +152,6 @@ footer {
 }
 
 .orderTotal {
-    /* grid-area: total; */
     position: absolute; 
     width: 400px;
     margin-top:  1em; 
@@ -164,7 +168,6 @@ footer {
 }
 
 .paymentType {
-    /* grid-area: payment; */
     position: absolute;
     margin-top:  1em;
     margin-left: 28%;

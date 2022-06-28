@@ -1,22 +1,5 @@
 var isAccessible = false;
 
-var foodItems;
-
-initializeDB();
-function initializeDB() {
-    // Get foodItems DB
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.responseType = "json";
-    xmlHttp.open("GET", "http://localhost:3000/foodItems");
-    xmlHttp.onload = function() {
-        foodItems = xmlHttp.response;
-    }
-    xmlHttp.send();
-}
-
-
-
-
 
 function clearBoxes() {
     document.getElementById("idSearch").value = "";
@@ -52,57 +35,96 @@ function addOrderRow() {
     var unitPrice;
     var salePrice;
     var id = document.getElementById('idSearch').value; 
-    var custQty = document.getElementById('quantitySearch').value;
+    var custQty = parseFloat(document.getElementById('quantitySearch').value);
     var invQty;
 
-    // Do not continue if any of the form fields are empty
-    if (id == "" || custQty == "") {
+    // Do nto query the database if a field is empty
+    console.log("NAN CHECK:: ID = " + id + "\nCust Qty = " + custQty);
+    if (id == null || custQty == null || isNaN(id) || isNaN(custQty)) {
         // TODO: Add feedback
         console.log("A field is empty");
         return;
     }
 
-    // Retreive data from the DB
-    name = foodItems[id - 1].foodname;
-    invQty = foodItems[id - 1].foodquantity;
-    unitPrice = foodItems[id - 1].unitprice;
+    // Use a promise to prevent the function from running before all data is recieved
+    var promise = new Promise( function(resolve, reject) {
+        // Query the database to get the food item info
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.responseType = "json";
+        xmlHttp.open("GET", "http://localhost:3000/foodItems");
+        xmlHttp.onload = function() {
+            // Status of the request is OK
+            if (xmlHttp.status == 200) {
+                resolve(xmlHttp.response);
+            }
+            // Request status not OK
+            else {
+                reject(Error(xmlHttp.statusText));
+            }
 
-    console.log("ID = " + id + "\nName = " + name +"\nQty = " + custQty + "\nUnit Price = " + unitPrice);
+            // Error with http request
+            xmlHttp.onerror = function() {
+                reject(Error("Data could not be retrieved"))
+            }
+        }
+        xmlHttp.send();
+    });
 
-    // TODO: Update the sale line if its already in the table
-    // See if id is in table
-    // If yes,
-    //     set custQty to tableQty + custQty
-    //
+    // Wait for the query to complete before working with the data
+    promise.then( 
+        function(data) {
+            name = data[id - 1].foodname;
+            invQty = data[id - 1].foodquantity;
+            unitPrice = data[id - 1].unitprice;
 
-    // Do not add a row if there is not enough quantity
-    if (custQty > invQty) {
-        // TODO: Add feedback
-        console.log("Not enough food in inventory");
-        return;
-    }
+            console.log("ID = " + id + "\nName = " + name +"\nCust Qty = " + custQty + "\nUnit Price = " + unitPrice);
 
-    salePrice = custQty * unitPrice;
-    salePrice = salePrice.toFixed(2);
-    
-    // Create the new row in HTML
-    var tr = document.createElement('tr');
+            // TODO: Update the sale line if its already in the table
+            // See if id is in table
+            // If yes,
+            //     set custQty to tableQty + custQty
+            //
 
-    // Create all columns
-    rowText = ' \
-    <td>' + name + '</td> \
-    <td>' + id + '</td> \
-    <td>€&nbsp;' + salePrice + '</td> \
-    <td>' + custQty + '</td> \
-    <td><button type="button" class="btn btn-outline-danger" onclick="deleteRow(this)">X</button></td> \
-    ';
+            // Do not add a row if there is not enough quantity
+            if (custQty > invQty) {
+                // TODO: Add feedback
+                console.log("Not enough food in inventory");
+                return;
+            }
 
-    // Add all text to the HTML document
-    tr.innerHTML = rowText;
-    var table = document.getElementById("orders")
-    table.appendChild(tr);
+            // Round all quantities to 2 decimal places if applicable
+            if (!Number.isInteger(custQty)) {
+                custQty = custQty.toFixed(2);
+            }
 
-    clearBoxes();
+            salePrice = custQty * unitPrice;
+            salePrice = salePrice.toFixed(2);
+            
+            // Create the new row in HTML
+            var tr = document.createElement('tr');
+
+            // Create all columns
+            rowText = ' \
+            <td>' + name + '</td> \
+            <td>' + id + '</td> \
+            <td>€&nbsp;' + salePrice + '</td> \
+            <td>' + custQty + '</td> \
+            <td><button type="button" class="btn btn-outline-danger" onclick="deleteRow(this)">X</button></td> \
+            ';
+
+            tr.innerHTML = rowText;
+            var table = document.getElementById("orders")
+            table.appendChild(tr);
+
+            //Clearing text boxes containing food ID and quantity
+            // TODO: Fix clearBoxes()
+            clearBoxes();
+        },
+
+        function(error) {
+            console.log(error);
+        }
+    );
 }
 
 
@@ -204,26 +226,75 @@ function updateInfoBar() {
 }
 
 
-createCheatSheet();
 function createCheatSheet() {
-    var table = document.getElementById("cheatsheet");
+    // Query the entire foodItems database
+    // Use a promise to prevent the function from running before all data is recieved
+    var promise = new Promise( function(resolve, reject) {
+        // Query the database to get the food item info
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.responseType = "json";
+        xmlHttp.open("GET", "http://localhost:3000/foodItems");
+        xmlHttp.onload = function() {
+            // Status of the request is OK
+            if (xmlHttp.status == 200) {
+                resolve(xmlHttp.response);
+            }
+            // Request status not OK
+            else {
+                reject(Error(xmlHttp.statusText));
+            }
 
-    // Add each food item to the cheat sheet
-    for (var i = 0; i < Object.keys(foodItems.shareInfo).length; i++) {
-        console.log(data[i]);
-        
-        var row = table.insertRow();
+            // Error with http request
+            xmlHttp.onerror = function() {
+                reject(Error("Data could not be retrieved"))
+            }
+        }
+        xmlHttp.send();
+    });
 
-        var id = row.insertCell(0);
-        var name = row.insertCell(1);
-        var unitPrice = row.insertCell(2);
-        var qty = row.insertCell(3);
-        var location = row.insertCell(4);
+    // Wait for the query to complete before working with the data
+    promise.then( 
+        function(data) {
+            var id;
+            var name;
+            var unitPrice;
+            var invQty;
+            var storage;
 
-        id.innerHTML = foodItems[i].foodid;
-        name.innerHTML = foodItems[i].foodname;
-        unitPrice.innerHTML = foodItems[i].unitprice;
-        qty.innerHTML = foodItems[i].foodquantity;
-        location.innerHTML = foodItems[i].storagetype;
-    }
+            var table = document.getElementById("sheet");
+
+            // Add each food item to the cheat sheet
+            for (var i = 0; i < data.length; i++) {
+                console.log(data[i]);
+
+                var tr = document.createElement('tr');
+
+                id = data[i].foodid;
+                name = data[i].foodname;
+                unitPrice = data[i].unitprice.toFixed(2);
+                invQty = data[i].foodquantity
+                storage = data[i].storagetype;
+
+                // Round all quantities to 2 decimal places if applicable
+                if (!Number.isInteger(invQty)) {
+                    invQty.toFixed(2);
+                }
+
+                // Create all columns
+                rowText = ' \
+                <td>' + id + '</td> \
+                <td>' + name + '</td> \
+                <td>€&nbsp;' + unitPrice + '</td> \
+                <td>' + invQty + '</td> \
+                <td>' + storage + '</td>';
+
+                tr.innerHTML = rowText;
+                table.appendChild(tr);
+            }
+        },
+
+        function(error) {
+            console.log(error);
+        }
+    );
 }
