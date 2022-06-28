@@ -30,31 +30,61 @@ function deleteRow(btn) {
 
 
 function addRow() {
-    var name = 'exampleFood (' + document.getElementById('foodID').value + ')';
-    var price = "$9.99";
-    var qty = document.getElementById('foodQuantity').value;
+    var name;
+    var price;
+    var id = document.getElementById('idForm').value; 
+    var custQty = document.getElementById('quantityForm').value;
+    var invQty;
 
-    if (document.getElementById('foodID').value === '' || document.getElementById('foodQuantity').value === '') {
+    var canGo = false;
+
+    // Do nto query the database if a field is empty
+    if (id == undefined || custQty == undefined) {
+        // Empty field
+        // TODO: Add feedback
         return;
     }
 
-    // Create new row
-    var tr = document.createElement('tr');
+    // Query the database to get the food name, unit price, and quantity in inventory
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.responseType = "json";
+    xmlHttp.open("GET", "http://localhost:3000/foodItems");
+    xmlHttp.onload = function() {
+        name = xmlHttp.response[id - 1].foodname;
+        invQty = xmlHttp.response[id - 1].foodquantity;
+        price = xmlHttp.response[id - 1].unitprice;
+    }
+    xmlHttp.send();
 
-    // Create all columns
-    rowText = ' \
-    <td>' + name + '</td> \
-    <td>' + price + '</td> \
-    <td>' + qty + '</td> \
-    <td><button type="button" class="btn btn-outline-danger" onclick="deleteRow(this)">X</button></td> \
-    ';
+    setTimeout(() => {  
+        console.log("ID = " + id + "\nName = " + name +"\nQty = " + custQty + "\nPrice = " + price);
+        
+        // Do not add a row if there is not enough quantity
+        if (custQty > invQty) {
+            // Not enough in inventory
+            // TODO: Add feedback
+            return;
+        }
+        
+        // Create the new row in HTML
+        var tr = document.createElement('tr');
 
-    tr.innerHTML = rowText;
-    var table = document.getElementById("orders")
-    table.appendChild(tr);
+        // Create all columns
+        rowText = ' \
+        <td>' + name + '</td> \
+        <td>' + price + '</td> \
+        <td>' + custQty + '</td> \
+        <td><button type="button" class="btn btn-outline-danger" onclick="deleteRow(this)">X</button></td> \
+        ';
 
-    //Clearing text boxes containing food ID and quantity
-    clearBoxes();
+        tr.innerHTML = rowText;
+        var table = document.getElementById("orders")
+        table.appendChild(tr);
+
+        //Clearing text boxes containing food ID and quantity
+        // TODO: Fix clearBoxes()
+        //clearBoxes();
+    }, 1000);
 }
 
 
