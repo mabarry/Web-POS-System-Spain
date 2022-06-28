@@ -165,24 +165,18 @@ footer {
 
 .orderTotal {
     position: absolute; 
-    width: 400px;
+    width: 700px;
     margin-top:  1em; 
 }
 
 .price {
     padding-top:8px;
     padding-right: 10px;
-    width: 360px;
+    width: 550px;
     height: 40px;
     border: 1px solid rgba(0,0,0,0.2);
     border-radius: 3px;
     text-align: right;
-}
-
-.paymentType {
-    position: absolute;
-    margin-top:  1em;
-    margin-left: 28%;
 }
 
 .order-btn-container {
