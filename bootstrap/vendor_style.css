@@ -55,7 +55,7 @@ footer {
     grid-area: itemInfo;
     display: grid;
     grid-template-rows: 50px 50px 1fr auto;
-    grid-gap: 2em;
+    grid-gap: 1em;
     min-width: 100%;
     max-width: 100%;
 }
@@ -82,11 +82,21 @@ footer {
     padding-left: 20%;
     padding-right: 20%;
     padding-top: 2.5%;
+    margin-top: 3%;
+    align-items: center;
+}
+
+.vendorName {
+    grid-area: 3 / 1 / 4 / 1;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 2.5%;
+    margin-top: 3%;
     align-items: center;
 }
 
 .vendorPrice {
-    grid-area: 3 / 1 / 4 / 1;
+    grid-area: 4 / 1 / 5 / 2;
     padding-left: 20%;
     padding-right: 20%;
     padding-top: 2.5%;
@@ -94,7 +104,7 @@ footer {
 }
 
 .quantity {
-    grid-area: 4 / 1 / 5 / 2;
+    grid-area: 5 / 1 / 6 / 2;
     padding-left: 20%;
     padding-right: 20%;
     padding-top: 1%;
@@ -102,9 +112,10 @@ footer {
 }
 
 .addToCart {
-    grid-area: 5 / 1 / 6 / 2;
+    grid-area: 6 / 1 / 7 / 2;
     padding-left: 20%;
     padding-right: 20%;
+    margin-top: 3%;
     align-items: center;
 }
 
