@@ -100,6 +100,7 @@ client.query('SELECT * FROM vendorbuyline ORDER BY vendorlineid ASC',(err, res)=
   client.end();
 })
 
+
 app.get('/foodItems', function(req, res){
   res.send(foodItems);
 });
@@ -123,3 +124,28 @@ app.get('/vendorOrder', function(req, res){
 app.get('/vendorBuyLine', function(req, res){
   res.send(vendorBuyLine);
 });
+
+app.post('/addCustomerOrder', function(req, res) {
+  orderID = req.body.customerorderid;
+  orderDate = req.body.customerorderdate;
+  orderTotal = req.body.customerordertotal;
+  payment = req.body.paymentmethod;
+  employeeID = req.body.employeeid;
+  
+  var vendorBuyLine;
+  client.connect();
+  var command = 'INSERT INTO customerorder VALUES(' + orderID +', ' + orderDate +', ' + orderTotal +', ' + payment +', ' + employeeID + ')';
+  client.query(command, (err, res)=>{
+    if (!err) {
+      console.log("COMPLETE\n\n");
+    } else {
+      console.log("\nERROR:");
+      console.log(err.message);
+    }
+    client.end();
+  })
+});
+
+// Post = new
+// Put = edit
+// Delete

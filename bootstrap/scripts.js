@@ -180,43 +180,57 @@ function completeCustomerOrder() {
             //Getting next available customerOrderID and saleLineID
             customerOrderID = (data[-1].customerorderid) + 1;
             saleLineID = (data[-1].salelineid) + 1;
+
+            
+            // Get the current date
+            var customerOrderDate = new Date();
+            var day = String(customerOrderDate.getDate()).padStart(2, '0');
+            var month = String(customerOrderDate.getMonth() + 1).padStart(2, '0');
+            var year = today.getFullYear();
+            customerOrderDate = year + '-' + month + '-' + day;
+
+            // Get order info from the website
+            var customerOrderTotal = float(document.getElementById("price").innerHTML);
+            var paymentMethod = "cash";
+            var employeeID = "104";
+
+            // Create customer order JSON object
+            var newOrder = {
+                "customerorderid": customerOrderID,
+                "customerorderdate": customerOrderDate,
+                "customerordertotal": customerOrderTotal,
+                "paymentmethod": paymentMethod,
+                "employeeid": employeeID
+            }
+            //item[COLUMN] = data;
+            
+            // Send the request
+            var xmlHttpSend = new XMLHttpRequest();
+            xmlHttpSend.responseType = "json";
+            xmlHttpSend.open("POST", "http://localhost:3000/addCustomerOrder");
+            xmlHttpSend.send(JSON.stringify(newOrder));
+
+
+            // TODO: 
+            // For each sale line in the table, 
+            //     Add the sale line to the CustomerSaleLine DB
+            //     Update the inventory in FoodItems DB
+            //     Sum up the total order cost
+            
+            // Update the cheatsheet
+            
+            // Clear the HTML order table
+            var tableLen = table.rows.length;
+            for (var i = 1; i < tableLen; i++) {
+                table.deleteRow(1);
+            }
+            updateOrderPrice();
         },
 
         function(error) {
             console.log(error);
         }
     );
-    // TODO: 
-    // For each sale line in the table, 
-    //     Add the sale line to the CustomerSaleLine DB
-    //     Update the inventory in FoodItems DB
-    //     Sum up the total order cost
-    
-    var customerOrderTotal = float(document.getElementById("price").innerHTML);
-
-    // Get the current date
-    var customerOrderDate = new Date();
-    var day = String(customerOrderDate.getDate()).padStart(2, '0');
-    var month = String(customerOrderDate.getMonth() + 1).padStart(2, '0');
-    var year = today.getFullYear();
-    customerOrderDate = year + '-' + month + '-' + day;
-
-    // Get the payment info for the order
-    var paymentMethod = "cash";
-
-    // Get the employeeID currently logged in
-    var employeeID = "104";
-
-    // Add the order to the CustomerOrder DB
-    //
-    // Update the cheatsheet
-    
-    // Clear the HTML order table
-    var tableLen = table.rows.length;
-    for (var i = 1; i < tableLen; i++) {
-        table.deleteRow(1);
-    }
-    updateOrderPrice();
 }
 
 
