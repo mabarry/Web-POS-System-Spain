@@ -1,0 +1,258 @@
+header {
+    padding-top: 2%;
+    padding-bottom: 1px;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    margin-left: 25%;
+    margin-right: 25%;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    font-family: Tahoma, sans-serif;
+    font-weight: bold;
+    grid-area: header;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    background-color: rgb(40, 42, 53);
+}
+
+body {
+    font-family: Tahoma, sans-serif;
+    font-weight: bold;
+    background-image: url("fruit.jpg"), linear-gradient(rgb(49, 49, 49), darkgray);
+    background-repeat: repeat-x;
+    background-size: cover;
+    overflow: hidden;
+}
+
+footer {
+    height: 100%;
+    width: 100%;
+    background-color:rgb(40, 40, 40);
+    position: fixed;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas: 
+    ' order order orderBtns itemInfo itemInfo itemInfo'
+    ' order order orderBtns itemInfo itemInfo itemInfo'
+    ' order order prevOrders prevOrders prevOrders prevOrders'
+    ' order order prevOrders prevOrders prevOrders prevOrders';
+    grid-gap: 1em;
+    height: 700px;
+    max-height: 700px;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    background-color: whitesmoke;
+}
+
+.new-item-container {
+    grid-area: itemInfo;
+    display: grid;
+    grid-template-rows: 50px 50px 1fr auto;
+    grid-gap: 1em;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.itemInfo {
+    grid-area: 1 / 1 / 2 / 2;
+    padding-top: 2%;
+    padding-bottom: 3%;
+    border-radius: 20px;
+    background-color: rgb(61, 125, 242);
+    text-align: center;
+    color: white;
+    font-family: Tahoma, sans-serif;
+    font-weight: bold;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-width: 1px;
+    height: 80px;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.searchBar {
+    grid-area: 2 / 1 / 3 / 1;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 2.5%;
+    margin-top: 3%;
+    align-items: center;
+}
+
+.vendorName {
+    grid-area: 3 / 1 / 4 / 1;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 2.5%;
+    margin-top: 3%;
+    align-items: center;
+}
+
+.vendorPrice {
+    grid-area: 4 / 1 / 5 / 2;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 2.5%;
+    align-items: center;
+}
+
+.quantity {
+    grid-area: 5 / 1 / 6 / 2;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 1%;
+    align-items: center;
+}
+
+.addToCart {
+    grid-area: 6 / 1 / 7 / 2;
+    padding-left: 20%;
+    padding-right: 20%;
+    margin-top: 3%;
+    align-items: center;
+}
+
+.prevOrderSheet {
+    grid-area: prevOrders;
+    height: 95%; 
+    margin-right: -35px;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+}
+
+.receipt {
+    grid-area: order;
+    min-width: 100%;
+    max-width:100%;
+    height: 100%;
+}
+
+.orderTable {
+    /* grid-area: order; */
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    min-width: 100%;
+    max-width: 100%;
+    height: 620px;
+    overflow-y:scroll;
+}
+
+.orderTable th, .prevOrderSheet th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    font-family: Tahoma, sans-serif;
+    font-weight: bold;
+    background-color: rgb(61, 125, 242);
+    color: white;
+    
+}
+
+.orderTable td, .orderTable th, .prevOrderSheet td, .prevOrderSheet th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.orderTable tr:nth-child(even){background-color: #f2f2f2;}
+
+.orderTable tr:hover {background-color: #ddd;}
+
+.prevOrderSheet tr:nth-child(even){background-color: #f2f2f2;}
+
+.prevOrderSheet tr:hover {background-color: #ddd;}
+
+.orders, .sheet {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Tahoma, sans-serif;
+    font-weight: bold;
+}
+
+.orderTotal {
+    position: absolute; 
+    width: 700px;
+    margin-top:  1em; 
+}
+
+.price {
+    padding-top:8px;
+    padding-right: 10px;
+    width: 550px;
+    height: 40px;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-align: right;
+}
+
+.order-btn-container {
+    grid-area: orderBtns;
+    display: grid;
+    grid-template-areas: 
+    ' Complete '
+    ' Cancel '
+    ' Update ';
+    grid-gap: 1em;
+}
+
+.compOrder {
+    grid-area: 'Complete';
+    color: white;
+    font-family: Tahoma, sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
+
+.cancOrder {
+    grid-area: 'Cancel';
+    color: white;
+    font-family: Tahoma, sans-serif;
+    font-weight: bold;
+    text-align: center;    
+}
+
+.updateInv {
+    grid-area: 'Update';
+    color: white;
+    font-family: Tahoma, sans-serif;
+    font-weight: bold;
+    text-align: center;   
+}
+
+#completeOrderButton, #cancelOrderButton, #updateInvButton {
+    height: 100%;
+}
+
+
+
+
+.accessibility {
+    /* grid-area: accessibility; */
+    text-align: center;
+    background-color: rgb(61, 125, 242);
+    color: black;
+    color: white;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    height: 35%;
+}
+
+.accessibilityOn {
+    /* grid-area: accessibility; */
+    text-align: center;
+    background-color: black;
+    color: white;
+    
+}
+
+.btn-lg {
+    min-width: 100%;
+}
