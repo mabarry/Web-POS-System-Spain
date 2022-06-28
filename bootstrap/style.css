@@ -70,6 +70,7 @@ footer {
     border: 1px solid rgba(0,0,0,0.2);
     border-width: 1px;
     height: 80px;
+    min-width: 400px;
 }
 
 .searchBar {
