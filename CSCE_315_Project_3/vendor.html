@@ -142,6 +142,35 @@
                     </table>
                 </div>
 
+                <div class="prevOrderTable">
+                    <table class="prevOrders" id="prevOrders">
+                        <script src=""></script>
+                        <tr>
+                            <th>Vendor Name</th>
+                            <th>Vendor Order ID</th>
+                            <th>Order Date</th>
+                            <th>Order Price (€)</th>
+                            <th>Received?</th>
+                        </tr>
+                        <tr>
+                            <td>Vendor One</td>
+                            <td>1</td>
+                            <td>6/25/2022</td>
+                            <td>246.73</td>
+                            <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+                        </tr>
+                        <tr>
+                            <td>Vendor One</td>
+                            <td>1</td>
+                            <td>6/29/2022</td>
+                            <td>345.21</td>
+                            <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+                        </tr>
+                        
+                        <!-- This is where each sale row will be added -->
+                    </table>
+                </div>
+
                 <div class="orderTotal">
                     <div class="input-group">
                         <div class="price"  id="price">
@@ -153,7 +182,7 @@
             </div>
 
             <!-- Display table for cheatsheet containing all info for the items in inventory -->
-            <div class="prevOrderSheet" style="overflow-y:scroll; width: 100%;">
+            <div class="cheatsheet" style="overflow-y:scroll; width: 100%;">
                 <table class="sheet" id="sheet">
                     <script src="customerScripts.js" onload="createCheatSheet();"></script>
                     <tr>

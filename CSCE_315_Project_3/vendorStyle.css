@@ -38,8 +38,8 @@ footer {
     grid-template-areas: 
     ' order order orderBtns itemInfo itemInfo itemInfo'
     ' order order orderBtns itemInfo itemInfo itemInfo'
-    ' order order prevOrders prevOrders prevOrders prevOrders'
-    ' order order prevOrders prevOrders prevOrders prevOrders';
+    ' order order sheet sheet sheet sheet'
+    ' order order sheet sheet sheet sheet';
     grid-gap: 1em;
     height: 700px;
     max-height: 700px;
@@ -119,12 +119,14 @@ footer {
     align-items: center;
 }
 
-.prevOrderSheet {
-    grid-area: prevOrders;
+.cheatsheet {
+    grid-area: sheet;
     height: 95%; 
     margin-right: -35px;
     border: 1px solid rgba(0,0,0,0.2);
     border-radius: 3px;
+    overflow-y:scroll;
+    width: 100%;
 }
 
 .receipt {
@@ -134,17 +136,17 @@ footer {
     height: 100%;
 }
 
-.orderTable {
+.orderTable, .prevOrderTable{
     /* grid-area: order; */
     border: 1px solid rgba(0,0,0,0.2);
     border-radius: 3px;
     min-width: 100%;
     max-width: 100%;
-    height: 620px;
+    height: 310px;
     overflow-y:scroll;
 }
 
-.orderTable th, .prevOrderSheet th {
+.orderTable th, .prevOrderTable th, .cheatsheet th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
@@ -155,7 +157,7 @@ footer {
     
 }
 
-.orderTable td, .orderTable th, .prevOrderSheet td, .prevOrderSheet th {
+.orderTable td, .orderTable th, .prevOrderTable td, .prevOrderTable th, .cheatsheet td, .cheatsheet th {
     border: 1px solid #ddd;
     padding: 8px;
 }
@@ -164,11 +166,15 @@ footer {
 
 .orderTable tr:hover {background-color: #ddd;}
 
-.prevOrderSheet tr:nth-child(even){background-color: #f2f2f2;}
+.prevOrderTable tr:nth-child(even){background-color: #f2f2f2;}
 
-.prevOrderSheet tr:hover {background-color: #ddd;}
+.prevOrderTable tr:hover {background-color: #ddd;}
 
-.orders, .sheet {
+.cheatsheet tr:nth-child(even){background-color: #f2f2f2;}
+
+.cheatsheet tr:hover {background-color: #ddd;}
+
+.orders, .prevOrders, .sheet {
     width: 100%;
     border-collapse: collapse;
     font-family: Tahoma, sans-serif;
