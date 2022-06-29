@@ -361,6 +361,15 @@ async function completeCustomerOrder() {
         orderTable.deleteRow(1);
     }
     updateOrderPrice();
+    
+    // Update the foodItems DB
+    const foodItemsResponse = await fetch('/updateFoodItems', {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }); 
 }
 
 
