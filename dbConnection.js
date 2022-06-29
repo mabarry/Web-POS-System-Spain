@@ -19,6 +19,8 @@ app.listen(port, () => {
 const {Client} = require('pg');
 const { query } = require('express');
 const { hasSubscribers } = require('diagnostics_channel');
+const { start } = require('repl');
+// const { currentEmployee } = require('./projectFiles/loginScripts');
 const client = new Client({
   host: "csce-315-db.engr.tamu.edu",
   user: "csce315950_1user",
@@ -32,7 +34,8 @@ client.connect();
 
 
 // Load in databases on start
-var currEmployee;
+var currEmployee = "101";
+
 var foodItems;
 var customerSaleLine;
 var customerOrder;
@@ -163,7 +166,7 @@ app.get('/foodItems', function(req, res){
     if(Object.keys(req.query).length === 0) {
         res.send(foodItems);
     }
-    else if (req.query.foodid) {
+    else {
         // Below is the code for creating an SQL command and querying the database for any general request query
         // Create the SQL query command
         // var command = 'SELECT * FROM fooditems WHERE '
@@ -209,7 +212,7 @@ app.get('/employeeList', function(req, res){
         res.send(employeeList);
     }
     else {
-        //
+        res.send(employeeList[req.query.employeeID - 101]);
     }
 });
 
@@ -311,15 +314,81 @@ app.put('/editFoodItems', function(req, res) {
     })
 });
 
-app.post('/employeeList', function(req, res){
-    if(Object.keys(req.query).length === 0) {
-        res.send(employeeList);
-    }
-    else {
-        res.send(employeeList[req.query.employeeid - 101])
-        currEmployee = req.query.employeeid;
-    }
+
+
+// REPORT FUNCTIONS
+app.post('/salesReport', function(req, res){
+    console.log("\nReq.body:");
+    console.log(req.body);
+
+    var startDate = "\'" + req.body.startdate + "\'";
+    var endDate = "\'" + req.body.enddate + "\'";
+
+    var startOrderID;
+    var endOrderID;
+
+    // Get starting orderID
+    var command = "SELECT * FROM customerorder WHERE customerOrderDate>=" + startDate;
+    console.log(command);
+    client.query(command, (err, result)=>{
+        if (!err) {
+            // Check if there were no orders found
+            if (result.rows == undefined || result.rows == null || isNaN(result.rows) || result.rows.length == 0) {
+                invalidDates = true;
+            }
+            else {
+                startOrderID = result.rows[0].customerorderid;
+            }
+        } 
+        else {
+            console.log("\nERROR:");
+            console.log(err.message);
+        }
+    })
+
+    // Get ending orderID
+    var command = "SELECT * FROM customerorder WHERE customerOrderDate<=" + endDate;
+    console.log(command);
+        client.query(command, (err, result)=>{
+        if (!err) {
+            // Check if there were no orders found
+            if (result.rows == undefined || result.rows == null || isNaN(result.rows) || result.rows.length == 0) {
+                invalidDates = true;
+            }
+            else {
+                endOrderID = result.rows[result.rows.length - 1].customerorderid;
+            }
+        } 
+        else {
+            console.log("\nERROR:");
+            console.log(err.message);
+        }
+    })
+
+    setTimeout(() => {
+        // If no orders were found, do not return anything
+        if (invalidDates) {
+            res.send("-1");
+        }
+        else {
+            // Return all sale lines between the start and end order IDs
+            var command = "SELECT * FROM customerSaleLine WHERE customerOrderID BETWEEN " + startOrderID + " AND " + endOrderID;
+            console.log(command);
+            client.query(command, (err, result)=>{
+                if (!err) {
+                    res.send(result.rows);
+                } 
+                else {
+                    console.log("ERROR HERE PLEASE");
+                    console.log("\nERROR:");
+                    console.log(err.message);
+                }
+            })
+        }
+    }, 1500);
 });
+
+
 
 // OTHER FUNCTIONS
 app.get('/currentEmployee', function(req, res){
