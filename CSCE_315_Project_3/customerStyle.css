@@ -266,7 +266,17 @@ footer {
     color: white;
 }
 
+.btn-success:hover {
+    background-color: rgb(1, 69, 58)!important;
+    color: white;
+}
+
 .btn-danger {
     background-color: #D81B60!important;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #bf1b57!important;
     color: white;
 }
