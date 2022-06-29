@@ -201,7 +201,6 @@ footer {
     margin-left: 0px;
     width: 100%;
     margin-top:  1em;
-    background-color: #3f3f3f;
     color: white;
 }
 
@@ -212,6 +211,7 @@ footer {
     height: 40px;
     border: 1px solid white;
     border-radius: 3px;
+    background-color: #3f3f3f;
     text-align: right;
 }
 

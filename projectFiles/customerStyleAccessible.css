@@ -169,8 +169,7 @@ footer {
 .orderTotal {
     position: absolute; 
     width: 400px;
-    margin-top:  1em; 
-    background-color: #3f3f3f;
+    margin-top:  1em;
     color: white;
 }
 
@@ -179,6 +178,7 @@ footer {
     padding-right: 10px;
     width: 360px;
     height: 40px;
+    background-color: #3f3f3f;
     border: 1px solid white;
     border-radius: 3px;
     text-align: right;
