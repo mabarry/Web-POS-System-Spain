@@ -318,7 +318,7 @@ async function completeCustomerOrder() {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
-        },
+        }
     }); 
 
     // Update the customerSaleLine databases
@@ -327,7 +327,7 @@ async function completeCustomerOrder() {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
-        },
+        }
     }); 
 
     // Clear the HTML order table
