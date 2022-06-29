@@ -136,8 +136,7 @@ footer {
     height: 100%;
 }
 
-.orderTable, .prevOrderTable{
-    /* grid-area: order; */
+.orderTable, .prevOrderTable {
     border: 1px solid rgba(0,0,0,0.2);
     border-radius: 3px;
     min-width: 100%;

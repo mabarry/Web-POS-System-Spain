@@ -76,7 +76,27 @@
 
     <body>
         <div class="grid-container">
-            
+            <div class="table-container">
+                <div class="itemTable">
+                    <table class="items" id="items">
+                        <script src="customerScripts.js" onload="createItemTable();"></script>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Unit Price</th>
+                            <th>Quantity in Inventory</th>
+                            <th>Storage Location</th>
+                            <th>Edit Item</th>
+                            <th>Delete Item</th>
+                        </tr>
+
+                        <!-- This is where each food item will be added to the cheat sheet -->
+                    </table>
+                </div>
+            </div>
+
+
+
         </div>
 
         <!-- Option 1: Bootstrap Bundle with Popper -->
