@@ -23,7 +23,7 @@ body {
     background-image: url("fruit.jpg"), linear-gradient(rgb(49, 49, 49), darkgray);
     background-repeat: repeat-x;
     background-size: cover;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 footer {
@@ -131,9 +131,16 @@ footer {
 
 .receipt {
     grid-area: order;
+    display:grid;
+    grid-template-areas:
+    ' vendorOrder '
+    ' prevOrder '
+    ' total ';
+    grid-gap: 0em;
     min-width: 100%;
     max-width:100%;
     height: 100%;
+    /* background: green; */
 }
 
 .orderTable, .prevOrderTable {
@@ -143,6 +150,16 @@ footer {
     max-width: 100%;
     height: 310px;
     overflow-y:scroll;
+}
+
+.orderTable {
+    grid-area: 'vendorOrder';
+    /* background: blue; */
+}
+
+.prevOrderTable {
+    grid-area: 'prevOrders';
+    /* background: red; */
 }
 
 .orderTable th, .prevOrderTable th, .cheatsheet th {
@@ -181,19 +198,25 @@ footer {
 }
 
 .orderTotal {
-    position: absolute; 
-    width: 700px;
+    grid-area: 'total';
+    margin-left: 0px;
+    width: 100%;
     margin-top:  1em; 
+    /* background: purple; */
 }
 
 .price {
     padding-top:8px;
     padding-right: 10px;
-    width: 550px;
+    width: 85%;
     height: 40px;
     border: 1px solid rgba(0,0,0,0.2);
     border-radius: 3px;
     text-align: right;
+}
+
+#euro {
+   width: auto;
 }
 
 .order-btn-container {
