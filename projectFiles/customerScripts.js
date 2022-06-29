@@ -1,15 +1,28 @@
-var isAccessible = false;
+var customerSwitch = false;
+var vendorSwitch = false;
 
 
-
-function accessibleSwitch() {
-    if(isAccessible == false) {
+function accessibleCustomer() {
+    if(customerSwitch == false) {
+        previousStyle =
         document.getElementById("style").href = "customerStyleAccessible.css";
-        isAccessible = true;
+        customerSwitch = true;
     }
     else {
         document.getElementById("style").href = "customerStyle.css";
-        isAccessible = false;
+        customerSwitch = false;
+    }
+}
+
+function accessibleVendor() {
+    if(vendorSwitch == false) {
+        previousStyle =
+        document.getElementById("style").href = "vendorStyleAccessible.css";
+        vendorSwitch = true;
+    }
+    else {
+        document.getElementById("style").href = "vendorStyle.css";
+        vendorSwitch = false;
     }
 }
 
