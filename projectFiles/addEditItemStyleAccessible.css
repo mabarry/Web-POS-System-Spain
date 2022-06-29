@@ -141,7 +141,7 @@ footer {
 .accessibility {
     margin-top: 5%;
     text-align: center;
-    background-color: #1aebff;
+    background-color: #ffff00;
     color: black;
     border-radius: 20px;
     border-style: solid;
@@ -155,7 +155,7 @@ footer {
 }
 
 .btn-primary, .btn-outline-primary {
-    background-color: #1aebff!important;
+    background-color: #ffff00!important;
     color: black!important;
 }
 
