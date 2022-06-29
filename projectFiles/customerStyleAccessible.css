@@ -192,7 +192,7 @@ footer {
 }
 
 .accessibility {
-    /* grid-area: accessibility; */
+    margin-top: 5%;
     text-align: center;
     background-color: #1aebff;
     color: black;
@@ -280,39 +280,4 @@ footer {
 .btn-primary {
     background-color: #1aebff!important;
     color: black!important;
-}
-.sales {
-    background-color:blueviolet;
-    padding-top: 1%;
-    border-radius: 20px;
-    border-style: solid;
-    border-color: black;
-    border-width: 1px;
-    color: white;
-    font-family: Tahoma, sans-serif;
-    font-weight: bold;
-}
-
-.excess {
-    background-color: blueviolet;
-    padding-top: 1%;
-    border-radius: 20px;
-    border-style: solid;
-    border-color: black;
-    border-width: 1px;
-    color: white;
-    font-family: Tahoma, sans-serif;
-    font-weight: bold;
-}
-
-.restock {
-    background-color: blueviolet;
-    padding-top: 1%;
-    border-radius: 20px;
-    border-style: solid;
-    border-color: black;
-    border-width: 1px;
-    color: white;
-    font-family: Tahoma, sans-serif;
-    font-weight: bold;
 }

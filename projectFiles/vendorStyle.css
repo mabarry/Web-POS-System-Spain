@@ -238,7 +238,7 @@ footer {
 
 
 .accessibility {
-    /* grid-area: accessibility; */
+    margin-top: 5%;
     text-align: center;
     background-color: rgb(61, 125, 242);
     color: black;
@@ -248,14 +248,6 @@ footer {
     border-color: black;
     border-width: 1px;
     height: 35%;
-}
-
-.accessibilityOn {
-    /* grid-area: accessibility; */
-    text-align: center;
-    background-color: black;
-    color: white;
-    
 }
 
 .btn-lg {
