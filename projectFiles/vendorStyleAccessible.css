@@ -48,7 +48,7 @@ footer {
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 10px;
-    background-color: whitesmoke;
+    background-color: black;
 }
 
 .new-item-container {
@@ -65,12 +65,12 @@ footer {
     padding-top: 2%;
     padding-bottom: 3%;
     border-radius: 20px;
-    background-color: rgb(61, 125, 242);
+    background-color: #1aebff;
     text-align: center;
-    color: white;
+    color: black;
     font-family: Tahoma, sans-serif;
     font-weight: bold;
-    border: 1px solid rgba(0,0,0,0.2);
+    border: 1px solid white;
     border-width: 1px;
     height: 80px;
     min-width: 100%;
@@ -123,7 +123,7 @@ footer {
     grid-area: sheet;
     height: 95%; 
     margin-right: -35px;
-    border: 1px solid rgba(0,0,0,0.2);
+    border: 1px solid white;
     border-radius: 3px;
     overflow-y:scroll;
     width: 100%;
@@ -143,7 +143,7 @@ footer {
 }
 
 .orderTable, .prevOrderTable {
-    border: 1px solid rgba(0,0,0,0.2);
+    border: 1px solid white;
     border-radius: 3px;
     min-width: 100%;
     max-width: 100%;
@@ -165,8 +165,8 @@ footer {
     text-align: left;
     font-family: Tahoma, sans-serif;
     font-weight: bold;
-    background-color: rgb(61, 125, 242);
-    color: white;
+    background-color: #1aebff;
+    color: black;
     
 }
 
@@ -175,23 +175,25 @@ footer {
     padding: 8px;
 }
 
-.orderTable tr:nth-child(even){background-color: #f2f2f2;}
+.orderTable tr:nth-child(even){background-color: rgb(40, 42, 53);}
 
-.orderTable tr:hover {background-color: #ddd;}
+.orderTable tr:hover {background-color: #3f3f3f;}
 
-.prevOrderTable tr:nth-child(even){background-color: #f2f2f2;}
+.prevOrderTable tr:nth-child(even){background-color: rgb(40, 42, 53);}
 
-.prevOrderTable tr:hover {background-color: #ddd;}
+.prevOrderTable tr:hover {background-color: #3f3f3f;}
 
-.cheatsheet tr:nth-child(even){background-color: #f2f2f2;}
+.cheatsheet tr:nth-child(even){background-color: rgb(40, 42, 53);}
 
-.cheatsheet tr:hover {background-color: #ddd;}
+.cheatsheet tr:hover {background-color: #3f3f3f;}
 
 .orders, .prevOrders, .sheet {
     width: 100%;
     border-collapse: collapse;
     font-family: Tahoma, sans-serif;
     font-weight: bold;
+    background-color: black;
+    color: white;
 }
 
 .orderTotal {
@@ -199,6 +201,8 @@ footer {
     margin-left: 0px;
     width: 100%;
     margin-top:  1em;
+    background-color: #3f3f3f;
+    color: white;
 }
 
 .price {
@@ -206,7 +210,7 @@ footer {
     padding-right: 10px;
     width: 85%;
     height: 40px;
-    border: 1px solid rgba(0,0,0,0.2);
+    border: 1px solid white;
     border-radius: 3px;
     text-align: right;
 }
@@ -244,15 +248,26 @@ footer {
     height: 100%;
 }
 
+.btn-success {
+    background-color: #3ff23f!important;
+    color: black!important;
+}
 
+.btn-danger {
+    background-color: #ff0000!important;
+    color: white!important;
+}
 
+.btn-primary {
+    background-color: #1aebff!important;
+    color: black!important;
+}
 
 .accessibility {
     margin-top: 5%;
     text-align: center;
-    background-color: rgb(61, 125, 242);
+    background-color: #1aebff;
     color: black;
-    color: white;
     border-radius: 20px;
     border-style: solid;
     border-color: black;
