@@ -50,7 +50,7 @@ footer {
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 10px;
-    background-color: whitesmoke;
+    background-color: black;
 }
 
 .table-container {
@@ -61,7 +61,7 @@ footer {
 }
 
 .itemTable {
-    border: 1px solid rgba(0,0,0,0.2);
+    border: 1px solid white;
     border-radius: 3px;
     min-width: 100%;
     max-width: 100%;
@@ -75,8 +75,8 @@ footer {
     text-align: left;
     font-family: Tahoma, sans-serif;
     font-weight: bold;
-    background-color: rgb(61, 125, 242);
-    color: white;
+    background-color: #1aebff;
+    color: black;
     
 }
 
@@ -85,15 +85,17 @@ footer {
     padding: 8px;
 }
 
-.itemTable tr:nth-child(even){background-color: #f2f2f2;}
+.itemTable tr:nth-child(even){background-color: rgb(40, 42, 53);}
 
-.itemTable tr:hover {background-color: #ddd;}
+.itemTable tr:hover {background-color: #3f3f3f;}
 
 .items {
     width: 100%;
     border-collapse: collapse;
     font-family: Tahoma, sans-serif;
     font-weight: bold;
+    background-color: black;
+    color: white;
 }
 
 .newItemLabel {
@@ -101,13 +103,13 @@ footer {
     padding-top: 6%;
     padding-bottom: 3%;
     border-radius: 20px;
-    background-color: rgb(61, 125, 242);
+    background-color: #1aebff;
     text-align: center;
-    color: white;
+    color: black;
     font-family: Tahoma, sans-serif;
     font-weight: bold;
     font-size: larger;
-    border: 1px solid rgba(0,0,0,0.2);
+    border: 1px solid white;
     border-width: 1px;
     height: 80px;
     min-width: 100%;
@@ -139,9 +141,8 @@ footer {
 .accessibility {
     margin-top: 5%;
     text-align: center;
-    background-color: rgb(61, 125, 242);
+    background-color: #1aebff;
     color: black;
-    color: white;
     border-radius: 20px;
     border-style: solid;
     border-color: black;
@@ -151,4 +152,14 @@ footer {
 
 .btn-lg {
     min-width: 100%;
+}
+
+.btn-primary, .btn-outline-primary {
+    background-color: #1aebff!important;
+    color: black!important;
+}
+
+.btn-danger {
+    background-color: #ff0000!important;
+    color: white!important;
 }
