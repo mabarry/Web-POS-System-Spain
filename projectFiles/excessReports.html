@@ -76,13 +76,57 @@
 
     <body>
         <div class="grid-container">
-            <div class="row">
-                <div class="col-sm-12 col-lg-12 " id="column-body">
-                    <h2>Generate Excess Report</h2>
-                    <br>
-                    <p>Select a starting and ending date: </p>
-                    <input type="date" name="start-date">
-                    <input type="date" name="end-date">
+            <div class="report-attributes">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 " id="column-body">
+                        <h2>Excess Report</h2>
+                        <p class="description">A report for items that sold less than 10%</p>
+                        <br>
+                        <p>Select a starting and ending date: </p>
+                        <input type="date" name="start-date">
+                        <input type="date" name="end-date">
+                    </div>
+                </div>  
+            </div>
+
+            <div class="generateReport" id="generateReport">
+                <div class="d-grid gap-2 d-md-block">
+                    <p>
+                        <button type="button" id="reportButton" class="btn btn-primary btn-lg" onclick="">Generate Report</button>
+                        <script src="customerScripts.js"></script>
+                    </p>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <div class="reportTable">
+                    <table class="report" id="report">
+                        <script src="customerScripts.js" onload=""></script>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Total Quantity Sold</th>
+                            <th>Total Sales</th>
+                        </tr>
+
+                        <!-- This is where each food item will be added to the cheat sheet -->
+                    </table>
+                </div>
+
+                <div class="summary" id="summary">
+                    <div class="sumLine input-group" id="sumLine">
+                        <span class="input-group-text" id="sumTitle"> Total Period Revenue: </span>
+                        <div class="revenue"  id="revenue">
+                            <p> 0.00 </p>
+                        </div>
+                        <span class="input-group-text" id="euro"> € </span>
+                    </div>
+                    <div class="openReport">
+                        <p>
+                            <button type="button" id="openButton" class="btn btn-primary btn-lg" onclick="">Open New Tab</button>
+                            <script src="customerScripts.js"></script>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

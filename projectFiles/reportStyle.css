@@ -139,7 +139,7 @@ footer {
 }
 
 .revenue {
-    padding-top:17px;
+    padding-top: 17px;
     padding-right: 10px;
     width: 50%;
     height: 60px;
@@ -175,6 +175,11 @@ footer {
 #openButton {
     height: 60px;
     padding-bottom: 8px;
+}
+
+.description {
+    color:grey;
+    font-weight: normal !important;
 }
 
 
