@@ -327,17 +327,21 @@ app.post('/salesReport', function(req, res){
     var startOrderID;
     var endOrderID;
 
+    var invalidDates = false;
+
     // Get starting orderID
-    var command = "SELECT * FROM customerorder WHERE customerOrderDate>=" + startDate;
+    var command = "SELECT * FROM customerorder WHERE customerOrderDate>=" + startDate + "ORDER BY customerorderid ASC";
     console.log(command);
     client.query(command, (err, result)=>{
         if (!err) {
             // Check if there were no orders found
-            if (result.rows == undefined || result.rows == null || isNaN(result.rows) || result.rows.length == 0) {
+            if (result.rows.length === 0) {
+                console.log("INVALID START DATE");
                 invalidDates = true;
             }
             else {
                 startOrderID = result.rows[0].customerorderid;
+                console.log(startOrderID);
             }
         } 
         else {
@@ -347,16 +351,18 @@ app.post('/salesReport', function(req, res){
     })
 
     // Get ending orderID
-    var command = "SELECT * FROM customerorder WHERE customerOrderDate<=" + endDate;
+    var command = "SELECT * FROM customerorder WHERE customerOrderDate<=" + endDate + " ORDER BY customerorderid ASC";
     console.log(command);
         client.query(command, (err, result)=>{
         if (!err) {
             // Check if there were no orders found
-            if (result.rows == undefined || result.rows == null || isNaN(result.rows) || result.rows.length == 0) {
+            if (result.rows.length === 0) {
+                console.log("INVALID END DATE");
                 invalidDates = true;
             }
             else {
                 endOrderID = result.rows[result.rows.length - 1].customerorderid;
+                console.log(endOrderID);
             }
         } 
         else {
@@ -376,6 +382,7 @@ app.post('/salesReport', function(req, res){
             console.log(command);
             client.query(command, (err, result)=>{
                 if (!err) {
+                    //console.log(result.rows);
                     res.send(result.rows);
                 } 
                 else {
