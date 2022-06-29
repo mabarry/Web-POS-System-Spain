@@ -137,20 +137,21 @@ async function addOrderRow() {
 async function checkPassword() {
 
     // Query the database to get the employee table
-    var employee = document.getElementById("userNameInput").value;
+    var employeeid = document.getElementById("userNameInput").value;
     var enteredPassword = document.getElementById("passwordInput").value;
 
-    if (isNaN(id)) {
-        return;
+    const employeeInformation = {
+        employeeID: parseInt(employeeid)
     }
     
     // Query the employeeList for a specific employeeid
-    const response = await fetch('/employeeList?employeeid=' + employee, {
-        method: 'GET',
+    const response = await fetch('/employeeList?employeeid=' + employeeid, {
+        method: 'POST',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
-        }
+        },
+        body: JSON.stringify(employeeInformation)
     });
     const data = await response.json();
 
@@ -158,11 +159,11 @@ async function checkPassword() {
     
     if(enteredPassword === storedPassword) {
         document.getElementById("loginButton").href = "customer.html";
+        document.getElementById("loginCheck").innerHTML = "";
     }
     else {
         clearLoginBoxes();
-        //Add or make visible red text below password box
-        //document.getElementById("");
+        document.getElementById("loginCheck").innerHTML = "Incorrect Username/Password.";
 
     }
 }

@@ -33,6 +33,7 @@ client.connect();
 
 
 // Load in databases on start
+var currEmployee;
 var foodItems;
 var customerSaleLine;
 var customerOrder;
@@ -183,12 +184,7 @@ app.get('/foodItems', function(req, res){
         //     }
         // });
         res.send(foodItems[req.query.foodid - 1]);
-    }
-
-
-
-
-    
+    }  
 });
 
 app.get('/customerOrder', function(req, res){
@@ -316,8 +312,16 @@ app.put('/editFoodItems', function(req, res) {
     })
 });
 
+app.post('/employeeList', function(req, res){
+    if(Object.keys(req.query).length === 0) {
+        res.send(employeeList);
+    }
+    else {
+        res.send(employeeList[req.query.employeeid - 101])
+        currEmployee = req.query.employeeid;
+    }
+});
 
-var currEmployee = "103";
 // OTHER FUNCTIONS
 app.get('/currentEmployee', function(req, res){
     res.send(currEmployee);
