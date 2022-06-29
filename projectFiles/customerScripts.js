@@ -194,8 +194,25 @@ async function completeCustomerOrder() {
 
     // Get order info from the website
     var customerOrderTotal = parseFloat(document.getElementById("price").innerHTML);
-    var paymentMethod = "cash";
-    var employeeID = "104";
+    
+    var paymentMethod;
+    if (document.getElementById('btnradio1').checked) {
+        paymentMethod = "cash";
+    }
+    else {
+        paymentMethod = "card"
+    }
+
+    // Query to get the current employee logged in
+    const employeeResponse = await fetch('/currentEmployee', {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    });
+    var employeeID = await employeeResponse.json();
+    
 
     // Do not add empty order to the DB
     if (customerOrderTotal <= 0) {
