@@ -115,13 +115,14 @@ footer {
 }
 
 .summary {
-    
+    /* grid-area: summary; */
+    margin-top: 1%;
 }
 
 .revenue {
     padding-top:8px;
     padding-right: 10px;
-    width: 550px;
+    width: 73%;
     height: 40px;
     border: 1px solid rgba(0,0,0,0.2);
     border-radius: 3px;
