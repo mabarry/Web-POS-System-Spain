@@ -23,7 +23,7 @@ body {
     background-image: url("fruit.jpg"), linear-gradient(rgb(49, 49, 49), darkgray);
     background-repeat: repeat-x;
     background-size: cover;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 footer {
