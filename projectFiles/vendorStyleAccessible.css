@@ -253,12 +253,22 @@ footer {
     color: black!important;
 }
 
+.btn-success:hover {
+    background-color: #3adf3a!important;
+    color: white;
+}
+
 .btn-danger {
     background-color: #ff0000!important;
     color: white!important;
 }
 
-.btn-primary {
+.btn-danger:hover {
+    background-color: #d50101!important;
+    color: white;
+}
+
+.btn-primary, .btn-outline-primary {
     background-color: #1aebff!important;
     color: black!important;
 }
@@ -277,24 +287,4 @@ footer {
 
 .btn-lg {
     min-width: 100%;
-}
-
-.btn-success {
-    background-color: #004D40!important;
-    color: white;
-}
-
-.btn-success:hover {
-    background-color: rgb(1, 69, 58)!important;
-    color: white;
-}
-
-.btn-danger {
-    background-color: #D81B60!important;
-    color: white;
-}
-
-.btn-danger:hover {
-    background-color: #bf1b57!important;
-    color: white;
 }
