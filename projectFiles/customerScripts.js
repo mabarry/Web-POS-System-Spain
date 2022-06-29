@@ -26,6 +26,30 @@ function accessibleVendor() {
     }
 }
 
+function accessibleItems() {
+    if(vendorSwitch == false) {
+        previousStyle =
+        document.getElementById("style").href = "addEditItemStyleAccessible.css";
+        vendorSwitch = true;
+    }
+    else {
+        document.getElementById("style").href = "addEditItemStyle.css";
+        vendorSwitch = false;
+    }
+}
+
+function accessibleReport() {
+    if(vendorSwitch == false) {
+        previousStyle =
+        document.getElementById("style").href = "reportStyleAccessible.css";
+        vendorSwitch = true;
+    }
+    else {
+        document.getElementById("style").href = "reportStyle.css";
+        vendorSwitch = false;
+    }
+}
+
 
 
 function clearBoxes() {
