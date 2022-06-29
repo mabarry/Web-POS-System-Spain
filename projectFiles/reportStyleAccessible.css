@@ -49,7 +49,7 @@ footer {
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 10px;
-    background-color: whitesmoke;
+    background-color: black;
 }
 
 .report-attributes {
@@ -58,17 +58,25 @@ footer {
     padding-bottom: 3%;
     margin-left: 5%;
     border-radius: 20px;
-    /* background-color: rgb(61, 125, 242); */
     text-align: center;
-    /* color: white; */
     font-family: Tahoma, sans-serif;
     font-weight: bold;
     font-size: larger;
-    /* border: 1px solid rgba(0,0,0,0.2);
-    border-width: 1px; */
-    /* height: 80px; */
     min-width: 100%;
     max-width: 100%;
+}
+
+.description {
+    color:grey !important;
+    font-weight: normal !important;
+}
+
+.report-attributes h2 {
+    color:white;
+}
+
+.report-attributes p {
+    color:white;
 }
 
 .table-container {
@@ -79,7 +87,7 @@ footer {
 }
 
 .reportTable {
-    border: 1px solid rgba(0,0,0,0.2);
+    border: 1px solid white;
     border-radius: 3px;
     min-width: 100%;
     max-width: 100%;
@@ -93,8 +101,8 @@ footer {
     text-align: left;
     font-family: Tahoma, sans-serif;
     font-weight: bold;
-    background-color: rgb(61, 125, 242);
-    color: white;
+    background-color: #1aebff;
+    color: black;
     
 }
 
@@ -103,15 +111,17 @@ footer {
     padding: 8px;
 }
 
-.reportTable tr:nth-child(even){background-color: #f2f2f2;}
+.reportTable tr:nth-child(even){background-color: rgb(40, 42, 53);}
 
-.reportTable tr:hover {background-color: #ddd;}
+.reportTable tr:hover {background-color: #3f3f3f;}
 
 .report {
     width: 100%;
     border-collapse: collapse;
     font-family: Tahoma, sans-serif;
     font-weight: bold;
+    background-color: black;
+    color: white;
 }
 
 .summary {
@@ -133,8 +143,8 @@ footer {
 
 #sumTitle {
     text-align: center;
-    background-color: rgb(61, 125, 242);
-    color: white;
+    background-color: #1aebff;
+    color: black;
     height: 60px;
 }
 
@@ -143,8 +153,10 @@ footer {
     padding-right: 10px;
     width: 50%;
     height: 60px;
-    border: 1px solid rgba(0,0,0,0.2);
+    border: 1px solid white;
     border-radius: 3px;
+    background-color: #3f3f3f;
+    color: white;
     text-align: right;
 }
 
@@ -162,14 +174,12 @@ footer {
     margin-left: 5%;
     padding-left: 20%;
     padding-right: 20%;
-    /* height: 100px; */    
     width: 100%;
     align-items: center;
 }
 
 #reportButton {
     height: 70px;
-    /* padding-bottom: 8px; */
 }
 
 #openButton {
@@ -177,18 +187,12 @@ footer {
     padding-bottom: 8px;
 }
 
-.description {
-    color:grey;
-    font-weight: normal !important;
-}
-
 
 .accessibility {
     margin-top: 5%;
     text-align: center;
-    background-color: rgb(61, 125, 242);
+    background-color: #1aebff;
     color: black;
-    color: white;
     border-radius: 20px;
     border-style: solid;
     border-color: black;
@@ -196,6 +200,12 @@ footer {
     height: 35%;
 }
 
+
 .btn-lg {
     min-width: 100%;
+}
+
+.btn-primary, .btn-outline-primary {
+    background-color: #1aebff!important;
+    color: black!important;
 }
