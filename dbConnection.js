@@ -19,6 +19,7 @@ app.listen(port, () => {
 const {Client} = require('pg');
 const { query } = require('express');
 const { hasSubscribers } = require('diagnostics_channel');
+const { currentEmployee } = require('./projectFiles/loginScripts');
 const client = new Client({
   host: "csce-315-db.engr.tamu.edu",
   user: "csce315950_1user",
@@ -313,4 +314,16 @@ app.put('/editFoodItems', function(req, res) {
         console.log(err.message);
     }
     })
+});
+
+
+var currEmployee = "103";
+// OTHER FUNCTIONS
+app.get('/currentEmployee', function(req, res){
+    res.send(currEmployee);
+});
+
+app.put('/setCurrentEmployee', function(req, res) {
+    currEmployee = req.body.employeeid;
+    res.send("Complete");
 });
