@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require("body-parser");
 const app = express();
 const port = 3000;
 var path = require('path');
@@ -7,6 +8,8 @@ var path = require('path');
 
 app.use(cors({origin: "*"}));
 app.use(express.static('projectFiles'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.listen(port, () => {
   console.log(`Point of Sales system listening on port ${port}`)
@@ -16,6 +19,7 @@ app.listen(port, () => {
 const {Client} = require('pg');
 const { query } = require('express');
 const { hasSubscribers } = require('diagnostics_channel');
+const { currentEmployee } = require('./projectFiles/loginScripts');
 const client = new Client({
   host: "csce-315-db.engr.tamu.edu",
   user: "csce315950_1user",
@@ -26,93 +30,135 @@ const client = new Client({
 client.connect();
 
 
+
+
 // Load in databases on start
 var foodItems;
-client.query('SELECT * FROM fooditems ORDER BY foodid ASC',(err, res)=>{
-    if (!err) {
-        console.log("Query: foodItems");
-        foodItems = res.rows
-    } 
-    else {
-        console.log("\nERROR:");
-        console.log(err.message);
-    }
-});
-
 var customerSaleLine;
-client.query('SELECT * FROM customersaleline ORDER BY salelineid ASC',(err, res)=>{
-    if (!err) {
-        console.log("Query: customeSaleLine");
-        customerSaleLine = res.rows
-    } 
-    else {
-        console.log("\nERROR:");
-        console.log(err.message);
-    }
-});
-
 var customerOrder;
-client.query('SELECT * FROM customerorder ORDER BY customerorderid ASC',(err, res)=>{
-    if (!err) {
-        console.log("Query: customerOrder");
-        customerOrder = res.rows
-    } 
-    else {
-        console.log("\nERROR:");
-        console.log(err.message);
-    }
-});
-
-var customerSaleLine;
-client.query('SELECT * FROM customersaleline ORDER BY salelineid ASC',(err, res)=>{
-    if (!err) {
-        console.log("Query: customerSaleLine");
-        customerSaleLine = res.rows
-    } 
-    else {
-        console.log("\nERROR:");
-        console.log(err.message);
-    }
-});
-
 var employeeList;
-client.query('SELECT * FROM employeelist ORDER BY employeeid ASC',(err, res)=>{
-    if (!err) {
-        console.log("Query: employeeList");
-        employeeList = res.rows
-    } 
-    else {
-        console.log("\nERROR:");
-        console.log(err.message);
-    }
-});
-
 var vendorOrder;
-client.query('SELECT * FROM vendororder ORDER BY vendororderid ASC',(err, res)=>{
-    if (!err) {
-        console.log("Query: vendorOrder");
-        vendorOrder = res.rows
-    } 
-    else {
-        console.log("\nERROR:");
-        console.log(err.message);
-    }
-});
-
 var vendorBuyLine;
-client.query('SELECT * FROM vendorbuyline ORDER BY vendorlineid ASC',(err, res)=>{
-    if (!err) {
-        console.log("Query: vendorBuyLine");
-        vendorBuyLine = res.rows
-    } 
-    else {
-        console.log("\nERROR:");
-        console.log(err.message);
-    }
+
+updateFoodItems();
+updateCustomerSaleLine();
+updateCustomerOrder();
+updateEmployeeList();
+updateVendorOrder();
+updateVendorBuyLine();
+
+
+// UPDATING THE DATABASE VARIABLE FUNCTIONS
+function updateFoodItems() {
+    client.query('SELECT * FROM fooditems ORDER BY foodid ASC',(err, res)=>{
+        if (!err) {
+            console.log("Query: foodItems");
+            foodItems = res.rows
+        } 
+        else {
+            console.log("\nERROR:");
+            console.log(err.message);
+        }
+    });
+}
+
+function updateCustomerSaleLine() {
+    client.query('SELECT * FROM customersaleline ORDER BY salelineid ASC',(err, res)=>{
+        if (!err) {
+            console.log("Query: customerSaleLine");
+            customerSaleLine = res.rows
+        } 
+        else {
+            console.log("\nERROR:");
+            console.log(err.message);
+        }
+    });
+}
+
+function updateCustomerOrder() {
+    client.query('SELECT * FROM customerorder ORDER BY customerorderid ASC',(err, res)=>{
+        if (!err) {
+            console.log("Query: customerOrder");
+            customerOrder = res.rows
+        } 
+        else {
+            console.log("\nERROR:");
+            console.log(err.message);
+        }
+    });
+}
+
+function updateEmployeeList() {
+    client.query('SELECT * FROM employeelist ORDER BY employeeid ASC',(err, res)=>{
+        if (!err) {
+            console.log("Query: employeeList");
+            employeeList = res.rows
+        } 
+        else {
+            console.log("\nERROR:");
+            console.log(err.message);
+        }
+    });
+}
+
+function updateVendorOrder() {
+    client.query('SELECT * FROM vendororder ORDER BY vendororderid ASC',(err, res)=>{
+        if (!err) {
+            console.log("Query: vendorOrder");
+            vendorOrder = res.rows
+        } 
+        else {
+            console.log("\nERROR:");
+            console.log(err.message);
+        }
+    });
+}
+
+function updateVendorBuyLine() {
+    client.query('SELECT * FROM vendorbuyline ORDER BY vendorlineid ASC',(err, res)=>{
+        if (!err) {
+            console.log("Query: vendorBuyLine");
+            vendorBuyLine = res.rows
+        } 
+        else {
+            console.log("\nERROR:");
+            console.log(err.message);
+        }
+    });
+}
+
+app.get('/updateFoodItems', function(req, res){
+    updateFoodItems();
+    res.send("Complete");
+});
+
+app.get('/updateCustomerSaleLine', function(req, res){
+    updateCustomerSaleLine();
+    res.send("Complete");
+});
+
+app.get('/updateCustomerOrder', function(req, res){
+    updateCustomerOrder();
+    res.send("Complete");
+});
+
+app.get('/updateEmployeeList', function(req, res){
+    updateEmployeeList();
+    res.send("Complete");
+});
+
+app.get('/updateVendorOrder', function(req, res){
+    updateVendorOrder();
+    res.send("Complete");
+});
+
+app.get('/updateVendorBuyLine', function(req, res){
+    updateVendorBuyLine();
+    res.send("Complete");
 });
 
 
-// TODO: How to get keys from req.query
+// GET FROM DATABASE FUNCTIONS
 app.get('/foodItems', function(req, res){
     if(Object.keys(req.query).length === 0) {
         res.send(foodItems);
@@ -144,17 +190,6 @@ app.get('/foodItems', function(req, res){
 
     
 });
-
-app.get('/customerSaleLine', function(req, res){
-    if(Object.keys(req.query).length === 0) {
-        res.send(customerSaleLine);
-    }
-    else {
-        //
-    }
-});
-
-
 
 app.get('/customerOrder', function(req, res){
     if(Object.keys(req.query).length === 0) {
@@ -203,28 +238,92 @@ app.get('/vendorBuyLine', function(req, res){
 
 
 
-
+// ADD TO DATABASE FUNCTIONS
 app.post('/addCustomerOrder', function(req, res) {
-  orderID = req.body.customerorderid;
-  orderDate = req.body.customerorderdate;
-  orderTotal = req.body.customerordertotal;
-  payment = req.body.paymentmethod;
-  employeeID = req.body.employeeid;
-  
-  var vendorBuyLine;
-  client.connect();
-  var command = 'INSERT INTO customerorder VALUES(' + orderID +', ' + orderDate +', ' + orderTotal +', ' + payment +', ' + employeeID + ')';
-  client.query(command, (err, res)=>{
+    console.log("\nReq.body:");
+    console.log(req.body);
+
+    var orderID = req.body.customerorderid;
+    var orderDate = req.body.customerorderdate;
+    var orderTotal = req.body.customerordertotal;
+    var payment = req.body.paymentmethod;
+    var employeeID = req.body.employeeid;
+
+    
+    var command = 'INSERT INTO customerorder VALUES(' + orderID +', \'' + orderDate +'\', ' + orderTotal +', \'' + payment +'\', ' + employeeID + ')';
+    console.log(command);
+
+    client.query(command, (err, result)=>{
     if (!err) {
-      console.log("COMPLETE\n\n");
-    } else {
-      console.log("\nERROR:");
-      console.log(err.message);
+        console.log("COMPLETE\n\n");
+        res.send("Completed");
+    } 
+    else {
+        console.log("\nERROR:");
+        console.log(err.message);
     }
-    client.end();
-  })
+    })
 });
 
-// Post = new
-// Put = edit
-// Delete
+app.post('/addSaleLine', function(req, res) {
+    console.log("\nReq.body:");
+    console.log(req.body);
+
+    var saleID = req.body.salelineid;
+    var orderID = req.body.customerorderid;
+    var foodID = req.body.foodid;
+    var salePrice = req.body.salelineprice;
+    var saleQty = req.body.salelinequantity;
+
+
+    var command = 'INSERT INTO customersaleline VALUES(' + saleID +', \'' + orderID +'\', ' + foodID +', \'' + salePrice +'\', ' + saleQty + ')';
+    console.log(command);
+
+    client.query(command, (err, result)=>{
+    if (!err) {
+        console.log("COMPLETE\n\n");
+        res.send("Completed");
+    } 
+    else {
+        console.log("\nERROR:");
+        console.log(err.message);
+    }
+    })
+});
+
+
+
+// EDIT DATABASE FUNCTION
+app.put('/editFoodItems', function(req, res) {
+    console.log("\nReq.body:");
+    console.log(req.body);
+
+    var foodID = req.body.foodid;
+    var newQty = req.body.newquantity;
+
+    var command = 'UPDATE fooditems SET foodquantity=' + newQty + ' WHERE foodid=' + foodID;
+    console.log(command);
+
+    client.query(command, (err, result)=>{
+    if (!err) {
+        console.log("COMPLETE\n\n");
+        res.send("Completed");
+    } 
+    else {
+        console.log("\nERROR:");
+        console.log(err.message);
+    }
+    })
+});
+
+
+var currEmployee = "103";
+// OTHER FUNCTIONS
+app.get('/currentEmployee', function(req, res){
+    res.send(currEmployee);
+});
+
+app.put('/setCurrentEmployee', function(req, res) {
+    currEmployee = req.body.employeeid;
+    res.send("Complete");
+});
