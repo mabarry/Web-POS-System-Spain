@@ -80,11 +80,10 @@
                 <div class="row">
                     <div class="col-sm-12 col-lg-12 " id="column-body">
                         <h2>Sales Report</h2>
-                        <p class="description">A report for the shop's sales history</p>
                         <br>
                         <p>Select a starting and ending date: </p>
-                        <input type="date" name="start-date">
-                        <input type="date" name="end-date">
+                        <input type="date" id="startdate" name="start-date">
+                        <input type="date" id="enddate" name="end-date">
                     </div>
                 </div>  
             </div>
@@ -92,8 +91,8 @@
             <div class="generateReport" id="generateReport">
                 <div class="d-grid gap-2 d-md-block">
                     <p>
-                        <button type="button" id="reportButton" class="btn btn-primary btn-lg" onclick="">Generate Report</button>
-                        <script src="customerScripts.js"></script>
+                        <button type="button" id="reportButton" class="btn btn-primary btn-lg" onclick="salesReport()">Generate Report</button>
+                        <script src="reportScripts.js"></script>
                     </p>
                 </div>
             </div>
@@ -116,8 +115,8 @@
                 <div class="summary" id="summary">
                     <div class="sumLine input-group" id="sumLine">
                         <span class="input-group-text" id="sumTitle"> Total Period Revenue: </span>
-                        <div class="revenue"  id="revenue">
-                            <p> 0.00 </p>
+                        <div class="revenue">
+                            <p id="revenue"> 0.00 </p>
                         </div>
                         <span class="input-group-text" id="euro"> € </span>
                     </div>
