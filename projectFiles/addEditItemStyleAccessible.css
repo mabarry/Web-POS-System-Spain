@@ -1,0 +1,154 @@
+header {
+    padding-top: 2%;
+    padding-bottom: 1px;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    margin-left: 25%;
+    margin-right: 25%;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    font-family: Tahoma, sans-serif;
+    font-weight: bold;
+    grid-area: header;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    background-color: rgb(40, 42, 53);
+}
+
+body {
+    font-family: Tahoma, sans-serif;
+    font-weight: bold;
+    background-image: url("fruit.jpg"), linear-gradient(rgb(49, 49, 49), darkgray);
+    background-repeat: repeat-x;
+    background-size: cover;
+    overflow: hidden;
+}
+
+footer {
+    height: 100%;
+    width: 100%;
+    background-color:rgb(40, 40, 40);
+    position: fixed;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas: 
+    ' newItemLabel newItemLabel itemTable itemTable itemTable '
+    ' newItemName newItemName itemTable itemTable itemTable '
+    ' newItemPrice newItemPrice itemTable itemTable itemTable '
+    ' newItemLocation newItemLocation itemTable itemTable itemTable '
+    ' packaged packaged itemTable itemTable itemTable '
+    ' submit submit itemTable itemTable itemTable ';
+    grid-gap: 1em;
+    height: 700px;
+    max-height: 700px;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    background-color: whitesmoke;
+}
+
+.table-container {
+    grid-area: itemTable;
+    min-width: 100%;
+    max-width:100%;
+    height: 700px;
+}
+
+.itemTable {
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    min-width: 100%;
+    max-width: 100%;
+    height: 97%;
+    overflow-y:scroll;
+}
+
+.itemTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    font-family: Tahoma, sans-serif;
+    font-weight: bold;
+    background-color: rgb(61, 125, 242);
+    color: white;
+    
+}
+
+.itemTable td, .itemTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.itemTable tr:nth-child(even){background-color: #f2f2f2;}
+
+.itemTable tr:hover {background-color: #ddd;}
+
+.items {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Tahoma, sans-serif;
+    font-weight: bold;
+}
+
+.newItemLabel {
+    grid-area: newItemLabel;
+    padding-top: 6%;
+    padding-bottom: 3%;
+    border-radius: 20px;
+    background-color: rgb(61, 125, 242);
+    text-align: center;
+    color: white;
+    font-family: Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: larger;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-width: 1px;
+    height: 80px;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.newItemName {
+    grid-area: newItemName;
+}
+
+.newItemPrice {
+    grid-area: newItemPrice;
+}
+
+.newItemLocation {
+    grid-area: newItemLocation;
+}
+
+.packageType {
+    grid-area: packaged;
+}
+
+.addToTable {
+    grid-area: submit;
+}
+
+
+
+.accessibility {
+    margin-top: 5%;
+    text-align: center;
+    background-color: rgb(61, 125, 242);
+    color: black;
+    color: white;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    height: 35%;
+}
+
+.btn-lg {
+    min-width: 100%;
+}
