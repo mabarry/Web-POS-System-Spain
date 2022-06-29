@@ -1,7 +1,7 @@
 var isAccessible = false;
 
 
-// Complete
+
 function accessibleSwitch() {
     if(isAccessible == false) {
         document.getElementById("style").href = "customerStyleAccessible.css";
@@ -14,27 +14,27 @@ function accessibleSwitch() {
 }
 
 
-// Complete
+
 function clearBoxes() {
     document.getElementById("idSearch").value = "";
     document.getElementById("quantitySearch").value = "";
 }
 
 
-// Complete
+
 function clearLoginBoxes() {
     document.getElementById("userNameInput").value = "";
     document.getElementById("passwordInput").value = "";
 }
 
 
-// Complete
+
 function searchFunction(x) {
     document.getElementById(x).focus();
 }
 
 
-// Complete
+
 function deleteRow(btn) {
     var row = btn.parentNode.parentNode;
     row.parentNode.removeChild(row);
@@ -42,7 +42,7 @@ function deleteRow(btn) {
 }
 
 
-// Complete
+
 async function addOrderRow() {
     var name;
     var unitPrice;
@@ -133,7 +133,7 @@ async function addOrderRow() {
 }
 
 
-//In progress
+
 async function checkPassword() {
 
     // Query the database to get the employee table
@@ -168,7 +168,7 @@ async function checkPassword() {
 }
 
 
-// In Progress
+
 async function completeCustomerOrder() { 
     // Get the next available customerOrderID and saleLineID
     // Query to get the customerSaleLine database
@@ -326,7 +326,7 @@ async function completeCustomerOrder() {
 }
 
 
-// Complete
+
 function cancelOrder() {
     // Clear the HTML order table
     // Do not need to interact with DB since changes are only made when an order is completed
@@ -339,7 +339,7 @@ function cancelOrder() {
 }
 
 
-// Complete
+
 async function updateInfoBar() {
     var name;
     var unitPrice;
@@ -371,7 +371,7 @@ async function updateInfoBar() {
 }
 
 
-// Complete
+
 async function createCheatSheet() {
     var id;
     var name;
@@ -417,7 +417,7 @@ async function createCheatSheet() {
 }
 
 
-// Complete
+
 function updateOrderPrice() {
     var table = document.getElementById("orders");
 
@@ -432,7 +432,7 @@ function updateOrderPrice() {
 }
 
 
-// Complete
+
 async function createItemTable() {
     var id;
     var name;
