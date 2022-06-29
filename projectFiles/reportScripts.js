@@ -89,7 +89,7 @@ async function salesReport() {
     }
 
     // Sum up the total revenue
-    document.getElementById("revenue").innerHTML = totalRevenue;
+    document.getElementById("revenue").innerHTML = totalRevenue.toFixed(2);
 }
 
 
@@ -161,6 +161,11 @@ async function excessReport() {
     // Fill the table with the report results
     var table = document.getElementById("report");
     for (var i = 0; i < foodItemsDB.length; i++) {
+        console.log("sold: " + foodQuantities[i] + "\nin inv: " + foodItemsDB[i].foodquantity + "\n10% of inv: " + 0.1 * foodItemsDB[i].foodquantity);
+        if (foodQuantities[i] > 0.1 * foodItemsDB[i].foodquantity) {
+            continue;
+        }
+
         // Create the new row
         var tr = document.createElement('tr');
 
@@ -170,6 +175,21 @@ async function excessReport() {
         <td>' + foodItemsDB[i].foodname + '</td> \
         <td>' + foodQuantities[i].toFixed(2) + '</td> \
         <td>' + foodItemsDB[i].foodquantity + '</td>';
+
+        tr.innerHTML = rowText;
+        table.appendChild(tr);
+    }
+
+    if (table.rows.length == 1) {
+        //TODO: ADD Feedback
+        var tr = document.createElement('tr');
+
+        // Create all columns and fill them with data
+        rowText = ' \
+        <td></td> \
+        <td></td> \
+        <td>No Items sold less than 10%</td> \
+        <td></td>';
 
         tr.innerHTML = rowText;
         table.appendChild(tr);
