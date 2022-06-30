@@ -132,6 +132,7 @@ footer {
     text-align: left;
     font-family: Tahoma, sans-serif;
     font-weight: bold;
+    font-size: 22px;
     background-color: #1aebff;
     color: black;
 }
@@ -162,6 +163,7 @@ footer {
     border-collapse: collapse;
     font-family: Tahoma, sans-serif;
     font-weight: bold;
+    font-size: 24px;
     background-color: black;
     color: white;
 }
@@ -216,6 +218,7 @@ footer {
     color: white;
     font-family: Tahoma, sans-serif;
     font-weight: bold;
+    font-size: 24px;
     background-color:rgb(40, 42, 53);
 }
 
