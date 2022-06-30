@@ -56,13 +56,14 @@ async function addToFoodItems() {
     rowText = ' \
     <td>' + foodID + '</td> \
     <td>' + name + '</td> \
-    <td>€&nbsp;' + price.toFixed(2) + '</td> \
+    <td>€&nbsp;' + parseFloat(price).toFixed(2) + '</td> \
     <td>0.00</td> \
     <td>' + location + '</td> \
     <td><button type="button" class="btn btn-primary" onclick="">Edit</button></td> \
     <td><button type="button" class="btn btn-outline-danger" onclick="">X</button></td>';
 
     tr.innerHTML = rowText;
+    console.log(rowText);
     table.appendChild(tr);
 
     // Clear all the boxes
