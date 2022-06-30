@@ -326,7 +326,7 @@ app.put('/addFoodItem', function(req, res) {
 
 
 // EDIT DATABASE FUNCTION
-app.put('/editFoodItems', function(req, res) {
+app.put('/editFoodQty', function(req, res) {
     console.log("\nReq.body:");
     console.log(req.body);
 
@@ -369,7 +369,33 @@ app.delete('/deleteFoodItem', function(req, res) {
         //console.log(err.message);
     }
     })
-})
+});
+
+app.post('/editFoodItem', function(req, res) {
+    console.log("\nReq.body:");
+    console.log(req.body);
+
+    var id = req.body.foodid;
+    var name = req.body.foodname;
+    var price = req.body.unitprice;
+    var qty = req.body.foodquantity;
+    var storage = req.body.storagetype;
+    var package = req.body.packaged;
+
+    var command = 'UPDATE fooditems SET foodname=' + name + ', unitprice=' + price + ', foodquantity=' + qty + ', storagetype=' + storage + ', packaged=' + package + ' WHERE foodid=' + id;
+    console.log(command);
+
+    client.query(command, (err, result)=>{
+    if (!err) {
+        console.log("COMPLETE\n\n");
+        res.send("Completed");
+    } 
+    else {
+        console.log("\nERROR:");
+        console.log(err.message);
+    }
+    })
+});
 
 
 
