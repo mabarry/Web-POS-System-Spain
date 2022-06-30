@@ -98,20 +98,26 @@ footer {
 
 .newItemLabel {
     grid-area: newItemLabel;
-    padding-top: 6%;
-    padding-bottom: 3%;
-    border-radius: 20px;
-    background-color: rgb(61, 125, 242);
     text-align: center;
-    color: white;
     font-family: Tahoma, sans-serif;
     font-weight: bold;
     font-size: larger;
-    border: 1px solid rgba(0,0,0,0.2);
-    border-width: 1px;
     height: 80px;
     min-width: 100%;
     max-width: 100%;
+}
+
+.itemText {
+    padding-top: 14%;
+    margin-bottom: 0%;
+    color: rgb(0, 0, 0);
+}
+
+.itemSubtext {
+    color: gray;
+    font-size: smaller;
+    font-weight: normal;
+    margin-bottom: 12%;
 }
 
 .newItemName {
