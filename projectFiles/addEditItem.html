@@ -79,7 +79,7 @@
             <div class="table-container">
                 <div class="itemTable">
                     <table class="items" id="items">
-                        <script src="customerScripts.js" onload="createItemTable();"></script>
+                        <script src="addEditScripts.js" onload="createItemTable();"></script>
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
@@ -101,7 +101,7 @@
 
             <div class="newItemName" id="newItemName">
                 <div class="input-group">
-                    <input type="text" id="idSearch" class="form-control rounded" placeholder="Enter Name *" aria-label="Search"
+                    <input type="text" id="newName" class="form-control rounded" placeholder="Enter Name *" aria-label="Search"
                     aria-describedby="search-addon" oninput="">
                     <script src="customerScripts.js"></script>
                     <button type="button" id="idButton" class="btn btn-primary" onclick="">Enter</button>
@@ -110,7 +110,7 @@
 
             <div class="newItemPrice" id="newItemPrice">
                 <div class="input-group">
-                    <input type="text" id="idSearch" class="form-control rounded" placeholder="Enter Price *" aria-label="Search"
+                    <input type="text" id="newPrice" class="form-control rounded" placeholder="Enter Price *" aria-label="Search"
                     aria-describedby="search-addon" oninput="">
                     <script src="customerScripts.js"></script>
                     <button type="button" id="idButton" class="btn btn-primary" onclick="">Enter</button>
@@ -119,7 +119,7 @@
 
             <div class="newItemLocation" id="newItemLocation">
                 <div class="input-group">
-                    <input type="text" id="idSearch" class="form-control rounded" placeholder="Enter Location *" aria-label="Search"
+                    <input type="text" id="newLocation" class="form-control rounded" placeholder="Enter Location *" aria-label="Search"
                     aria-describedby="search-addon" oninput="">
                     <script src="customerScripts.js"></script>
                     <button type="button" id="idButton" class="btn btn-primary" onclick="">Enter</button>
@@ -128,7 +128,7 @@
 
             <div class="packageType" id="packageType">
                 <div class="input-group">
-                    <input type="text" id="idSearch" class="form-control rounded" placeholder="Enter 'true' or 'false' for packaging *" aria-label="Search"
+                    <input type="text" id="newPackaging" class="form-control rounded" placeholder="Enter 'true' or 'false' for packaging *" aria-label="Search"
                     aria-describedby="search-addon" oninput="">
                     <script src="customerScripts.js"></script>
                     <button type="button" id="idButton" class="btn btn-primary" onclick="">Enter</button>
@@ -138,8 +138,8 @@
             <div class="addToTable" id="addItemToTableButton">
                 <div class="d-grid gap-2 d-md-block">
                     <p>
-                        <button type="button" id="cartButton" class="btn btn-primary btn-lg" onclick="">Add Item to Table</button>
-                        <script src="customerScripts.js"></script>
+                        <button type="button" id="cartButton" class="btn btn-primary btn-lg" onclick="addToFoodItems()">Add Item to Table</button>
+                        <script src="addEditScripts.js"></script>
                     </p>
                 </div>
             </div>

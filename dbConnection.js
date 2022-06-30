@@ -289,6 +289,32 @@ app.post('/addSaleLine', function(req, res) {
     })
 });
 
+app.put('/addFoodItem', function(req, res) {
+    console.log("\nReq.body:");
+    console.log(req.body);
+
+    var id = req.body.foodid;
+    var name = req.body.foodname;
+    var price = req.body.unitprice;
+    var qty = req.body.foodquantity;
+    var storage = req.body.storagetype;
+    var package = req.body.packaged;
+
+    var command = 'INSERT INTO foodItems VALUES(' + id + ', \'' + name + '\', ' + price + ', ' + qty + ', \'' + storage + '\', \'' + package + '\')';
+    console.log(command);
+
+    client.query(command, (err, result)=>{
+    if (!err) {
+        console.log("COMPLETE\n\n");
+        res.send(result.rows);
+    } 
+    else {
+        console.log("\nERROR:");
+        console.log(err.message);
+    }
+    })
+});
+
 
 
 // EDIT DATABASE FUNCTION

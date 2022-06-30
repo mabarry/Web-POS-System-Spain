@@ -83,8 +83,8 @@
                         <p class="description">Items that sold more than what is in stock</p>
                         <br>
                         <p class="normal">Select a starting and ending date: </p>
-                        <input type="date" name="start-date">
-                        <input type="date" name="end-date">
+                        <input type="date" name="start-date" id="startdate">
+                        <input type="date" name="end-date" id="enddate">
                     </div>
                 </div>  
             </div>
@@ -92,8 +92,8 @@
             <div class="generateReport" id="generateReport">
                 <div class="d-grid gap-2 d-md-block">
                     <p>
-                        <button type="button" id="reportButton" class="btn btn-primary btn-lg" onclick="">Generate Report</button>
-                        <script src="customerScripts.js"></script>
+                        <button type="button" id="reportButton" class="btn btn-primary btn-lg" onclick="restockReport()">Generate Report</button>
+                        <script src="reportScripts.js"></script>
                     </p>
                 </div>
             </div>
@@ -101,12 +101,11 @@
             <div class="table-container">
                 <div class="reportTable">
                     <table class="report" id="report">
-                        <script src="customerScripts.js" onload=""></script>
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
                             <th>Total Quantity Sold</th>
-                            <th>Total Sales</th>
+                            <th>Quantity in Inventory</th>
                         </tr>
 
                         <!-- This is where each food item will be added to the cheat sheet -->
@@ -114,13 +113,6 @@
                 </div>
 
                 <div class="summary" id="summary">
-                    <div class="sumLine input-group" id="sumLine">
-                        <span class="input-group-text" id="sumTitle"> Total Period Revenue: </span>
-                        <div class="revenue"  id="revenue">
-                            <p> 0.00 </p>
-                        </div>
-                        <span class="input-group-text" id="euro"> € </span>
-                    </div>
                     <div class="openReport">
                         <p>
                             <button type="button" id="openButton" class="btn btn-primary btn-lg" onclick="">Open New Tab</button>
@@ -131,14 +123,8 @@
             </div>
         </div>
 
-        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <!-- Bootstrap Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-        <!-- Option 2: Separate Popper and Bootstrap JS -->
-        <!--
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-        -->
     </body>
 
   <footer>
