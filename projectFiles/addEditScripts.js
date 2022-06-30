@@ -112,7 +112,7 @@ async function createItemTable() {
         <td>€&nbsp;' + unitPrice + '</td> \
         <td>' + invQty + '</td> \
         <td>' + storage + '</td> \
-        <td><button type="button" class="btn btn-primary" onclick="">Edit</button></td> \
+        <td><button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editItemModal">Edit</button></td> \
         <td><button type="button" class="btn btn-outline-danger" onclick="deleteFoodItem(this)">X</button></td>';
 
         tr.innerHTML = rowText;
