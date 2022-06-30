@@ -340,6 +340,29 @@ app.put('/editFoodItems', function(req, res) {
     })
 });
 
+app.delete('/deleteFoodItem', function(req, res) {
+    console.log("\nReq.body:");
+    console.log(req.body);
+
+    var foodID = req.body.foodid;
+
+    var command = 'DELETE FROM foodItems WHERE foodid=' + foodID;
+    console.log(command);
+
+    client.query(command, (err, result)=>{
+    if (!err) {
+        console.log("COMPLETE\n\n");
+        res.send("1");
+    } 
+    else {
+        console.log("Invalid foodID, has dependencies");
+        res.send("-1");
+        //console.log("\nERROR:");
+        //console.log(err.message);
+    }
+    })
+})
+
 
 
 // REPORT FUNCTIONS
