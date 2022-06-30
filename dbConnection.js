@@ -35,7 +35,7 @@ client.connect();
 
 // Load in databases on start
 var currEmployee;
-
+var currPermissions;
 var foodItems;
 var customerSaleLine;
 var customerOrder;
@@ -242,6 +242,7 @@ app.post('/employeeList', function(req, res){
     console.log(req.body);
 
     currEmployee = req.body.employeeid;
+    currPermissions = req.body.ismanager;
     res.send(employeeList[req.body.employeeID - 101]);
 });
 
@@ -382,7 +383,7 @@ app.post('/editFoodItem', function(req, res) {
     var storage = req.body.storagetype;
     var package = req.body.packaged;
 
-    var command = 'UPDATE fooditems SET foodname=' + name + ', unitprice=' + price + ', foodquantity=' + qty + ', storagetype=' + storage + ', packaged=' + package + ' WHERE foodid=' + id;
+    var command = "UPDATE fooditems SET foodname=\'" + name + "\', unitprice=" + price + ", foodquantity=" + qty + ", storagetype=\'" + storage + "\', packaged=" + package + " WHERE foodid=" + id;
     console.log(command);
 
     client.query(command, (err, result)=>{
@@ -483,6 +484,10 @@ app.post('/salesWithinDateRange', function(req, res){
 // OTHER FUNCTIONS
 app.get('/currentEmployee', function(req, res){
     res.send(currEmployee);
+});
+
+app.get('/currentPermissions', function(req, res) {
+    res.send(currPermissions);
 });
 
 app.put('/setCurrentEmployee', function(req, res) {

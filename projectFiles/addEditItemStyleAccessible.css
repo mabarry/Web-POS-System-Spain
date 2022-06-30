@@ -39,6 +39,7 @@ footer {
     ' newItemLabel newItemLabel itemTable itemTable itemTable '
     ' newItemName newItemName itemTable itemTable itemTable '
     ' newItemPrice newItemPrice itemTable itemTable itemTable '
+    ' newItemQuantity newItemQuantity itemTable itemTable itemTable '
     ' newItemLocation newItemLocation itemTable itemTable itemTable '
     ' packaged packaged itemTable itemTable itemTable '
     ' submit submit itemTable itemTable itemTable ';
@@ -130,6 +131,10 @@ footer {
     grid-area: newItemPrice;
 }
 
+.newItemQuantity {
+    grid-area: newItemQuantity;
+}
+
 .newItemLocation {
     grid-area: newItemLocation;
 }
@@ -189,4 +194,28 @@ footer {
 
 #cancelUpdate {
     width: 100%;
+}
+
+#popUp {
+    margin-bottom: 2%;
+}
+
+.idToEdit {
+    padding-top:8px;
+    padding-right: 10px;
+    width: 85%;
+    height: 40px;
+    border: 1px solid white;
+}
+
+.modal-header, .modal-body {
+    background: black;
+    color: white;
+}
+
+#dialog {
+    background: black;
+    color: white;
+    border: 1px solid white;
+    border-radius: 3px;
 }
