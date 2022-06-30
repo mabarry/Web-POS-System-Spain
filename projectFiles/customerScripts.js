@@ -295,7 +295,7 @@ async function completeCustomerOrder() {
         };
 
         // Edit the inventory in FoodItems DB
-        const editFoodItemsResponse = await fetch('/editFoodItems', {
+        const editFoodItemsResponse = await fetch('/editFoodQty', {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
