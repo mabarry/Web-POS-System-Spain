@@ -34,7 +34,7 @@ function accessibleVendor() {
 }
 
 function accessibleItems() {
-    if (vendorSwitch == false) {
+    if (addEditItemSwitch == false) {
         previousStyle = "addEditItemStyle.css";
         document.getElementById("style").href = "addEditItemStyleAccessible.css";
         window.name = "accessibilityMode";
@@ -48,7 +48,7 @@ function accessibleItems() {
 }
 
 function accessibleReport() {
-    if (vendorSwitch == false) {
+    if (reportSwitch == false) {
         previousStyle = "reportStyle.css";
         document.getElementById("style").href = "reportStyleAccessible.css";
         window.name = "accessibilityMode";
