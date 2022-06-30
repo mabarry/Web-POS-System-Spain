@@ -1,52 +1,63 @@
 var customerSwitch = false;
 var vendorSwitch = false;
+var addEditItemSwitch = false;
+var reportSwitch = false;
+var previousStyle = "";
 
 
 function accessibleCustomer() {
-    if(customerSwitch == false) {
-        previousStyle =
+    if (customerSwitch == false) {
+        previousStyle = "customerStyle.css";
         document.getElementById("style").href = "customerStyleAccessible.css";
+        window.name = "accessibilityMode";
         customerSwitch = true;
-    }
-    else {
+    } else {
+        previousStyle = "customerStyleAccessible.css";
         document.getElementById("style").href = "customerStyle.css";
+        window.name = "normalMode";
         customerSwitch = false;
     }
 }
 
 function accessibleVendor() {
-    if(vendorSwitch == false) {
-        previousStyle =
+    if (vendorSwitch == false) {
+        previousStyle = "vendorStyle.css";
         document.getElementById("style").href = "vendorStyleAccessible.css";
+        window.name = "accessibilityMode";
         vendorSwitch = true;
-    }
-    else {
+    } else {
+        previousStyle = "vendorStyleAccessible.css";
         document.getElementById("style").href = "vendorStyle.css";
+        window.name = "normalMode";
         vendorSwitch = false;
     }
 }
 
 function accessibleItems() {
-    if(vendorSwitch == false) {
-        previousStyle =
+    if (vendorSwitch == false) {
+        previousStyle = "addEditItemStyle.css";
         document.getElementById("style").href = "addEditItemStyleAccessible.css";
-        vendorSwitch = true;
-    }
-    else {
+        window.name = "accessibilityMode";
+        addEditItemSwitch = true;
+    } else {
+        previousStyle = "addEditItemStyleAccessible";
         document.getElementById("style").href = "addEditItemStyle.css";
-        vendorSwitch = false;
+        window.name = "normalMode";
+        addEditItemSwitch = false;
     }
 }
 
 function accessibleReport() {
-    if(vendorSwitch == false) {
-        previousStyle =
+    if (vendorSwitch == false) {
+        previousStyle = "reportStyle.css";
         document.getElementById("style").href = "reportStyleAccessible.css";
-        vendorSwitch = true;
-    }
-    else {
+        window.name = "accessibilityMode";
+        reportSwitch = true;
+    } else {
+        previousStyle = "reportStyleAccessible.css";
         document.getElementById("style").href = "reportStyle.css";
-        vendorSwitch = false;
+        window.name = "normalMode";
+        reportSwitch = false;
     }
 }
 
@@ -440,4 +451,35 @@ function updateOrderPrice() {
     document.getElementById("price").innerHTML = totalCost;
 }
 
+window.addEventListener('load', (event) => {
+    // console.log(window.name);
+    if (window.name == "accessibilityMode") {
+        // figure out current page
+        // set corresponding css file
+        // console.log(document.getElementById("style").href);
 
+        if (document.getElementById("style").href == "http://localhost:3000/customerStyle.css") {
+            document.getElementById("style").href = "customerStyleAccessible.css";
+            window.name = "accessibilityMode";
+            customerSwitch = true;
+
+        } else if (document.getElementById("style").href == "http://localhost:3000/vendorStyle.css") {
+            document.getElementById("style").href = "vendorStyleAccessible.css";
+            window.name = "accessibilityMode";
+            vendorSwitch = true;
+
+        } else if (document.getElementById("style").href == "http://localhost:3000/addEditItemStyle.css") {
+            document.getElementById("style").href = "addEditItemStyleAccessible.css";
+            window.name = "accessibilityMode";
+            addEditItemSwitch = true;
+
+        } else if (document.getElementById("style").href == "http://localhost:3000/reportStyle.css") {
+            document.getElementById("style").href = "reportStyleAccessible.css";
+            window.name = "accessibilityMode";
+            reportSwitch = true;
+
+        }
+    }
+
+
+});
