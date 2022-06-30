@@ -39,6 +39,7 @@ footer {
     ' newItemLabel newItemLabel itemTable itemTable itemTable '
     ' newItemName newItemName itemTable itemTable itemTable '
     ' newItemPrice newItemPrice itemTable itemTable itemTable '
+    ' newItemQuantity newItemQuantity itemTable itemTable itemTable '
     ' newItemLocation newItemLocation itemTable itemTable itemTable '
     ' packaged packaged itemTable itemTable itemTable '
     ' submit submit itemTable itemTable itemTable ';
@@ -130,6 +131,10 @@ footer {
     grid-area: newItemPrice;
 }
 
+.newItemQuantity {
+    grid-area: newItemQuantity;
+}
+
 .newItemLocation {
     grid-area: newItemLocation;
 }
@@ -193,13 +198,13 @@ footer {
 
 #popUp {
     margin-bottom: 2%;
-    background: black;
-    color:white;
+    /* background: black;
+    color:white; */
 }
 
 #popUp input {
-    background-color: #3f3f3f;;
-    color:white;
+    /* background-color: #3f3f3f;;
+    color:white; */
 }
 
 .idToEdit {
@@ -208,8 +213,8 @@ footer {
     width: 85%;
     height: 40px;
     border: 1px solid white;
-    border-radius: 3px;
-    background-color: #3f3f3f;
+    /* border-radius: 3px;
+    background-color: #3f3f3f; */
 }
 
 .modal-header, .modal-body {
