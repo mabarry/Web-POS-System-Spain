@@ -70,7 +70,6 @@ footer {
     color: black;
     font-family: Tahoma, sans-serif;
     font-weight: bold;
-    font-size: 24px;
     border: 1px solid white;
     border-width: 1px;
     height: 80px;
@@ -132,7 +131,6 @@ footer {
     text-align: left;
     font-family: Tahoma, sans-serif;
     font-weight: bold;
-    font-size: 20px;
     background-color: #1aebff;
     color: black;
 }
@@ -163,7 +161,6 @@ footer {
     border-collapse: collapse;
     font-family: Tahoma, sans-serif;
     font-weight: bold;
-    font-size: 20px;
     background-color: black;
     color: white;
 }
@@ -218,7 +215,6 @@ footer {
     color: white;
     font-family: Tahoma, sans-serif;
     font-weight: bold;
-    font-size: 24px;
     background-color:rgb(40, 42, 53);
 }
 
@@ -235,7 +231,6 @@ footer {
     color: white;
     font-family: Tahoma, sans-serif;
     font-weight: bold;
-    font-size: 24px;
 }
 
 .btn-lg {
@@ -275,7 +270,6 @@ footer {
     background-color: #3ff23f!important;
     color: black!important;
     font-style: bold!important;
-    font-size: 30px!important;
 }
 
 .btn-success:hover {
@@ -287,7 +281,6 @@ footer {
     background-color: #ff0000!important;
     color: white!important;
     font-style: bold!important;
-    font-size: 30px!important;
 }
 
 .btn-danger:hover {
@@ -299,6 +292,5 @@ footer {
     background-color: #ffff00!important;
     color: black!important;
     font-style: bold!important;
-    font-size: 24px!important;
 
 }
