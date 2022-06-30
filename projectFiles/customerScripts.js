@@ -222,7 +222,7 @@ async function completeCustomerOrder() {
             'Content-Type': 'application/json'
         }
     });
-    var employeeID = await employeeResponse.json();
+    var employeeID = await employeeResponse;
     
 
     // Do not add empty order to the DB

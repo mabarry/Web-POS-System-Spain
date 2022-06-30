@@ -240,7 +240,7 @@ app.get('/vendorBuyLine', function(req, res){
 app.post('/employeeList', function(req, res){
     console.log("\nReq.body:");
     console.log(req.body);
-
+    
     currEmployee = req.body.employeeid;
     currPermissions = req.body.ismanager;
     res.send(employeeList[req.body.employeeID - 101]);

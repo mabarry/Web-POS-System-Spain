@@ -65,7 +65,7 @@ async function addOrderRow() {
     // Get the needed data from the database query
     name = data.foodname;
     invQty = data.foodquantity;
-    unitPrice = data.unitprice;
+    unitPrice = document.getElementById("vendorPriceSearch").value;
 
     buyPrice = vendorQty * unitPrice;
     buyPrice = buyPrice.toFixed(2);
@@ -150,7 +150,7 @@ async function completeVendorOrder() {
             'Content-Type': 'application/json'
         }
     });
-    var employeeID = await employeeResponse.json();
+    var employeeID = await employeeResponse;
     
 
     // Do not add empty order to the DB
@@ -250,7 +250,7 @@ async function completeVendorOrder() {
     <td>' + vendorName + '</td> \
     <td>' + vendorOrderID + '</td> \
     <td>' + vendorOrderDate + '</td> \
-    <td>' + vendorOrderTotal + '</td> \
+    <td>' + vendorOrderTotal.toFixed(2) + '</td> \
     <td><button type="button" class="btn btn-outline-primary" onclick="receiveVendorOrder(this)">Mark Received</button></td>';
     // data-bs-toggle="modal" data-bs-target="#receiveModal"
 
