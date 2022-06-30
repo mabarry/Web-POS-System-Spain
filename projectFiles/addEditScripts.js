@@ -71,7 +71,6 @@ async function addToFoodItems() {
     document.getElementById("newPrice").value = '';
     document.getElementById("newLocation").value = '';
     document.getElementById("newPackaging").value = '';
-
 }
 
 
@@ -139,6 +138,13 @@ async function deleteFoodItem(btn) {
         },
         body: JSON.stringify(deleteFood)
     });
+    var didSucceed = await deleteResponse.json();
+
+    if (didSucceed == "-1") {
+        console.log("Invalid delete, item has had previous orders");
+        // TODO: Add feedback
+        return;
+    }
 
 
     // Remove the row from the items table
