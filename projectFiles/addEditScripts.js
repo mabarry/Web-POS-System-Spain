@@ -114,9 +114,48 @@ async function createItemTable() {
         <td>' + invQty + '</td> \
         <td>' + storage + '</td> \
         <td><button type="button" class="btn btn-primary" onclick="">Edit</button></td> \
-        <td><button type="button" class="btn btn-outline-danger" onclick="">X</button></td>';
+        <td><button type="button" class="btn btn-outline-danger" onclick="deleteFoodItem(this)">X</button></td>';
 
         tr.innerHTML = rowText;
         table.appendChild(tr);
     }
+}
+
+
+async function deleteFoodItem(btn) {
+    // Delete the food item from database
+    var row = btn.parentNode.parentNode;
+    var foodID = row.cells[0].innerHTML;
+
+    const deleteFood = {
+        foodid: foodID
+    };
+
+    const deleteResponse = await fetch('/deleteFoodItem', {
+        method: 'DELETE',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(deleteFood)
+    });
+
+
+    // Remove the row from the items table
+    row.parentNode.removeChild(row);
+
+    // Update the food items DB
+    const foodItemsResponse = await fetch('/updateFoodItems', {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    });
+
+    // Clear all the boxes
+    document.getElementById("newName").value = '';
+    document.getElementById("newPrice").value = '';
+    document.getElementById("newLocation").value = '';
+    document.getElementById("newPackaging").value = '';
 }
