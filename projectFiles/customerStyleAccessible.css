@@ -235,6 +235,7 @@ footer {
     color: white;
     font-family: Tahoma, sans-serif;
     font-weight: bold;
+    font-size: 24px;
 }
 
 .btn-lg {
@@ -273,6 +274,8 @@ footer {
 .btn-success {
     background-color: #3ff23f!important;
     color: black!important;
+    font-style: bold!important;
+    font-size: 30px!important;
 }
 
 .btn-success:hover {
@@ -283,6 +286,8 @@ footer {
 .btn-danger {
     background-color: #ff0000!important;
     color: white!important;
+    font-style: bold!important;
+    font-size: 30px!important;
 }
 
 .btn-danger:hover {
@@ -293,4 +298,7 @@ footer {
 .btn-primary {
     background-color: #ffff00!important;
     color: black!important;
+    font-style: bold!important;
+    font-size: 24px!important;
+
 }
