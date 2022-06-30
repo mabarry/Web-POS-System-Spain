@@ -1,3 +1,7 @@
+function searchFunction(x) {
+    document.getElementById(x).focus();
+}
+
 async function addToFoodItems() {
     //TODO: Add error checking
 
