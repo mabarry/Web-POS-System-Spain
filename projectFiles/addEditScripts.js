@@ -60,7 +60,7 @@ async function addToFoodItems() {
     <td>0.00</td> \
     <td>' + location + '</td> \
     <td><button type="button" class="btn btn-primary" onclick="">Edit</button></td> \
-    <td><button type="button" class="btn btn-outline-danger" onclick="">X</button></td>';
+    <td><button type="button" class="btn btn-outline-danger" onclick="deleteFoodItem(this)">X</button></td>';
 
     tr.innerHTML = rowText;
     console.log(rowText);
@@ -129,7 +129,7 @@ async function deleteFoodItem(btn) {
     const deleteFood = {
         foodid: foodID
     };
-
+    console.log("About to delete");
     const deleteResponse = await fetch('/deleteFoodItem', {
         method: 'DELETE',
         headers: {
@@ -146,10 +146,11 @@ async function deleteFoodItem(btn) {
         return;
     }
 
-
+    console.log("About to remove row");
     // Remove the row from the items table
     row.parentNode.removeChild(row);
 
+    console.log("About to update DB");
     // Update the food items DB
     const foodItemsResponse = await fetch('/updateFoodItems', {
         method: 'GET',
@@ -159,6 +160,7 @@ async function deleteFoodItem(btn) {
         }
     });
 
+    console.log("About to clear boxes");
     // Clear all the boxes
     document.getElementById("newName").value = '';
     document.getElementById("newPrice").value = '';

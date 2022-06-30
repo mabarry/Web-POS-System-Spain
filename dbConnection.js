@@ -34,7 +34,7 @@ client.connect();
 
 
 // Load in databases on start
-var currEmployee = "101";
+var currEmployee;
 
 var foodItems;
 var customerSaleLine;
@@ -237,6 +237,14 @@ app.get('/vendorBuyLine', function(req, res){
 
 
 // ADD TO DATABASE FUNCTIONS
+app.post('/employeeList', function(req, res){
+    console.log("\nReq.body:");
+    console.log(req.body);
+
+    currEmployee = req.body.employeeid;
+    res.send(employeeList[req.body.employeeID - 101]);
+});
+
 app.post('/addCustomerOrder', function(req, res) {
     console.log("\nReq.body:");
     console.log(req.body);

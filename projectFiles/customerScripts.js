@@ -182,7 +182,7 @@ async function checkPassword() {
     }
     
     // Query the employeeList for a specific employeeid
-    const response = await fetch('/employeeList?employeeid=' + employeeid, {
+    const response = await fetch('/employeeList', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
