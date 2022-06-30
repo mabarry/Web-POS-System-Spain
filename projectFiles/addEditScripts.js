@@ -59,7 +59,7 @@ async function addToFoodItems() {
     <td>€&nbsp;' + parseFloat(price).toFixed(2) + '</td> \
     <td>0.00</td> \
     <td>' + location + '</td> \
-    <td><button type="button" class="btn btn-primary" onclick="">Edit</button></td> \
+    <td><button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editItemModal" onclick="autoFillPopUp(this)">Edit</button></td> \
     <td><button type="button" class="btn btn-outline-danger" onclick="deleteFoodItem(this)">X</button></td>';
 
     tr.innerHTML = rowText;
@@ -112,7 +112,7 @@ async function createItemTable() {
         <td>€&nbsp;' + unitPrice + '</td> \
         <td>' + invQty + '</td> \
         <td>' + storage + '</td> \
-        <td><button type="button" class="btn btn-primary" onclick="">Edit</button></td> \
+        <td><button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editItemModal" onclick="autoFillPopUp(this)">Edit</button></td> \
         <td><button type="button" class="btn btn-outline-danger" onclick="deleteFoodItem(this)">X</button></td>';
 
         tr.innerHTML = rowText;
@@ -166,4 +166,26 @@ async function deleteFoodItem(btn) {
     document.getElementById("newPrice").value = '';
     document.getElementById("newLocation").value = '';
     document.getElementById("newPackaging").value = '';
+}
+
+
+function autoFillPopUp(btn) {
+    // Get data from table row
+    var row = btn.parentNode.parentNode;
+
+    var name = row.cells[1].innerHTML;
+    var price = row.cells[2].innerHTML.substring(7);
+    var qty = row.cells[3].innerHTML;
+    var location = row.cells[4].innerHTML;
+
+    // Fill in pop-up fields
+    document.getElementById("newNamePopUp").value = name;
+    document.getElementById("newPricePopUp").value = price;
+    document.getElementById("newQuantityPopUp").value = qty;
+    document.getElementById("newLocationPopUp").value = location;
+}
+
+
+async function editFoodItem() {
+    // Get data from pop-up
 }

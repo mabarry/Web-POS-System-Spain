@@ -158,3 +158,24 @@ footer {
 .btn-lg {
     min-width: 100%;
 }
+
+.modal-content {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.confirmation {
+    display: grid;
+    grid-template-areas: 
+    ' cancel confirm ';
+    grid-gap: 1em;
+}
+
+.cancelUpdate {
+    grid-area: 'cancel';
+    width: 100%;
+}
+
+#cancelUpdate {
+    width: 100%;
+}
