@@ -317,7 +317,7 @@ app.put('/editFoodItems', function(req, res) {
 
 
 // REPORT FUNCTIONS
-app.post('/salesReport', function(req, res){
+app.post('/salesWithinDateRange', function(req, res){
     console.log("\nReq.body:");
     console.log(req.body);
 
