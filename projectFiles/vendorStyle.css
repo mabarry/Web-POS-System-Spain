@@ -142,7 +142,7 @@ footer {
     height: 100%;
 }
 
-.orderTable, .prevOrderTable {
+.orderTable, .orderTablePopUp, .prevOrderTable {
     border: 1px solid rgba(0,0,0,0.2);
     border-radius: 3px;
     min-width: 100%;
@@ -159,7 +159,7 @@ footer {
     grid-area: 'prevOrders';
 }
 
-.orderTable th, .prevOrderTable th, .cheatsheet th {
+.orderTable th, .orderTablePopUp th, .prevOrderTable th, .cheatsheet th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
@@ -170,7 +170,7 @@ footer {
     
 }
 
-.orderTable td, .orderTable th, .prevOrderTable td, .prevOrderTable th, .cheatsheet td, .cheatsheet th {
+.orderTable td, .orderTable th, .orderTablePopUp td, .orderTablePopUp th, .prevOrderTable td, .prevOrderTable th, .cheatsheet td, .cheatsheet th {
     border: 1px solid #ddd;
     padding: 8px;
 }
@@ -178,6 +178,10 @@ footer {
 .orderTable tr:nth-child(even){background-color: #f2f2f2;}
 
 .orderTable tr:hover {background-color: #ddd;}
+
+.orderTablePopUp tr:nth-child(even){background-color: #f2f2f2;}
+
+.orderTablePopUp tr:hover {background-color: #ddd;}
 
 .prevOrderTable tr:nth-child(even){background-color: #f2f2f2;}
 
@@ -187,7 +191,7 @@ footer {
 
 .cheatsheet tr:hover {background-color: #ddd;}
 
-.orders, .prevOrders, .sheet {
+.orders, .ordersPopUp, .prevOrders, .sheet {
     width: 100%;
     border-collapse: collapse;
     font-family: Tahoma, sans-serif;
