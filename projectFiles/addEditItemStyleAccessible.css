@@ -190,3 +190,36 @@ footer {
 #cancelUpdate {
     width: 100%;
 }
+
+#popUp {
+    margin-bottom: 2%;
+    background: black;
+    color:white;
+}
+
+#popUp input {
+    background-color: #3f3f3f;;
+    color:white;
+}
+
+.idToEdit {
+    padding-top:8px;
+    padding-right: 10px;
+    width: 85%;
+    height: 40px;
+    border: 1px solid white;
+    border-radius: 3px;
+    background-color: #3f3f3f;
+}
+
+.modal-header, .modal-body {
+    background: black;
+    color: white;
+}
+
+#dialog {
+    background: black;
+    color: white;
+    border: 1px solid white;
+    border-radius: 3px;
+}
