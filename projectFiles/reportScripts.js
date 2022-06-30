@@ -165,6 +165,9 @@ async function excessReport() {
         if (foodQuantities[i] > 0.1 * foodItemsDB[i].foodquantity) {
             continue;
         }
+        if (foodItemsDB[i].foodquantity == 0 && foodQuantities[i] == 0) {
+            continue;
+        }
 
         // Create the new row
         var tr = document.createElement('tr');
