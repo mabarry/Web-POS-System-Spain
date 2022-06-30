@@ -140,7 +140,21 @@ footer {
     grid-area: submit;
 }
 
+#popUp {
+    margin-bottom: 2%;
+    width: 100%;
+}
 
+#idToEdit {
+    background: white !important;
+}
+
+/* #ID {
+    background: white;
+    min-width:max-content;
+    margin-right: 0px;
+    width: 90%;
+} */
 
 .accessibility {
     margin-top: 5%;

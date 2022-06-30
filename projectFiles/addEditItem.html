@@ -88,6 +88,7 @@
                             <th>Unit Price</th>
                             <th>Quantity in Inventory</th>
                             <th>Storage Location</th>
+                            <th>Packaged</th>
                             <th>Edit Item</th>
                             <th>Delete Item</th>
                         </tr>
@@ -145,37 +146,55 @@
             <div class="modal-dialog">
                 <div class="modal-content" id="dialog">
                     <script src="addEditScripts.js"></script>
+
                     <div class="modal-header">
                         <h5 class="modal-title" id="editItemModalLabel">Edit Item Info</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="input-group">
-                        <input type="text" id="newNamePopUp" class="form-control rounded" placeholder="Name" aria-label="Search"
-                        aria-describedby="search-addon" oninput="">
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-text" id="euro"> € </span>
-                        <input type="text" id="newPricePopUp" class="form-control rounded" placeholder="Price" aria-label="Search"
-                        aria-describedby="search-addon" oninput="">
-                    </div>
-                    <div class="input-group">
-                        <input type="text" id="newQuantityPopUp" class="form-control rounded" placeholder="Quantity" aria-label="Search"
-                        aria-describedby="search-addon" oninput="">
-                    </div>
-                    <div class="input-group">
-                        <input type="text" id="newLocationPopUp" class="form-control rounded" placeholder="Location" aria-label="Search"
-                        aria-describedby="search-addon" oninput="">
-                    </div>
-                    <div class="modal-footer" id="confirmation">
-                        <div class="confirmation">
-                            <div class="cancelUpdate">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancelUpdate">Cancel</button>
-                            </div>
-                            <div class="confirmUpdate">
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="confirmUpdate" onclick="editFoodItem()">Update Item</button>
-                            </div>
+
+                    <div class="modal-body">
+                        <div class="input-group" id="popUp">
+                            <span class="input-group-text" id="euro"> ID: </span>
+                            <input type="text" id="idToEdit" class="form-control rounded" placeholder="ID" aria-label="Search"
+                            aria-describedby="search-addon" readonly="readonly" oninput="">
                         </div>
-                        
+                        <div class="input-group" id="popUp">
+                            <span class="input-group-text" id="euro"> Name: </span>
+                            <input type="text" id="newNamePopUp" class="form-control rounded" placeholder="Name *" aria-label="Search"
+                            aria-describedby="search-addon" oninput="">
+                        </div>
+                        <div class="input-group" id="popUp">
+                            <span class="input-group-text" id="euro"> € </span>
+                            <input type="text" id="newPricePopUp" class="form-control rounded" placeholder="Price *" aria-label="Search"
+                            aria-describedby="search-addon" oninput="">
+                        </div>
+                        <div class="input-group" id="popUp">
+                            <span class="input-group-text" id="euro"> Quantity: </span>
+                            <input type="text" id="newQuantityPopUp" class="form-control rounded" placeholder="Quantity *" aria-label="Search"
+                            aria-describedby="search-addon" oninput="">
+                        </div>
+                        <div class="input-group" id="popUp">
+                            <span class="input-group-text" id="euro"> Location: </span>
+                            <input type="text" id="newLocationPopUp" class="form-control rounded" placeholder="Location *" aria-label="Search"
+                            aria-describedby="search-addon" oninput="">
+                        </div>
+                        <div class="input-group" id="popUp">
+                            <span class="input-group-text" id="euro"> Packaged: </span>
+                            <input type="text" id="newPackagedPopUp" class="form-control rounded" placeholder="Enter 'true' or 'false' for packaging *" aria-label="Search"
+                            aria-describedby="search-addon" oninput="">
+                        </div>
+                        <br>
+                        <div class="modal-footer" id="confirmation">
+                            <div class="confirmation">
+                                <div class="cancelUpdate">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancelUpdate">Cancel</button>
+                                </div>
+                                <div class="confirmUpdate">
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="confirmUpdate" onclick="editFoodItem()">Update Item</button>
+                                </div>
+                            </div>
+                            
+                        </div>
                     </div>
                 </div>
             </div>
