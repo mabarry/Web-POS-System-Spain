@@ -194,21 +194,28 @@ footer {
     font-weight: bold;
 }
 
-.orderTotal {
+.orderTotal, .orderTotalPopUp {
     grid-area: 'total';
     margin-left: 0px;
     width: 100%;
     margin-top:  1em;
 }
 
-.price {
+.price, .pricePopUp {
     padding-top:8px;
     padding-right: 10px;
-    width: 85%;
     height: 40px;
     border: 1px solid rgba(0,0,0,0.2);
     border-radius: 3px;
     text-align: right;
+}
+
+.price {
+    width: 85%;
+}
+
+.pricePopUp {
+    width: 92%;
 }
 
 #euro {
@@ -244,8 +251,45 @@ footer {
     height: 100%;
 }
 
+.confirmation {
+    display: grid;
+    grid-template-areas: 
+    ' cancel confirm ';
+    grid-gap: 1em;
+}
 
+.cancelShipment {
+    grid-area: 'cancel';
+    width: 100%;
+}
 
+#cancelShipment {
+    width: 100%;
+}
+
+.confirmShipment {
+    grid-area: 'confirm';
+    width: 100%;
+}
+
+#confirmShipment {
+    width: 100%;
+}
+
+.name {
+    padding-top:8px;
+    padding-right: 10px;
+    margin-bottom: 1%;
+    width: 100%;
+    height: 40px;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    background-color: rgb(61, 125, 242);
+    color: white;
+    font-family: Tahoma, sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
 
 .accessibility {
     margin-top: 5%;
