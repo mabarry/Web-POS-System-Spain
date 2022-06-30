@@ -80,6 +80,7 @@ async function createItemTable() {
     var unitPrice;
     var invQty;
     var storage;
+    var packaged;
 
     // Query the entire foodItems database
     const response = await fetch('/foodItems', {
@@ -104,6 +105,7 @@ async function createItemTable() {
         unitPrice = data[i].unitprice.toFixed(2);
         invQty = data[i].foodquantity.toFixed(2);
         storage = data[i].storagetype;
+        packaged = data[i].packaged;
 
         // Create all columns and fill them with data
         rowText = ' \
@@ -112,6 +114,7 @@ async function createItemTable() {
         <td>€&nbsp;' + unitPrice + '</td> \
         <td>' + invQty + '</td> \
         <td>' + storage + '</td> \
+        <td>' + packaged + '</td> \
         <td><button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editItemModal" onclick="autoFillPopUp(this)">Edit</button></td> \
         <td><button type="button" class="btn btn-outline-danger" onclick="deleteFoodItem(this)">X</button></td>';
 
@@ -173,19 +176,48 @@ function autoFillPopUp(btn) {
     // Get data from table row
     var row = btn.parentNode.parentNode;
 
+    var id = row.cells[0].innerHTML;
     var name = row.cells[1].innerHTML;
     var price = row.cells[2].innerHTML.substring(7);
     var qty = row.cells[3].innerHTML;
     var location = row.cells[4].innerHTML;
+    var packaged = row.cells[5].innerHTML;
 
     // Fill in pop-up fields
+    document.getElementById("idToEdit").innerHTML = "ID: " + id;
     document.getElementById("newNamePopUp").value = name;
     document.getElementById("newPricePopUp").value = price;
     document.getElementById("newQuantityPopUp").value = qty;
     document.getElementById("newLocationPopUp").value = location;
+    document.getElementById("newPackagePopUp").value = packaged;
 }
 
 
 async function editFoodItem() {
     // Get data from pop-up
+    var id = document.getElementById("idToEdit").innerHTML.substring(4);
+    var newName = document.getElementById("newNamePopUp").value;
+    var newPrice = document.getElementById("newPricePopUp").value;
+    var newQty = document.getElementById("newQuantityPopUp").value;
+    var newLocation = document.getElementById("newLocationPopUp").value;
+    var packaging = document.getElementById("newPackagePopUp").value;
+
+    // Run SQL query
+    const newFoodInfo = {
+        foodid: parseInt(id),
+        foodname: newName,
+        unitprice: parseFloat(newPrice).toFixed(2),
+        foodquantity: parseFloat(newQty).toFixed(2),
+        storagetype: newLocation,
+        packaged: packaging
+    }
+
+    const editResponse = await fetch('/editFoodItem', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newFoodInfo)
+    });
 }
