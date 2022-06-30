@@ -70,6 +70,7 @@ footer {
     color: black;
     font-family: Tahoma, sans-serif;
     font-weight: bold;
+    font-size: 24px;
     border: 1px solid white;
     border-width: 1px;
     height: 80px;
@@ -108,7 +109,6 @@ footer {
 }
 
 .orderTable {
-    /* grid-area: order; */
     border: 1px solid white;
     border-radius: 3px;
     min-width: 100%;
