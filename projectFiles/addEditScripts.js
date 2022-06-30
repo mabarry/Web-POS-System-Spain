@@ -1,7 +1,3 @@
-function searchFunction(x) {
-    document.getElementById(x).focus();
-}
-
 async function addToFoodItems() {
     //TODO: Add error checking
 
@@ -244,4 +240,9 @@ async function editFoodItem() {
     table.rows[id].cells[3].innerHTML = parseFloat(newQty).toFixed(2);
     table.rows[id].cells[4].innerHTML = newLocation;
     table.rows[id].cells[5].innerHTML = newPackaging;
+}
+
+
+function searchFunction(x) {
+    document.getElementById(x).focus();
 }
