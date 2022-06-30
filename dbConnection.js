@@ -382,7 +382,7 @@ app.post('/editFoodItem', function(req, res) {
     var storage = req.body.storagetype;
     var package = req.body.packaged;
 
-    var command = 'UPDATE fooditems SET foodname=' + name + ', unitprice=' + price + ', foodquantity=' + qty + ', storagetype=' + storage + ', packaged=' + package + ' WHERE foodid=' + id;
+    var command = "UPDATE fooditems SET foodname=\'" + name + "\', unitprice=" + price + ", foodquantity=" + qty + ", storagetype=\'" + storage + "\', packaged=" + package + " WHERE foodid=" + id;
     console.log(command);
 
     client.query(command, (err, result)=>{
