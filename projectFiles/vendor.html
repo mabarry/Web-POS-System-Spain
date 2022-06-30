@@ -205,23 +205,75 @@
 
             <div class="modal fade" id="receivedModal" tabindex="-1" aria-labelledby="receivedModalModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="receivedModalLabel">Review Delivery Information</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-content" id="dialog">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="receivedModalLabel">Review Delivery Information</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="nameOfVendor">
+                                <div class="input-group">
+                                    <div class="name"  id="name">
+                                        <p> Vendor Name and ID </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="orderTablePopUp">
+                                <table class="ordersPopUp" id="ordersPopUp">
+                                    <script src="customerScripts.js"></script>
+                                    <tr>
+                                        <th>Item Name</th>
+                                        <th>Item ID</th>
+                                        <th>Line Price (€)</th>
+                                        <th>Quantity</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Item 1</td>
+                                        <td>1</td>
+                                        <td>22.22</td>
+                                        <td>1.1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Item 2</td>
+                                        <td>2</td>
+                                        <td>33.33</td>
+                                        <td>2.2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Item 3</td>
+                                        <td>3</td>
+                                        <td>44.44   </td>
+                                        <td>3.3</td>
+                                    </tr>
+                                    
+                                    <!-- This is where each sale row will be added -->
+                                </table>
+                            </div>
+
+                            <div class="orderTotalPopUp">
+                                <div class="input-group">
+                                    <div class="pricePopUp"  id="pricePopUp">
+                                        <p> 0.00 </p>
+                                    </div>
+                                    <span class="input-group-text" id="euro"> € </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer" id="confirmation">
+                            <div class="confirmation">
+                                <div class="cancelShipment">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancelShipment">Cancel</button>
+                                </div>
+                                <div class="confirmShipment">
+                                    <button type="button" class="btn btn-primary" id="confirmShipment">Update Inventory</button>
+                                </div>
+                            </div>
+                            
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        [Food Name] from [Vendor Name] on [Today's Date] -- $[Price]
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Confirm</button>
-                    </div>
-                </div>
                 </div>
             </div>
-
-
         </div>
 
         <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -234,6 +286,6 @@
         -->
     </body>
 
-  <footer>
-  </footer>
+    <footer>
+    </footer>
 </html>
