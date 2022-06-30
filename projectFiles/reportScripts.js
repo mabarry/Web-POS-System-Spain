@@ -174,7 +174,7 @@ async function excessReport() {
         <td>' + (i + 1) + '</td> \
         <td>' + foodItemsDB[i].foodname + '</td> \
         <td>' + foodQuantities[i].toFixed(2) + '</td> \
-        <td>' + foodItemsDB[i].foodquantity + '</td>';
+        <td>' + foodItemsDB[i].foodquantity.toFixed(2) + '</td>';
 
         tr.innerHTML = rowText;
         table.appendChild(tr);
@@ -278,7 +278,7 @@ async function restockReport() {
         <td>' + (i + 1) + '</td> \
         <td>' + foodItemsDB[i].foodname + '</td> \
         <td>' + foodQuantities[i].toFixed(2) + '</td> \
-        <td>' + foodItemsDB[i].foodquantity + '</td>';
+        <td>' + foodItemsDB[i].foodquantity.toFixed(2) + '</td>';
 
         tr.innerHTML = rowText;
         table.appendChild(tr);
@@ -292,7 +292,7 @@ async function restockReport() {
         rowText = ' \
         <td></td> \
         <td></td> \
-        <td>No Items sold less than 10%</td> \
+        <td>No Items sold more than inventory</td> \
         <td></td>';
 
         tr.innerHTML = rowText;
