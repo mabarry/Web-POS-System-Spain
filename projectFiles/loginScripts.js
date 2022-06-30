@@ -26,8 +26,7 @@ async function checkPassword() {
         document.getElementById("loginCheck").innerHTML = "";
     }
     else {
-        clearLoginBoxes();
         document.getElementById("loginCheck").innerHTML = "Incorrect Username/Password.";
-
+        clearLoginBoxes();
     }
 }
