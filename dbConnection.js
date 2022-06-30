@@ -441,7 +441,7 @@ app.post('/salesWithinDateRange', function(req, res){
                 }
             })
         }
-    }, 1500);
+    }, 5000);
 });
 
 
