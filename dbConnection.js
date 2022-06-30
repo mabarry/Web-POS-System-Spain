@@ -34,7 +34,7 @@ client.connect();
 
 
 // Load in databases on start
-var currEmployee;
+var currEmployee = "104"; // TODO: DELETE DEFAULT
 var currPermissions;
 var foodItems;
 var customerSaleLine;
@@ -324,6 +324,58 @@ app.put('/addFoodItem', function(req, res) {
     })
 });
 
+app.post('/addVendorOrder', function(req, res) {
+    console.log("\nReq.body:");
+    console.log(req.body);
+
+    var orderID = req.body.vendororderid;
+    var vendorName = req.body.vendorname;
+    var orderDate = req.body.vendororderdate;
+    var orderTotal = req.body.vendorordertotal;
+    var employeeID = req.body.employeeid;
+
+    
+    var command = 'INSERT INTO vendororder VALUES(' + orderID +', \'' + vendorName +'\', \'' + orderDate +'\', \'' + orderTotal +'\', ' + employeeID + ')';
+    console.log(command);
+
+    client.query(command, (err, result)=>{
+    if (!err) {
+        console.log("COMPLETE\n\n");
+        res.send("Completed");
+    } 
+    else {
+        console.log("\nERROR:");
+        console.log(err.message);
+    }
+    })
+});
+
+app.post('/addBuyLine', function(req, res) {
+    console.log("\nReq.body:");
+    console.log(req.body);
+
+    var buyID = req.body.vendorlineid;
+    var orderID = req.body.vendororderid;
+    var foodID = req.body.foodid;
+    var buyPrice = req.body.vendorlineprice;
+    var buyQty = req.body.vendorlinequantity;
+
+
+    var command = 'INSERT INTO vendorbuyline VALUES(' + buyID +', \'' + orderID +'\', ' + foodID +', \'' + buyPrice +'\', ' + buyQty + ')';
+    console.log(command);
+
+    client.query(command, (err, result)=>{
+    if (!err) {
+        console.log("COMPLETE\n\n");
+        res.send("Completed");
+    } 
+    else {
+        console.log("\nERROR:");
+        console.log(err.message);
+    }
+    })
+});
+
 
 
 // EDIT DATABASE FUNCTION
@@ -482,7 +534,7 @@ app.post('/salesWithinDateRange', function(req, res){
 
 
 // OTHER FUNCTIONS
-app.get('/currentEmployee', function(req, res){
+app.get('/currentEmployee', function(req, res) {
     res.send(currEmployee);
 });
 
@@ -493,4 +545,22 @@ app.get('/currentPermissions', function(req, res) {
 app.put('/setCurrentEmployee', function(req, res) {
     currEmployee = req.body.employeeid;
     res.send("Complete");
+});
+
+app.post('/buyLinesFromOrder', function(req, res) {
+    console.log("\nReq.body:");
+    console.log(req.body);
+
+     // Get starting orderID
+     var command = "SELECT * FROM vendorbuyline WHERE vendororderid=" + req.body.vendororderid;
+     console.log(command);
+     client.query(command, (err, result)=>{
+         if (!err) {
+            res.send(result.rows);
+         } 
+         else {
+             console.log("\nERROR:");
+             console.log(err.message);
+         }
+     })
 });
