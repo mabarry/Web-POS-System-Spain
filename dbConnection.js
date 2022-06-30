@@ -237,6 +237,15 @@ app.get('/vendorBuyLine', function(req, res){
 
 
 // ADD TO DATABASE FUNCTIONS
+app.post('/employeeList', function(req, res){
+    if(Object.keys(req.query).length === 0) {
+        res.send(employeeList);
+    }
+    else {
+        res.send(employeeList[req.query.employeeID - 101]);
+    }
+});
+
 app.post('/addCustomerOrder', function(req, res) {
     console.log("\nReq.body:");
     console.log(req.body);
