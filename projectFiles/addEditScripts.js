@@ -15,6 +15,7 @@ async function addToFoodItems() {
     // Get all food info from input fields
     var name = document.getElementById("newName").value;
     var price = document.getElementById("newPrice").value;
+    var qty = document.getElementById("newQuantity").value;
     var location = document.getElementById("newLocation").value;
     var packaging = document.getElementById("newPackaging").value;
 
@@ -23,7 +24,7 @@ async function addToFoodItems() {
         foodid: parseInt(foodID),
         foodname: name,
         unitprice: parseFloat(price).toFixed(2),
-        foodquantity: '0.00',
+        foodquantity: qty,
         storagetype: location,
         packaged: packaging
     }
@@ -57,8 +58,9 @@ async function addToFoodItems() {
     <td>' + foodID + '</td> \
     <td>' + name + '</td> \
     <td>€&nbsp;' + parseFloat(price).toFixed(2) + '</td> \
-    <td>0.00</td> \
+    <td>' + qty + '</td> \
     <td>' + location + '</td> \
+    <td>' + packaging + '</td> \
     <td><button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editItemModal" onclick="autoFillPopUp(this)">Edit</button></td> \
     <td><button type="button" class="btn btn-outline-danger" onclick="deleteFoodItem(this)">X</button></td>';
 
@@ -69,6 +71,7 @@ async function addToFoodItems() {
     // Clear all the boxes
     document.getElementById("newName").value = '';
     document.getElementById("newPrice").value = '';
+    document.getElementById("newQuantity").value = '';
     document.getElementById("newLocation").value = '';
     document.getElementById("newPackaging").value = '';
 }
@@ -184,23 +187,23 @@ function autoFillPopUp(btn) {
     var packaged = row.cells[5].innerHTML;
 
     // Fill in pop-up fields
-    document.getElementById("idToEdit").innerHTML = "ID: " + id;
+    document.getElementById("idToEdit").value = id;
     document.getElementById("newNamePopUp").value = name;
     document.getElementById("newPricePopUp").value = price;
     document.getElementById("newQuantityPopUp").value = qty;
     document.getElementById("newLocationPopUp").value = location;
-    document.getElementById("newPackagePopUp").value = packaged;
+    document.getElementById("newPackagedPopUp").value = packaged;
 }
 
 
 async function editFoodItem() {
     // Get data from pop-up
-    var id = document.getElementById("idToEdit").innerHTML.substring(4);
+    var id = document.getElementById("idToEdit").value;
     var newName = document.getElementById("newNamePopUp").value;
     var newPrice = document.getElementById("newPricePopUp").value;
     var newQty = document.getElementById("newQuantityPopUp").value;
     var newLocation = document.getElementById("newLocationPopUp").value;
-    var packaging = document.getElementById("newPackagePopUp").value;
+    var newPackaging = document.getElementById("newPackagedPopUp").value;
 
     // Run SQL query
     const newFoodInfo = {
@@ -209,7 +212,7 @@ async function editFoodItem() {
         unitprice: parseFloat(newPrice).toFixed(2),
         foodquantity: parseFloat(newQty).toFixed(2),
         storagetype: newLocation,
-        packaged: packaging
+        packaged: newPackaging
     }
 
     const editResponse = await fetch('/editFoodItem', {
@@ -220,4 +223,21 @@ async function editFoodItem() {
         },
         body: JSON.stringify(newFoodInfo)
     });
+
+    // Update the foodItems DB
+    const foodItemsResponse = await fetch('/updateFoodItems', {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    });
+
+    // Clear and update the table
+    var table = document.getElementById("items");
+    table.rows[id].cells[1].innerHTML = newName;
+    table.rows[id].cells[2].innerHTML = "€ " + parseFloat(newPrice).toFixed(2);
+    table.rows[id].cells[3].innerHTML = parseFloat(newQty).toFixed(2);
+    table.rows[id].cells[4].innerHTML = newLocation;
+    table.rows[id].cells[5].innerHTML = newPackaging;
 }
